@@ -1,0 +1,16 @@
+.figure {
+  text-align: center;
+  background-color: var(--white);
+}
+
+.figure__image {
+  max-width: 100%;
+}
+
+.figure__caption {
+  opacity: 0.8;
+  font-size: 0.9em;
+  font-style: italic;
+  max-width: 60ch;
+  margin: 15px auto;
+}

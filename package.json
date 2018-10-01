@@ -1,0 +1,20 @@
+{
+  "name": "html-css",
+  "version": "1.0.0",
+  "description": "HTML-CSS course",
+  "main": "index.js",
+  "scripts": {
+    "start": "cp -R src/data dist && cp -R src/img dist && parcel src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bcalou",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.9.3",
+    "parcel": "^1.9.7",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "reset-css": "^4.0.1"
+  }
+}

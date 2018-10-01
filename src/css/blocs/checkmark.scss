@@ -1,0 +1,27 @@
+@keyframes checked {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.checkmark {
+  user-select: none;
+}
+
+.checkmark__input {
+  display: none;
+}
+
+.checkmark__icon {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 10px;
+  color: var(--green);
+  filter: grayscale(100%);
+
+  .checkmark__input:checked ~ & {
+    filter: none;
+    animation: checked 0.5s;
+  }
+}

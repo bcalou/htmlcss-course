@@ -1,0 +1,28 @@
+body {
+  font-family: var(--serifFont), serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--sansSerifFont), sans-serif;
+}
+
+code {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+em {
+  font-weight: bold;
+}
+
+i {
+  font-style: italic;
+}

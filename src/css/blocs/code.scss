@@ -1,0 +1,17 @@
+.code {
+  position: relative;
+  width: 100%;
+  background: var(--codeColor);
+  padding: 15px 15px 15px 90px;
+  border-radius: var(--borderRadius);
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: normal;
+}
+
+.code__icon {
+  position: absolute;
+  opacity: 0.3;
+  font-size: 64px;
+  transform: translate(-75px, -5px);
+}

@@ -1,0 +1,49 @@
+.header {
+  position: relative;
+  background: var(--primaryColor);
+  color: var(--primaryColorText);
+
+  &::before {
+    content: '';
+    background: var(--primaryColor);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200vw;
+    height: 100%;
+    z-index: -1;
+    transform: translateX(-50%);
+  }
+}
+
+.header__title,
+.header__chapterNumber {
+  display: inline;
+}
+
+.header__subtitle {
+  margin-bottom: 15px;
+
+  @include medium {
+    display: inline;
+  }
+}
+
+.header__title {
+  margin-right: 15px;
+  font-size: 60px;
+
+  @include medium {
+    font-size: 80px;
+  }
+}
+
+.header__chapterNumber {
+  font-family: var(--sansSerifFont);
+  opacity: 0.7;
+}
+
+.header__chapterNumber,
+.header__subtitle {
+  font-size: 30px;
+}

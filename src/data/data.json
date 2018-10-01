@@ -1,0 +1,203 @@
+{
+  "chapterNumber": 1,
+  "title": "Introduction aux balises",
+  "slides": "https://docs.google.com/presentation/d/1Yubf9f1TLpxZSoVFZeP6khiEAJGCsmGdJghS_MmbrOo/",
+  "concepts": [
+    {
+      "title": "Notre première balise",
+      "theory": "Le contenu d'une page web est organisé dans des balises. La plupart des balises sont constituées d'un tag ouvrant, de leur contenu, puis du tag fermant correspondant.",
+      "code": "<p>Texte dans un paragraphe. Un paragraphe est représenté par la balise p en HTML.</p>",
+      "warning": "Ne laissez pas du contenu en dehors d'une balise. Il s'affichera quand même, mais sera difficilement manipulable par la suite.",
+      "links": [
+        {
+          "label": "Liste de tous les éléments HTML existant",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element"
+        }
+      ],
+      "codepen": "Pdreva",
+      "question": {
+        "text": "Le monde du code est très largement dominé par l'anglais, et votre code devrait toujours être écrit dans cette langue, par convention (et pour partager une langue universelle avec vos collègues de toutes les contrées). D'ailleurs, quel est le mot pour <em>balise</em> en anglais ?",
+        "answer": "tag",
+        "clue": "t"
+      }
+    },
+    {
+      "title": "Les titres",
+      "theory": "Du <code>h1</code> au <code>h6</code>, les titres permettent d'introduire de manière hiérarchisée les différentes parties d'une page. <code>h1</code> représente le titre principal du document, puis les <code>h2</code> les titres de second niveau, et ainsi de suite...",
+      "code": "<h1>Je suis le titre de ce document</h1><h2>Première partie</h2><p>Contenu de la première partie</p><h2>Deuxième partie</h2><h3>Sous-partie 1</h3><p>Etc...</p>",
+      "info": "La convention veut que l'on utilise qu'un seul <code>h1</code> par page, principalement pour des raisons historiques de référencement. Pas de limite sur les autres !",
+      "links": [
+        {
+          "label": "Documentation approfondie sur les titres",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Heading_Elements"
+        }
+      ],
+      "codepen": "XxWxOJ",
+      "question": {
+        "text": "Jetez un oeil en haut de cette page. Ici, le titre principal (\"HTML/CSS\") est contenu dans un <code>h1</code>, et le sous-titre (\"Introduction aux balises\") dans un <code>h2</code>. C'est bien joli tout ça, mais que signifie le h ?",
+        "answer": "heading",
+        "clue": "n"
+      },
+      "figure": {
+        "src": "https://s3-ap-southeast-1.amazonaws.com/openeschool-uploads/Open_2/Open5013f58a-77e3-45ad-b4b0-09aa1d34a9dc.png",
+        "alt": "6 balises de titres allant du h1 au h6",
+        "caption": "Vous l'avez remarqué : les navigateurs appliquent automatiquement un style (taille) différent selon l'importance du titre."
+      }
+    },
+    {
+      "title": "Structurer un document",
+      "theory": "Bien d'autres éléments concourent à la structuration d'un document. 99% des sites comportent au moins un <code>header</code> (en-tête, dans lequel on trouve au moins un titre) et un <code>footer</code> (pied-de-page). La balise <code>main</code> quant à elle permet de désigner le contenu principal du document.",
+      "code": "<header><h1>Bienvenue sur mon site !</h1></header><main>Le contenu principal...</main><footer>Merci d'être passé !</footer>",
+      "info": "Vous avez sans doute remarqué en passant qu'on peut imbriquer une balise dans une autre. Ici, un titre de niveau 1 au sein du <code>header</code>.",
+      "links": [
+        {
+          "label": "Les balises structurelles",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element#Sectionnement_du_contenu"
+        }
+      ],
+      "codepen": "yRLwra",
+      "question": {
+        "text": "Sur cette page, chaque concept (par exemple \"Structurer un document\") se trouve dans une balise <code>article</code>. En effet, ce sont des contenus indépendants, qui ont du sens à eux seul. Dans quel balise est-il logique d'avoir placé les encarts \"À noter\" ?",
+        "answer": "aside",
+        "clue": "i"
+      },
+      "figure": {
+        "src": "http://uploads.siteduzero.com/files/343001_344000/343677.png",
+        "alt": "La structure HTML5 d'un site",
+        "caption": "Exemple de représentation d'un site et des balises HTML5 qui le composent. Un schéma à réaliser chaque fois que abordez un projet ou analysez un site existant."
+      }
+    },
+    {
+      "title": "L'indentation : elle peut sauver des vies",
+      "theory": "Ce n'est pas drôle, mais c'est vital pour n'importe quel type de code : l'indentation, soit le fait d'espacer vers la droite les balises qui sont incluses dans une autre balise. Astuce : une balise fermante se trouve verticalement \"en face\" de sa balise ouvrante correspondante (sauf pour les balises qui tiennent sur une seule ligne).",
+      "code": "<section><h2>2 espaces d'indentation</h2><article><p>Puis 4, etc...</p></article></section>",
+      "warning": "Indentez avec des caractères \"espace\" et pas des vraies tabulations. C'est un vieux débat, mais les espaces produiront un code plus robuste. Heureusement, la plupart des éditeurs de code vous simplifieront la tâche.",
+      "codepen": "qJBzpP",
+      "figure": {
+        "src": "img/indentation.jpg",
+        "alt": "Comparaison d'un code mal indenté et d'un code bien indenté",
+        "caption": "Lire un code mal indenté peut nuire à votre santé et à celle de votre entourage."
+      }
+    },
+    {
+      "title": "Les balises auto-fermantes",
+      "theory": "Jusqu'ici, toutes nos balises contiennent soit du texte, soit d'autres balises. Mais certaines balises ne contiennent rien. C'est par exemple le cas de la balise de retour à la ligne, <code>br</code>, qui se ferme à l'instant même où elle s'ouvre. Le slash de fermeture est optionnel.",
+      "code": "<p>Un vieil étang,<br/>Une grenouille qui plonge,<br/>Le bruit de l'eau.</p><p>Haïku de Bashō</p>",
+      "info": "La balise <code>br</code> est utile lorsqu'un retour à la ligne a du sens au sein d'un même paragraphe (ici, un poème). Elle est nécessaire car un retour à la ligne dans le code source sera ignoré par le navigateur.",
+      "codepen": "yRygbL",
+      "question": {
+        "text": "Les navigateurs implémentent une spécification précise d'HTML, si possible la plus récente, qui nous dit quelles balises existent et comment les utiliser. Quelle est la version présentée en 2014 est encore utilisée aujourd'hui ?",
+        "answer": "html5",
+        "clue": "m"
+      }
+    },
+    {
+      "title": "Les listes",
+      "theory": "Les listes sont un des éléments les plus courants dans un site. Elles sont constituées d'une balise <code>ul</code> (<i>unordered list</i>) ou <code>ol</code> (<i>ordered list</i>) et d'autant de balises <code>li</code> qu'il y a d'items.",
+      "code": "<nav><ul><li>Présentation</li><li>Compétences</li><li>Expériences</li></ul></nav>",
+      "warning": "Les listes servent souvent à déclarer un menu. Il faut alors placer la liste dans une balise <code>nav</code>, une autre balise structurelle qui permet au navigateur de savoir qu'il s'agit d'un moyen de naviguer sur le site.",
+      "links": [
+        {
+          "label": "Exemples variés de listes",
+          "url": "https://html.com/lists/"
+        }
+      ],
+      "codepen": "NOPgQW",
+      "question": {
+        "text": "Vrai ou faux ? On peut inclure une liste dans une autre, mais il faut qu'elle soit du même type (<code>ul</code> au sein d'une <code>ul</code>, <code>ol</code> au sein d'une <code>ol</code>)",
+        "answer": "faux",
+        "clue": "a"
+      },
+      "figure": {
+        "src": "http://webdesy.com/webdesy-wp/wp-content/uploads/2012/02/html-list-3.jpg",
+        "alt": "Une liste d'action à effectuer",
+        "caption": "Un autre exemple de liste dont l'ordre des items est important : une liste d'actions à effectuer en respectant un processus."
+      }
+    },
+    {
+      "title": "Créons du lien",
+      "theory": "Les <em>attributs</em> procurent de nouveaux pouvoirs aux éléments HTML. On les place au sein de la balise d'ouverture. Une balise <code>a</code> seule n'a aucun effet, mais avec un attribut <code>href</code>, elle permet de créer un lien !",
+      "code": "<p>Voici un lien externe vers <a href=\"https://www.w3.org/\">le site du W3C</a>. En cliquant, vous sortirez de la page.</p><p>Et voici un lien vers une <a href=\"#hello\">section interne à ce document</a>. En cliquant, vous descendrez sur la page.</p><article id=\"hello\">Hello World!</a>",
+      "info": "Analysez bien la différence entre les deux liens de l'exemple. Dans le premier, <code>href</code> contient une adresse complète (autre page web). Dans le second, grâce au <code>#</code>, il redirige vers l'élément <em>de la même page</em> possédant l'attribut <code>id</code> correspondant.",
+      "links": [
+        {
+          "label": "Documentation sur les liens",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/a"
+        }
+      ],
+      "codepen": "dgPZYW",
+      "question": {
+        "text": "Il est possible de contrôler si l'ouverture du lien remplacera l'onglet actuel (on perd donc la page courante, c'est le comportement par défaut) ou si elle s'ouvrira dans un nouvel onglet. Quel est l'attribut à utiliser dans ce but ?",
+        "answer": "target",
+        "clue": "e"
+      },
+      "figure": {
+        "src": "https://www.computerhope.com/jargon/h/html-tag.gif",
+        "alt": "Schéma d'un tag HTML",
+        "caption": "<code>href</code> est un des attributs de la balise <code>a</code>. Vous savez désormais écrire une balise HTML entière."
+      }
+    },
+    {
+      "title": "Les balises de texte",
+      "theory": "HTML nous permet d'enrichir les textes avec des balises ayant chacune un sens spécifique. Les utiliser aide le navigateur à comprendre le contenu et nous permettra ensuite de styliser certains passages pour les faire ressortir.",
+      "code": "Ce mot est placé en <em>emphase</em>, pour qu'on le remarque. Et celui-ci est super <strong>important !!!</strong>",
+      "warning": "Le navigateur met par défaut les <code>em</code> en italique et les <code>strong</code> en gras. Mais ce n'est pas une fatalité, on peut très bien décider de présenter notre texte autrement. Il ne faut pas confondre le sens, qu'on donne avec les balises, et l'apparence.",
+      "links": [
+        {
+          "label": "Sémantique du texte en ligne",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element#S%C3%A9mantique_du_texte_en_ligne"
+        }
+      ],
+      "codepen": "bmNXPB",
+      "question": {
+        "text": "Quelle est la balise dans laquelle ont été logiquement placés les examples de HTML sur cette page ?",
+        "answer": "code",
+        "clue": "c"
+      }
+    },
+    {
+      "title": "Ça manque d'images...",
+      "theory": "Les pages web regorgent de médias, et les images (jpeg, png, gif, svg...) en représentent une grande partie. Elles sont insérées facilement avec une balise <code>img</code> (auto-fermante) contenant un attribut <code>src</code>. Pour la gestion de la taille, ce sera plus tard !",
+      "code": "<img src=\"https://www.placecage.com/300/200\" alt=\"Nicolas Cage avec une moustache\" />",
+      "warning": "N'oubliez pas l'attribut <code>alt</code> à chaque fois que vous insérez une image. Comme vous pouvez le voir dans l'exemple, il décrit l'image afin de présenter un texte aux utilisateurs qui ne pourront pas la voir (problème de connexion, lecteur d'écran...)",
+      "links": [
+        {
+          "label": "Documentation sur la balise img",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/img"
+        }
+      ],
+      "codepen": "vVOBQy",
+      "question": {
+        "text": "Quel format d'image vectoriel est adapté à la présentation d'icônes, logo et formes simples ? Ce format a l'avantage de produire des fichiers légers et des images pouvant être agrandies à l'infini sans en altérer la qualité.",
+        "answer": "svg",
+        "clue": "s"
+      },
+      "figure": {
+        "src": "https://wprocket-eb2.kxcdn.com/wp-content/uploads/1/3-pie-graph-page-size.png",
+        "alt": "Répartition du poids des ressources sur le web",
+        "caption": "Les images représentent une portion considérable du poids du web (derrière les vidéos, loin devant). Attention à utiliser des images optimisées."
+      }
+    },
+    {
+      "title": "Block VS Inline",
+      "theory": "Toutes ces balises sont regroupables en deux catégories : les <em>block</em>, qui provoquent un retour à la ligne et prennent toute la largeur disponible, et les <em>inline</em>, qui s'intrègrent au flux courant, en prenant juste la largeur de leur contenu. <code>div</code> et <code>span</code> sont les éléments génériques (sans signification particulière) respectifs de ces deux catégories.",
+      "code": "<p>Ce paragraphe est un bloc.</p><header>Ce header est un autre bloc. Mais ce <span>span</span> à l'intérieur du header est un élément inline.</header>",
+      "info": "Quand vous cherchez quelle balise utiliser, vérifiez si il en existe une qui répond au sens que vous souhaitez donner à votre contenu. Si aucune ne correspond, utilisez <code>div</code> ou <code>span</code> selon que votre élement est un bloc ou en-ligne. Voyez ces dernières comme le dernier recours !",
+      "links": [
+        {
+          "label": "Éléments en-ligne",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/%C3%89l%C3%A9ments_en_ligne"
+        },
+        {
+          "label": "Éléments de bloc",
+          "url": "https://developer.mozilla.org/fr/docs/Web/HTML/%C3%89l%C3%A9ments_en_bloc"
+        }
+      ],
+      "codepen": "yRNyWz",
+      "figure": {
+        "src": "https://www.webdesignerdepot.com/cdn-origin/uploads/2012/08/boxmodel-block-vs-inline.png",
+        "alt": "Comparaison entre les éléments de bloc et les éléments en-ligne"
+      }
+    }
+  ]
+}

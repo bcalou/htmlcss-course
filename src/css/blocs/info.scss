@@ -1,0 +1,22 @@
+.info {
+  padding: 15px;
+  background: var(--infoColor);
+  border-radius: var(--borderRadius);
+}
+
+.info--warning {
+  background: var(--warningColor);
+}
+
+.info__title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family: var(--sansSerifFont);
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.info__icon {
+  display: inline-block;
+  opacity: 0.5;
+}

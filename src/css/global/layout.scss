@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr minmax(min-content, 1000px) 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 30px;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.header,
+main {
+  grid-column: 2;
+}

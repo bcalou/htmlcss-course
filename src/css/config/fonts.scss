@@ -1,0 +1,35 @@
+@mixin font($font-family, $file-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+    src: url('#{$file-path}.woff') format('woff'),
+      url('#{$file-path}.woff2') format('woff2');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+@include font('Roboto', '../fonts/Roboto/Roboto-Thin', 200, normal);
+@include font('Roboto', '../fonts/Roboto/Roboto-ThinItalic', 200, italic);
+@include font('Roboto', '../fonts/Roboto/Roboto-Light', 300, normal);
+@include font('Roboto', '../fonts/Roboto/Roboto-LightItalic', 300, italic);
+@include font('Roboto', '../fonts/Roboto/Roboto-Regular', 400, normal);
+@include font('Roboto', '../fonts/Roboto/Roboto-Italic', 400, italic);
+@include font('Roboto', '../fonts/Roboto/Roboto-Medium', 500, normal);
+@include font('Roboto', '../fonts/Roboto/Roboto-MediumItalic', 500, italic);
+@include font('Roboto', '../fonts/Roboto/Roboto-Bold', 600, normal);
+@include font('Roboto', '../fonts/Roboto/Roboto-BoldItalic', 600, italic);
+@include font('Roboto', '../fonts/Roboto/Roboto-Black', 700, normal);
+@include font('Roboto', '../fonts/Roboto/Roboto-BlackItalic', 700, italic);
+
+@include font('Oswald', '../fonts/Oswald/Oswald-ExtraLight', 200, normal);
+@include font('Oswald', '../fonts/Oswald/Oswald-Light', 300, normal);
+@include font('Oswald', '../fonts/Oswald/Oswald-Regular', 400, normal);
+@include font('Oswald', '../fonts/Oswald/Oswald-Medium', 500, normal);
+@include font('Oswald', '../fonts/Oswald/Oswald-SemiBold', 600, normal);
+@include font('Oswald', '../fonts/Oswald/Oswald-Bold', 700, normal);
+
+:root {
+  --primaryColorText: #ffffff;
+  --sansSerifFont: 'Oswald';
+  --serifFont: 'Roboto';
+}
