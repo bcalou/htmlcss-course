@@ -1,22 +1,25 @@
-import { ElementRenderer } from '../element-renderer.interface';
-import { Question } from './question.interface';
+import Component from '../../component';
+import Question from './question.interface';
 
-export default class QuestionRenderer implements ElementRenderer {
-  public el: HTMLElement;
+export default class QuestionComponent extends Component {
+  protected tagType = 'div';
+  protected class = 'question';
+  protected question: Question;
 
+  private inputsHostClass = 'question__inputs';
   private inputEls: HTMLInputElement[];
 
-  constructor(private question: Question) {
-    this.inputEls = this.getInputElements();
+  /** Generate question */
+  protected generate(): void {
+    super.generate();
+
+    this.setInputs();
     this.retrieveAnswer();
-    this.generate();
   }
 
-  /** Generate the question and bind actions */
-  private generate(): void {
-    this.el = document.createElement('div');
-    this.el.classList.add('question');
-    this.el.innerHTML = `
+  /** Get question template */
+  protected getTemplate(): string {
+    return `
       <svg class="question__icon icon" aria-hidden="true">
         <use xlink:href="#icon-search"></use>
       </svg>
@@ -24,16 +27,25 @@ export default class QuestionRenderer implements ElementRenderer {
         <p class="question__text">${this.question.text}</p>
         <div class="question__answer">
           <div class=question__answerTitle>Votre réponse</div>
-        <div class="question__inputs">
-        </div>
-          <p class="question__instructions">Répondez aux questions de la page pour constituer le mot final.</p>
+        <div class="${this.inputsHostClass}"></div>
+          <p class="question__instructions">
+            Répondez aux questions de la page pour constituer le mot final.
+          </p>
         </div>
       </div>
     `;
+  }
 
-    this.inputEls.forEach(input => {
-      this.el.querySelector('.question__inputs').appendChild(input);
-    });
+  /** Get inputs and append them to the inputs host */
+  private setInputs(): void {
+    this.inputEls = this.getInputElements();
+
+    const inputsHost: HTMLElement = this.el.querySelector(
+      '.' + this.inputsHostClass
+    );
+    for (let inputEl of this.inputEls) {
+      inputsHost.appendChild(inputEl);
+    }
   }
 
   /** Get as many inputs as needed for the question */
@@ -86,7 +98,9 @@ export default class QuestionRenderer implements ElementRenderer {
     );
 
     if (answer) {
-      Array.from(answer).forEach((letter, i) => {
+      Array.from(
+        localStorage.getItem('question-' + this.question.answer)
+      ).forEach((letter, i) => {
         this.inputEls[i]['value'] = letter;
       });
     }
@@ -94,8 +108,9 @@ export default class QuestionRenderer implements ElementRenderer {
 
   /** Save answer in the local storage */
   private saveAnswer(): void {
-    const answer: string = this.inputEls.map(input => input.value).join('');
-
-    localStorage.setItem('question-' + this.question.answer, answer);
+    localStorage.setItem(
+      'question-' + this.question.answer,
+      this.inputEls.map(input => input.value).join('')
+    );
   }
 }

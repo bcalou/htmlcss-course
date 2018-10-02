@@ -1,33 +1,41 @@
+import Component from '../../component';
 import { Concept } from '../concept/concept.interface';
-import { ElementRenderer } from '../element-renderer.interface';
 
-export default class TitleRenderer implements ElementRenderer {
-  public el: HTMLElement;
+export default class TitleComponent extends Component {
+  protected tagType = 'h3';
+  protected class = 'title';
+  protected concept: Concept;
+  protected conceptEl: HTMLElement;
+  protected index: number;
 
-  private stateId = 'open-' + this.concept.title;
+  private stateId: string;
 
-  constructor(
-    private concept: Concept,
-    private conceptEl: HTMLElement,
-    private index: number
-  ) {
-    this.generate();
-  }
+  /** Generate the title */
+  protected generate(): void {
+    super.generate();
 
-  /** Replace the title slot with actual title */
-  private generate(): void {
-    this.el = document.createElement('h2');
-    this.el.classList.add('concept__title');
+    this.stateId = 'open-' + this.concept.title;
+
     this.el.setAttribute(
       'title',
       'Cliquez pour ouvrir ou refermer cette partie'
     );
-    this.el.innerText = this.getLetter() + '. ' + this.concept.title;
+
     this.el.addEventListener('click', () => {
       this.toggleSection();
     });
 
     this.setState();
+  }
+
+  /** Get title template */
+  protected getTemplate(): string {
+    return this.getLetter() + '. ' + this.concept.title;
+  }
+
+  /** Get the letter for this concept */
+  private getLetter(): string {
+    return 'abcdefghijklmnopqrstuvwxyz'[this.index];
   }
 
   /** Change the state of the concept and save it to local storage */
@@ -45,10 +53,5 @@ export default class TitleRenderer implements ElementRenderer {
     this.conceptEl.classList[
       localStorage.getItem(this.stateId) ? 'add' : 'remove'
     ]('concept--open');
-  }
-
-  /** Get the letter for this concept */
-  private getLetter(): string {
-    return 'abcdefghijklmnopqrstuvwxyz'[this.index];
   }
 }

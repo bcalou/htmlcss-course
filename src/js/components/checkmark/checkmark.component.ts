@@ -1,26 +1,27 @@
+import Component from '../../component';
 import { Concept } from '../concept/concept.interface';
-import { ElementRenderer } from '../element-renderer.interface';
 
-export default class CheckmarkRenderer implements ElementRenderer {
-  public el: HTMLLabelElement;
+export default class CheckmarkComponent extends Component {
+  protected tagType = 'label';
+  protected class = 'checkmark';
+  protected concept: Concept;
 
   private localStorageId: string;
-  private progression: number[];
 
-  constructor(private concept: Concept) {
+  /** Generate the checkmark */
+  protected generate(): void {
     this.localStorageId = 'progression-' + this.concept.title;
 
-    this.generate();
+    super.generate();
+
+    this.el.setAttribute('aria-hidden', 'true');
+
     this.watchProgression();
   }
 
-  /** Generate the checkmark template and bind actions */
-  private generate(): void {
-    this.el = document.createElement('label');
-    this.el.classList.add('checkmark');
-    this.el.setAttribute('aria-hidden', 'true');
-
-    this.el.innerHTML = `
+  /** Get the checkmark template */
+  protected getTemplate(): string {
+    return `
       <input class="checkmark__input" type="checkbox" ${
         this.isDone() ? 'checked' : ''
       }>

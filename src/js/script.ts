@@ -1,4 +1,4 @@
-import ChapterRenderer from './chapter/chapter-renderer';
+import { ChapterPage } from './pages/chapter.page';
 
 if (['interactive', 'complete'].indexOf(document.readyState) > -1) {
   init();
@@ -7,10 +7,9 @@ if (['interactive', 'complete'].indexOf(document.readyState) > -1) {
 }
 
 function init(): void {
-  new ChapterRenderer(() => {
-    // Load CodePen script once the content is generated
-    const script: HTMLScriptElement = document.createElement('script');
-    script.src = 'https://static.codepen.io/assets/embed/ei.js';
-    document.head.appendChild(script);
-  });
+  fetch('../data/data.json')
+    .then(res => res.json())
+    .then(chapter => {
+      new ChapterPage({ chapter: chapter });
+    });
 }

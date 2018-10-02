@@ -1,31 +1,30 @@
+import Component from '../../component';
 import { Concept } from '../concept/concept.interface';
-import { ElementRenderer } from '../element-renderer.interface';
 
-export default class CodepenRenderer implements ElementRenderer {
-  public el: HTMLElement;
+export default class CodepenComponent extends Component {
+  protected tagType = 'div';
+  protected class = 'codepen';
+  protected index: number;
+  protected concept: Concept;
 
-  constructor(private concept: Concept, private index: number) {
-    this.generate();
-  }
-
-  /** Replace the title slot with actual title */
-  private generate(): void {
-    this.el = document.createElement('div');
-    this.el.classList.add('codepen');
-    this.el.innerHTML = this.getTemplate();
+  /** Generate the codepen */
+  protected generate(): void {
+    super.generate();
 
     if (this.index === 0) {
       // Add help on first codepen
       const helpEl: HTMLDivElement = document.createElement('div');
-      helpEl.classList.add('codepen__editHelp');
+      helpEl.classList.add(this.class + '__editHelp');
       helpEl.setAttribute('aria-hidden', 'true');
       helpEl.innerText = 'Cliquez ici pour éditer';
       this.el.appendChild(helpEl);
     }
+
+    this.loadCodepenScript();
   }
 
   /** Get the template */
-  private getTemplate(): string {
+  protected getTemplate(): string {
     return `
       <p data-height="400" data-theme-id="0" data-slug-hash="${
         this.concept.codepen
@@ -40,5 +39,16 @@ export default class CodepenRenderer implements ElementRenderer {
         <a href="https://codepen.io">CodePen</a>.
       </p>
     `;
+  }
+
+  /** Load codepen script if not already done by another component */
+  private loadCodepenScript(): void {
+    const scriptId = 'codepen-script';
+    if (!document.getElementById(scriptId)) {
+      const script: HTMLScriptElement = document.createElement('script');
+      script.id = 'codepen-script';
+      script.src = 'https://static.codepen.io/assets/embed/ei.js';
+      document.head.appendChild(script);
+    }
   }
 }

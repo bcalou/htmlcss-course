@@ -1,0 +1,29 @@
+.title {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+  margin-left: 22px;
+  color: var(--primaryColor);
+  font-size: 30px;
+  cursor: pointer;
+  user-select: none;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -22px;
+    top: 21px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 12px;
+    border-color: transparent transparent transparent var(--primaryColor);
+    transition: transform 0.2s;
+    will-change: transform;
+
+    .concept--open & {
+      transform: rotate(90deg);
+    }
+  }
+}

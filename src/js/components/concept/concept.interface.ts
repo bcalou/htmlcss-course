@@ -1,4 +1,4 @@
-import { Question } from '../question/question.interface';
+import Question from '../question/question.interface';
 
 export interface Concept {
   title: string;
