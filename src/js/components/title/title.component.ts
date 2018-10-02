@@ -8,13 +8,9 @@ export default class TitleComponent extends Component {
   protected conceptEl: HTMLElement;
   protected index: number;
 
-  private stateId: string;
-
   /** Generate the title */
   protected generate(): void {
     super.generate();
-
-    this.stateId = 'open-' + this.concept.title;
 
     this.el.setAttribute(
       'title',
@@ -40,18 +36,22 @@ export default class TitleComponent extends Component {
 
   /** Change the state of the concept and save it to local storage */
   private toggleSection(): void {
-    if (localStorage.getItem(this.stateId)) {
-      localStorage.removeItem(this.stateId);
-    } else {
-      localStorage.setItem(this.stateId, 'true');
-    }
+    this.store.action({
+      type: this.store.actions.toggleConcept,
+      payload: {
+        concept: this.concept,
+      },
+    });
     this.setState();
   }
 
   /** Add or remove open class depeding on the state */
   private setState(): void {
     this.conceptEl.classList[
-      localStorage.getItem(this.stateId) ? 'add' : 'remove'
+      this.store.data.concepts[this.concept.title] &&
+      this.store.data.concepts[this.concept.title].open
+        ? 'add'
+        : 'remove'
     ]('concept--open');
   }
 }

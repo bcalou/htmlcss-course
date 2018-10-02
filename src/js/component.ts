@@ -1,19 +1,22 @@
 import Children from './children.interface';
 import ComponentOptions from './component-options.interface';
+import Store from './store';
 
 export default class Component {
   protected tagType: string;
   protected class: string;
   protected el: HTMLElement;
+  protected store: Store;
 
   constructor(
     protected host: HTMLElement,
     protected inputs: any = {},
     private options: ComponentOptions = { injectionMethod: 'replace' }
   ) {
+    this.store = new Store();
+
     /** Wait for child properties */
     setTimeout(() => {
-      console.log(this);
       /** Set inputs as class properties */
       for (let input in inputs) {
         this[input] = inputs[input];
@@ -64,7 +67,6 @@ export default class Component {
   /** Generate each child */
   private generateChildren(): void {
     const children: Children = this.getChildren();
-    console.log(children);
 
     for (let child in children) {
       const hostEl: HTMLElement = this.el.querySelector(child);

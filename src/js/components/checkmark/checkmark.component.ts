@@ -6,12 +6,8 @@ export default class CheckmarkComponent extends Component {
   protected class = 'checkmark';
   protected concept: Concept;
 
-  private localStorageId: string;
-
   /** Generate the checkmark */
   protected generate(): void {
-    this.localStorageId = 'progression-' + this.concept.title;
-
     super.generate();
 
     this.el.setAttribute('aria-hidden', 'true');
@@ -35,7 +31,11 @@ export default class CheckmarkComponent extends Component {
 
   /** Is this concept marked as done */
   private isDone(): boolean {
-    return !!localStorage.getItem(this.localStorageId);
+    return (
+      this.store.data.concepts &&
+      this.store.data.concepts[this.concept.title] &&
+      this.store.data.concepts[this.concept.title].done
+    );
   }
 
   /** Watch clicks on checkmarks */
@@ -47,10 +47,9 @@ export default class CheckmarkComponent extends Component {
 
   /** Save the  current progression into the local storage */
   private saveProgression(done: boolean): void {
-    if (done) {
-      localStorage.setItem(this.localStorageId, 'true');
-    } else {
-      localStorage.removeItem(this.localStorageId);
-    }
+    this.store.action({
+      type: this.store.actions.setConceptProgression,
+      payload: { concept: this.concept, done: done },
+    });
   }
 }

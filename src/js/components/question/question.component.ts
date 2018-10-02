@@ -1,10 +1,10 @@
 import Component from '../../component';
-import Question from './question.interface';
+import { Concept } from '../concept/concept.interface';
 
 export default class QuestionComponent extends Component {
   protected tagType = 'div';
   protected class = 'question';
-  protected question: Question;
+  protected concept: Concept;
 
   private inputsHostClass = 'question__inputs';
   private inputEls: HTMLInputElement[];
@@ -24,13 +24,14 @@ export default class QuestionComponent extends Component {
         <use xlink:href="#icon-search"></use>
       </svg>
       <div class="question__inner">
-        <p class="question__text">${this.question.text}</p>
+        <p class="question__text">${this.concept.question.text}</p>
         <div class="question__answer">
           <div class=question__answerTitle>Votre réponse</div>
-        <div class="${this.inputsHostClass}"></div>
-          <p class="question__instructions">
-            Répondez aux questions de la page pour constituer le mot final.
-          </p>
+          <div class="${this.inputsHostClass}"></div>
+            <p class="question__instructions">
+              Répondez aux questions de la page pour constituer le mot final.
+            </p>
+          </div>
         </div>
       </div>
     `;
@@ -50,10 +51,12 @@ export default class QuestionComponent extends Component {
 
   /** Get as many inputs as needed for the question */
   private getInputElements(): HTMLInputElement[] {
-    return Array.from(this.question.answer).map((letter, i) => {
+    return Array.from(this.concept.question.answer).map((letter, i) => {
       const inputEl: HTMLInputElement = document.createElement('input');
       inputEl.classList.add('question__input');
-      if (i === this.question.answer.indexOf(this.question.clue)) {
+      if (
+        i === this.concept.question.answer.indexOf(this.concept.question.clue)
+      ) {
         inputEl.classList.add('question__input--clue');
       }
       inputEl.setAttribute('maxLength', '1');
@@ -93,14 +96,12 @@ export default class QuestionComponent extends Component {
 
   /** Retrieve the answer saved in local storage and populate the inputs */
   private retrieveAnswer(): void {
-    const answer: string = localStorage.getItem(
-      'question-' + this.question.answer
-    );
+    const answer: string = this.store.data.concepts[this.concept.title]
+      ? this.store.data.concepts[this.concept.title].answer
+      : null;
 
     if (answer) {
-      Array.from(
-        localStorage.getItem('question-' + this.question.answer)
-      ).forEach((letter, i) => {
+      Array.from(answer).forEach((letter, i) => {
         this.inputEls[i]['value'] = letter;
       });
     }
@@ -108,9 +109,12 @@ export default class QuestionComponent extends Component {
 
   /** Save answer in the local storage */
   private saveAnswer(): void {
-    localStorage.setItem(
-      'question-' + this.question.answer,
-      this.inputEls.map(input => input.value).join('')
-    );
+    this.store.action({
+      type: this.store.actions.setQuestionAnswer,
+      payload: {
+        concept: this.concept,
+        answer: this.inputEls.map(input => input.value).join(''),
+      },
+    });
   }
 }

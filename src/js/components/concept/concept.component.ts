@@ -26,7 +26,7 @@ export default class ConceptComponent extends Component {
       },
       question: {
         class: QuestionComponent,
-        inputs: { question: this.concept.question },
+        inputs: { concept: this.concept },
       },
       title: {
         class: TitleComponent,
