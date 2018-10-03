@@ -4,7 +4,7 @@ export default interface Children {
   [key: string]: Child;
 }
 
-interface Child {
+export interface Child {
   class: any;
   inputs?: any;
 }

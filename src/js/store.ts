@@ -1,12 +1,16 @@
+import StoreData from './store-data.interface';
+
 let storeSingleton: Store = null;
 
 export default class Store {
-  public data: any;
+  public data: StoreData;
   public actions = {
     setConceptProgression: 'SET_CONCEPT_PROGRESSION',
     setQuestionAnswer: 'SET_QUESTION_ANSWER',
     toggleConcept: 'TOGGLE_CONCEPT',
   };
+
+  private callbacks: any = {};
 
   constructor() {
     if (!storeSingleton) {
@@ -19,7 +23,6 @@ export default class Store {
 
   /** Handle actions */
   public action(action: { type: string; payload?: any }) {
-    console.log(this.data.concepts, action.payload.concept.title);
     if (
       action.payload &&
       action.payload.concept &&
@@ -45,11 +48,13 @@ export default class Store {
         break;
     }
 
+    this.executeCallbacks(action.type);
+
     localStorage.setItem('store', JSON.stringify(this.data));
   }
 
   /** Get the initial data object */
-  public getInitialData(): any {
+  private getInitialData(): any {
     let data: any = JSON.parse(localStorage.getItem('store'));
 
     if (!data) {
@@ -61,5 +66,23 @@ export default class Store {
     }
 
     return data;
+  }
+
+  /** Register a callback for an action */
+  public registerActionCallback(actionType: string, callback: Function): void {
+    if (!this.callbacks[actionType]) {
+      this.callbacks[actionType] = [];
+    }
+
+    this.callbacks[actionType].push(callback);
+  }
+
+  /** Execute registered callback for the given action type */
+  private executeCallbacks(actionType: string): void {
+    if (this.callbacks[actionType]) {
+      this.callbacks[actionType].forEach(callback => {
+        callback();
+      });
+    }
   }
 }

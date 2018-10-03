@@ -1,29 +1,47 @@
-.word {
+.puzzle {
   margin-bottom: 30px;
   text-align: center;
 }
 
-.word__title {
+.puzzle__title {
   margin-bottom: 15px;
   color: var(--primaryColor);
   font-family: var(--sansSerifFont);
   font-size: 24px;
 }
 
-.word__letters {
+.puzzle__word {
   margin-bottom: 15px;
 }
 
-.word__letter {
+.puzzle__letter {
   display: inline-block;
   height: 30px;
   width: 30px;
   border: 1px solid grey;
+  text-transform: uppercase;
+  vertical-align: top;
+
+  .puzzle--success & {
+    background-color: var(--green);
+  }
 }
 
-.word__instructions {
+.puzzle__instructions {
   max-width: 60ch;
   margin: 12px auto;
   font-size: 14px;
   opacity: 0.7;
+
+  .puzzle--success & {
+    display: none;
+  }
+}
+
+.puzzle__text {
+  display: none;
+
+  .puzzle--success & {
+    display: initial;
+  }
 }

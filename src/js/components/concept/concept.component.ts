@@ -1,5 +1,6 @@
 import Children from '../../children.interface';
 import Component from '../../component';
+import Chapter from '../../pages/chapter.interface';
 import { formatCode } from '../../utils/code';
 import CheckmarkComponent from '../checkmark/checkmark.component';
 import CodepenComponent from '../codepen/codepen.component';
@@ -11,6 +12,7 @@ export default class ConceptComponent extends Component {
   protected tagType = 'article';
   protected class = 'concept';
   protected concept: Concept;
+  protected chapter: Chapter;
   protected index: number;
 
   /** Get children components */
@@ -31,6 +33,7 @@ export default class ConceptComponent extends Component {
       title: {
         class: TitleComponent,
         inputs: {
+          chapter: this.chapter,
           concept: this.concept,
           conceptEl: this.el,
           index: this.index,

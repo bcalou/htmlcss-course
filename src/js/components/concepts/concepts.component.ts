@@ -20,6 +20,7 @@ export default class ConceptsComponent extends Component {
       new ConceptComponent(
         this.el,
         {
+          chapter: this.chapter,
           concept: concept,
           index: i,
         },

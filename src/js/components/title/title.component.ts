@@ -1,10 +1,13 @@
 import Component from '../../component';
+import Chapter from '../../pages/chapter.interface';
+import { getConceptTitle } from '../../utils/misc';
 import { Concept } from '../concept/concept.interface';
 
 export default class TitleComponent extends Component {
   protected tagType = 'h3';
   protected class = 'title';
   protected concept: Concept;
+  protected chapter: Chapter;
   protected conceptEl: HTMLElement;
   protected index: number;
 
@@ -26,12 +29,7 @@ export default class TitleComponent extends Component {
 
   /** Get title template */
   protected getTemplate(): string {
-    return this.getLetter() + '. ' + this.concept.title;
-  }
-
-  /** Get the letter for this concept */
-  private getLetter(): string {
-    return 'abcdefghijklmnopqrstuvwxyz'[this.index];
+    return getConceptTitle(this.concept, this.chapter);
   }
 
   /** Change the state of the concept and save it to local storage */

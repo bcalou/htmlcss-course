@@ -71,7 +71,9 @@ export default class QuestionComponent extends Component {
     inputEl.addEventListener('keydown', e => {
       this.updateFocus(inputEl, <KeyboardEvent>e);
 
-      this.saveAnswer();
+      setTimeout(() => {
+        this.saveAnswer();
+      });
     });
   }
 

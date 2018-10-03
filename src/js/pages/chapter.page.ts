@@ -1,6 +1,7 @@
 import Children from '../children.interface';
 import ConceptsComponent from '../components/concepts/concepts.component';
 import HeaderComponent from '../components/header/header.component';
+import PuzzleComponent from '../components/puzzle/puzzle.component';
 import Page from '../page';
 import Chapter from '../pages/chapter.interface';
 
@@ -18,6 +19,10 @@ export class ChapterPage extends Page {
         class: ConceptsComponent,
         inputs: { chapter: this.chapter },
       },
+      puzzle: {
+        class: PuzzleComponent,
+        inputs: { chapter: this.chapter },
+      },
     };
   }
 
@@ -26,6 +31,7 @@ export class ChapterPage extends Page {
     return `
       <header></header>
       <concepts></concepts>
+      <puzzle></puzzle>
     `;
   }
 }
