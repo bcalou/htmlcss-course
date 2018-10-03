@@ -1,4 +1,5 @@
-import { ChapterPage } from './pages/chapter.page';
+import ChapterPage from './pages/chapter/chapter.page';
+import HomePage from './pages/home/home.page';
 
 if (['interactive', 'complete'].indexOf(document.readyState) > -1) {
   init();

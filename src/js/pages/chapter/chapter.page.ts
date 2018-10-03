@@ -1,11 +1,11 @@
-import Children from '../children.interface';
-import ConceptsComponent from '../components/concepts/concepts.component';
-import HeaderComponent from '../components/header/header.component';
-import PuzzleComponent from '../components/puzzle/puzzle.component';
+import Children from '../../components/children.interface';
+import ConceptsComponent from '../../components/concepts/concepts.component';
+import HeaderComponent from '../../components/header/header.component';
+import PuzzleComponent from '../../components/puzzle/puzzle.component';
+import Chapter from '../../models/chapter.interface';
 import Page from '../page';
-import Chapter from '../pages/chapter.interface';
 
-export class ChapterPage extends Page {
+export default class ChapterPage extends Page {
   protected chapter: Chapter;
 
   /** Get children components */

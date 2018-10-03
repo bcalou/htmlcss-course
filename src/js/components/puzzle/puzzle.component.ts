@@ -1,8 +1,8 @@
-import Component from '../../component';
-import Chapter from '../../pages/chapter.interface';
-import { ConceptData } from '../../store-data.interface';
+import Chapter from '../../models/chapter.interface';
+import Concept from '../../models/concept.interface';
+import ConceptData from '../../store/concept-data.interface';
 import { getConceptTitle } from '../../utils/misc';
-import { Concept } from '../concept/concept.interface';
+import Component from '../component';
 
 export default class PuzzleComponent extends Component {
   protected tagType = 'section';
@@ -77,7 +77,6 @@ export default class PuzzleComponent extends Component {
   /** Retrieve answers and fill the puzzle */
   private fill(): void {
     const puzzleAnswer: string = this.getPuzzleAnswer();
-    console.log(puzzleAnswer);
 
     this.el
       .querySelectorAll('.' + this.letterElClass)

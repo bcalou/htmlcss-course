@@ -1,7 +1,7 @@
-import Component from '../../component';
-import Chapter from '../../pages/chapter.interface';
+import Chapter from '../../models/chapter.interface';
+import Concept from '../../models/concept.interface';
 import { getConceptTitle } from '../../utils/misc';
-import { Concept } from '../concept/concept.interface';
+import Component from '../component';
 
 export default class TitleComponent extends Component {
   protected tagType = 'h3';

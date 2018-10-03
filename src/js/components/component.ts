@@ -1,6 +1,6 @@
+import Store from '../store/store';
 import Children from './children.interface';
 import ComponentOptions from './component-options.interface';
-import Store from './store';
 
 export default class Component {
   protected tagType: string;

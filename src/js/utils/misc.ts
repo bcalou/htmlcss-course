@@ -1,5 +1,5 @@
-import { Concept } from '../components/concept/concept.interface';
-import Chapter from '../pages/chapter.interface';
+import Chapter from '../models/chapter.interface';
+import Concept from '../models/concept.interface';
 
 /** Get the letter matching the index in the alphabet */
 export function getConceptTitle(concept: Concept, chapter: Chapter): string {

@@ -1,12 +1,12 @@
-import Children from '../../children.interface';
-import Component from '../../component';
-import Chapter from '../../pages/chapter.interface';
+import Chapter from '../../models/chapter.interface';
+import Concept from '../../models/concept.interface';
 import { formatCode } from '../../utils/code';
 import CheckmarkComponent from '../checkmark/checkmark.component';
+import Children from '../children.interface';
 import CodepenComponent from '../codepen/codepen.component';
+import Component from '../component';
 import QuestionComponent from '../question/question.component';
 import TitleComponent from '../title/title.component';
-import { Concept } from './concept.interface';
 
 export default class ConceptComponent extends Component {
   protected tagType = 'article';

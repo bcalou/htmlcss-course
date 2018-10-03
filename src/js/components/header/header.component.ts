@@ -1,5 +1,5 @@
-import Component from '../../component';
-import Chapter from '../../pages/chapter.interface';
+import Chapter from '../../models/chapter.interface';
+import Component from '../component';
 
 export default class HeaderComponent extends Component {
   protected tagType = 'header';

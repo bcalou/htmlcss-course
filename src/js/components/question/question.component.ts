@@ -1,5 +1,5 @@
-import Component from '../../component';
-import { Concept } from '../concept/concept.interface';
+import Concept from '../../models/concept.interface';
+import Component from '../component';
 
 export default class QuestionComponent extends Component {
   protected tagType = 'div';

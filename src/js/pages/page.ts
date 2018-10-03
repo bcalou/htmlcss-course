@@ -1,4 +1,4 @@
-import Component from './component';
+import Component from '../components/component';
 
 export default class Page extends Component {
   protected tagName = 'div';
