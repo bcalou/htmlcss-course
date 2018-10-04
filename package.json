@@ -4,8 +4,9 @@
   "description": "HTML-CSS course",
   "main": "index.js",
   "scripts": {
-    "start": "cp -R src/data dist && cp -R src/img dist && parcel src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "copy": "rm -rf dist && mkdir dist && cp _redirects dist && cp -R src/data dist && cp -R src/img dist",
+    "start": "npm run copy && parcel src/index.html",
+    "build": "npm run copy && parcel build src/index.html"
   },
   "author": "bcalou",
   "license": "ISC",
