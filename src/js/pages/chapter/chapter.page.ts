@@ -7,13 +7,14 @@ import Page from '../page';
 
 export default class ChapterPage extends Page {
   protected chapter: Chapter;
+  protected index: number;
 
   /** Get children components */
   protected getChildren(): Children {
     return {
       header: {
         class: HeaderComponent,
-        inputs: { chapter: this.chapter },
+        inputs: { chapter: this.chapter, index: this.index },
       },
       concepts: {
         class: ConceptsComponent,

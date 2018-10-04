@@ -1,0 +1,21 @@
+.chapter {
+  margin: 30px 0;
+}
+
+.chapter__title {
+  font-size: 32px;
+  color: var(--primaryColor);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.chapter__description {
+  max-width: 60ch;
+  margin: 10px 0;
+}
+
+.chapter__progression {
+  opacity: 0.7;
+}
