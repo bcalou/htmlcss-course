@@ -1,7 +1,7 @@
 import Component from '../components/component';
 
 export default class Page extends Component {
-  protected tagName = 'div';
+  protected tagType = 'div';
   protected class = 'page';
 
   constructor(protected inputs: any = {}) {

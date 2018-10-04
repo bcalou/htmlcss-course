@@ -53,12 +53,14 @@ export default class ConceptComponent extends Component {
         <div class="concept__presentation">
           <div class="concept__theory">
             <p class="concept__text">${this.concept.theory}</p>
-            <code class="code">
+            <div class="code">
               <svg class="code__icon icon" aria-hidden="true">
                 <use xlink:href="#icon-embed2"></use>
               </svg>
-              ${formatCode(this.concept.code)}
-            </code>
+              <code class="code__content">
+                ${formatCode(this.concept.code)}
+              </code>
+            </div>
           </div>
           <aside class="concept__aside">
             ${this.getInfoTemplate()}

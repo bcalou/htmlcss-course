@@ -2,19 +2,21 @@
   margin: 30px 0;
 }
 
+.concept__header {
+  position: relative;
+}
+
 .concept__content {
-  height: 0;
-  overflow: hidden;
+  display: none;
 
   .concept--open & {
-    height: auto;
-    overflow: visible;
+    display: block;
     margin-bottom: 70px;
   }
 }
 
 .concept__presentation {
-  @include medium {
+  @include large {
     display: flex;
     align-items: flex-end;
   }
@@ -22,18 +24,16 @@
 
 .concept__theory {
   margin-bottom: 15px;
-  flex: 3;
 
-  @include medium {
+  @include large {
     margin-right: 30px;
     margin-bottom: 0;
+    flex: 3;
   }
 }
 
 .concept__aside {
-  // opacity: 0;
-
-  @include medium {
+  @include large {
     flex: 2;
   }
 }

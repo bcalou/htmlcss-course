@@ -7,11 +7,14 @@ if (['interactive', 'complete'].indexOf(document.readyState) > -1) {
   document.addEventListener('DOMContentLoaded', () => init());
 }
 
+/** Initiate the app */
 function init(): void {
   fetch('../data/course.json')
     .then(res => res.json())
     .then(course => {
       const path: string[] = window.location.pathname.split('/').slice(1);
+      document.querySelector('title').innerText = course.title;
+
       switch (path[0]) {
         case 'chapter':
           const index: number = parseInt(path[1]);

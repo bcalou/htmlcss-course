@@ -6,6 +6,13 @@
 
 .checkmark {
   user-select: none;
+  position: absolute;
+  right: 0;
+  top: 14px;
+
+  @include medium {
+    position: static;
+  }
 }
 
 .checkmark__input {

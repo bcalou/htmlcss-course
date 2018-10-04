@@ -31,8 +31,10 @@ export default class ChapterPage extends Page {
   protected getTemplate(): string {
     return `
       <header></header>
-      <concepts></concepts>
-      <puzzle></puzzle>
+      <main>
+        <concepts></concepts>
+        <puzzle></puzzle>
+      </main>
     `;
   }
 }

@@ -2,28 +2,14 @@
   position: relative;
   background: var(--primaryColor);
   color: var(--primaryColorText);
-  display: flex;
-  align-items: baseline;
 
-  &::before {
-    content: '';
-    background: var(--primaryColor);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200vw;
-    height: 100%;
-    z-index: -1;
-    transform: translateX(-50%);
+  @include medium {
+    display: flex;
+    align-items: baseline;
   }
 }
 
-.header__title,
-.header__chapterNumber {
-  display: inline;
-}
-
-.header__subtitle {
+.header__chapterInfos {
   margin-bottom: 15px;
 
   @include medium {
@@ -46,18 +32,25 @@
 }
 
 .header__chapterNumber,
-.header__subtitle {
+.header__chapterTitle {
   font-size: 30px;
+  display: inline-block;
 }
 
 .header__slides {
-  position: relative;
-  top: 10px;
+  display: inline-block;
   margin-left: auto;
-  font-size: 64px;
+  margin-bottom: 15px;
+  font-size: 42px;
   opacity: 0.8;
   transition: opacity 0.3s, transform 0.3s;
   will-change: opacity, transform;
+
+  @include medium {
+    position: relative;
+    font-size: 64px;
+    top: 10px;
+  }
 
   &:hover {
     opacity: 1;

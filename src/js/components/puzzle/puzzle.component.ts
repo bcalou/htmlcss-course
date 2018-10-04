@@ -76,7 +76,7 @@ export default class PuzzleComponent extends Component {
 
   /** Retrieve answers and fill the puzzle */
   private fill(): void {
-    const puzzleAnswer: string = this.getPuzzleAnswer();
+    const puzzleAnswer: string = this.getPuzzleAnswer().toLowerCase();
 
     this.el
       .querySelectorAll('.' + this.letterElClass)
@@ -85,7 +85,7 @@ export default class PuzzleComponent extends Component {
       });
 
     this.el.classList[
-      puzzleAnswer === this.chapter.puzzle.word ? 'add' : 'remove'
+      puzzleAnswer === this.chapter.puzzle.word.toLowerCase() ? 'add' : 'remove'
     ]('puzzle--success');
   }
 

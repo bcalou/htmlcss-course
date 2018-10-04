@@ -1,6 +1,7 @@
 .title {
   display: inline-block;
   position: relative;
+  max-width: calc(100vw - 100px);
   margin-bottom: 15px;
   margin-left: 22px;
   color: var(--primaryColor);

@@ -33,19 +33,19 @@ export default class ChaptersComponent extends Component {
               </p>
             </div>
             <ul class="chapter__links">
+              <li class="chapter__link chapter__link--exercises">
+                <a href="${chapterUrl}" title="Accéder aux exercices">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-terminal"></use>
+                  </svg>
+                </a>
+              </li>
               <li class="chapter__link">
                 <a href="${
                   chapter.slidesUrl
                 }" target="_blank" title="Voir la présentation">
                   <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-film"></use>
-                  </svg>
-                </a>
-              </li>
-              <li class="chapter__link chapter__link--exercises">
-                <a href="${chapterUrl}" target="_blank" title="Accéder aux exercices">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-terminal"></use>
                   </svg>
                 </a>
               </li>

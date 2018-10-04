@@ -2,16 +2,34 @@
   position: relative;
   width: 100%;
   background: var(--codeColor);
-  padding: 15px 15px 15px 90px;
+  padding: 15px;
   border-radius: var(--borderRadius);
   display: inline-block;
   margin-top: 15px;
-  font-weight: normal;
+  font-size: 16px;
+  overflow: auto;
+  max-width: 100%;
+
+  @include medium {
+    padding-left: 90px;
+    font-size: 18px;
+  }
 }
 
 .code__icon {
-  position: absolute;
-  opacity: 0.3;
-  font-size: 64px;
-  transform: translate(-75px, -5px);
+  display: none;
+
+  @include medium {
+    display: block;
+    position: absolute;
+    opacity: 0.3;
+    font-size: 64px;
+    transform: translate(-75px, -5px);
+  }
+}
+
+.code__content {
+  display: inline-block;
+  min-width: 400px;
+  font-weight: normal;
 }

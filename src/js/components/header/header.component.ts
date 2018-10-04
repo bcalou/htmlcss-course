@@ -20,10 +20,12 @@ export default class HeaderComponent extends Component {
   /** Get current chapter details */
   private getHeaderChapterDetails(): string {
     return `
-      <span class="header__chapterNumber">
-        ${this.index < 10 ? '0' : ''}${this.index}
-      </span>
-      <h2 class="header__subtitle">${this.chapter.title}</h2>
+      <div class="header__chapterInfos">
+        <span class="header__chapterNumber">
+          ${this.index < 10 ? '0' : ''}${this.index}
+        </span>
+        <h2 class="header__chapterTitle">${this.chapter.title}</h2>
+      </div>
       <a class="header__slides" href="${
         this.chapter.slidesUrl
       }" target="_blank" title="Voir la présentation">

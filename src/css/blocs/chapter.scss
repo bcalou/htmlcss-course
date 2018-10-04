@@ -1,7 +1,10 @@
 .chapter {
   margin: 30px 0;
-  display: flex;
   align-items: center;
+
+  @include medium {
+    display: flex;
+  }
 }
 
 .chapter__infos {
@@ -23,6 +26,7 @@
 
 .chapter__progression {
   opacity: 0.7;
+  margin-bottom: 10px;
 
   .chapter--done & {
     opacity: 1;
@@ -33,10 +37,13 @@
 .chapter__links {
   margin-left: auto;
   display: flex;
+
+  @include medium {
+    padding-left: 30px;
+  }
 }
 
 .chapter__link {
-  margin-left: 30px;
   font-size: 64px;
   color: var(--primaryColor);
   opacity: 0.8;
@@ -46,6 +53,10 @@
   &:hover {
     opacity: 1;
     transform: scale(1.2);
+  }
+
+  &:not(:first-child) {
+    margin-left: 30px;
   }
 }
 
