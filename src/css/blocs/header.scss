@@ -45,6 +45,7 @@
   opacity: 0.8;
   transition: opacity 0.3s, transform 0.3s;
   will-change: opacity, transform;
+  z-index: 1;
 
   @include medium {
     position: relative;
