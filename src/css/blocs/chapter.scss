@@ -1,5 +1,11 @@
 .chapter {
   margin: 30px 0;
+  display: flex;
+  align-items: center;
+}
+
+.chapter__infos {
+  max-width: 60ch;
 }
 
 .chapter__title {
@@ -12,10 +18,39 @@
 }
 
 .chapter__description {
-  max-width: 60ch;
   margin: 10px 0;
 }
 
 .chapter__progression {
   opacity: 0.7;
+
+  .chapter--done & {
+    opacity: 1;
+    color: var(--successColor);
+  }
+}
+
+.chapter__links {
+  margin-left: auto;
+  display: flex;
+}
+
+.chapter__link {
+  margin-left: 30px;
+  font-size: 64px;
+  color: var(--primaryColor);
+  opacity: 0.8;
+  transition: opacity 0.3s, transform 0.3s;
+  will-change: opacity, transform;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.chapter__link--exercises {
+  position: relative;
+  top: 4px;
+  font-size: 56px;
 }

@@ -94,13 +94,13 @@ export default class ConceptComponent extends Component {
     return this.concept.links
       .map(
         link => `
-      <a class="link" href="${link.url}" target="_blank">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-bookmark"></use>
-        </svg>
-        <span class="link__label">${link.label}</span>
-      </a>
-    `
+        <a class="link" href="${link.url}" target="_blank">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-bookmark"></use>
+          </svg>
+          <span class="link__label">${link.label}</span>
+        </a>
+      `
       )
       .join('');
   }

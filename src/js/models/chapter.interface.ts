@@ -5,6 +5,7 @@ export default interface Chapter {
   number: number;
   title: string;
   description: string;
+  slidesUrl: string;
   puzzle: Puzzle;
   concepts: Concept[];
 }

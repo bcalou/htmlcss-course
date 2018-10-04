@@ -17,7 +17,7 @@
   cursor: pointer;
   font-size: 24px;
   margin-left: 10px;
-  color: var(--green);
+  color: var(--successColor);
   filter: grayscale(100%);
 
   .checkmark__input:checked ~ & {

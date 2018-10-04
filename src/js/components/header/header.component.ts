@@ -24,6 +24,13 @@ export default class HeaderComponent extends Component {
         ${this.index < 10 ? '0' : ''}${this.index}
       </span>
       <h2 class="header__subtitle">${this.chapter.title}</h2>
+      <a class="header__slides" href="${
+        this.chapter.slidesUrl
+      }" target="_blank" title="Voir la présentation">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-film"></use>
+        </svg>
+      </a>
     `;
   }
 }

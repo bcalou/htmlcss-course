@@ -2,6 +2,8 @@
   position: relative;
   background: var(--primaryColor);
   color: var(--primaryColorText);
+  display: flex;
+  align-items: baseline;
 
   &::before {
     content: '';
@@ -46,4 +48,19 @@
 .header__chapterNumber,
 .header__subtitle {
   font-size: 30px;
+}
+
+.header__slides {
+  position: relative;
+  top: 10px;
+  margin-left: auto;
+  font-size: 64px;
+  opacity: 0.8;
+  transition: opacity 0.3s, transform 0.3s;
+  will-change: opacity, transform;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
