@@ -15,6 +15,7 @@ export default class QuestionComponent extends Component {
 
     this.setInputs();
     this.retrieveAnswer();
+    this.validateAnswer();
   }
 
   /** Get question template */
@@ -72,6 +73,7 @@ export default class QuestionComponent extends Component {
       this.updateFocus(inputEl, <KeyboardEvent>e);
 
       setTimeout(() => {
+        this.validateAnswer();
         this.saveAnswer();
       });
     });
@@ -109,14 +111,29 @@ export default class QuestionComponent extends Component {
     }
   }
 
+  /** Add or remove class depending of whether the answer if correct */
+  private validateAnswer(): void {
+    this.el.classList[
+      this.getAnswer().toLowerCase() ===
+      this.concept.question.answer.toLowerCase()
+        ? 'add'
+        : 'remove'
+    ]('question--success');
+  }
+
   /** Save answer in the local storage */
   private saveAnswer(): void {
     this.store.action({
       type: this.store.actions.setQuestionAnswer,
       payload: {
         concept: this.concept,
-        answer: this.inputEls.map(input => input.value).join(''),
+        answer: this.getAnswer(),
       },
     });
+  }
+
+  /** Get the answer as an actual string */
+  private getAnswer(): string {
+    return this.inputEls.map(input => input.value).join('');
   }
 }

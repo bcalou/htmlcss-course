@@ -65,10 +65,17 @@
   border: 1px solid grey;
   text-align: center;
   font-family: monospace;
+
+  .question--success & {
+    background-color: var(--successColorLight);
+  }
 }
 
 .question__input--clue {
-  background-color: var(--warningColor);
+  &,
+  .question--success & {
+    background-color: var(--warningColor);
+  }
 }
 
 .question__instructions {

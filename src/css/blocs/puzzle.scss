@@ -20,7 +20,8 @@
   width: 30px;
   border: 1px solid grey;
   text-transform: uppercase;
-  vertical-align: top;
+  font-family: monospace;
+  font-size: 20px;
 
   .puzzle--success & {
     background-color: var(--successColorLight);
