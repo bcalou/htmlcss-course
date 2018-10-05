@@ -1,5 +1,6 @@
 import Chapter from '../../models/chapter.interface';
 import ConceptData from '../../store/concept-data.interface';
+import { getSvg } from '../../utils/misc';
 import Component from '../component';
 
 export default class ChaptersComponent extends Component {
@@ -35,18 +36,14 @@ export default class ChaptersComponent extends Component {
             <ul class="chapter__links">
               <li class="chapter__link chapter__link--exercises">
                 <a href="${chapterUrl}" title="Accéder aux exercices">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-terminal"></use>
-                  </svg>
+                  ${getSvg('terminal')}
                 </a>
               </li>
               <li class="chapter__link">
                 <a href="${
                   chapter.slidesUrl
                 }" target="_blank" title="Voir la présentation">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-film"></use>
-                  </svg>
+                  ${getSvg('film')}
                 </a>
               </li>
             </ul>

@@ -9,3 +9,12 @@ export function getConceptTitle(concept: Concept, chapter: Chapter): string {
     concept.title
   );
 }
+
+/** Get the template for a svg icon tag */
+export function getSvg(id: string, className: string = ''): string {
+  return `
+    <svg class="icon ${className}" aria-hidden="true">
+      <use xlink:href="#icon-${id}"></use>
+    </svg>
+  `;
+}

@@ -1,6 +1,7 @@
 import Chapter from '../../models/chapter.interface';
 import Concept from '../../models/concept.interface';
 import { formatCode } from '../../utils/code';
+import { getSvg } from '../../utils/misc';
 import CheckmarkComponent from '../checkmark/checkmark.component';
 import Children from '../children.interface';
 import CodepenComponent from '../codepen/codepen.component';
@@ -54,9 +55,7 @@ export default class ConceptComponent extends Component {
           <div class="concept__theory">
             <p class="concept__text">${this.concept.theory}</p>
             <div class="code">
-              <svg class="code__icon icon" aria-hidden="true">
-                <use xlink:href="#icon-embed2"></use>
-              </svg>
+              ${getSvg('embed2', 'code__icon')}
               <code class="code__content">
                 ${formatCode(this.concept.code)}
               </code>
@@ -78,9 +77,7 @@ export default class ConceptComponent extends Component {
   private getInfoTemplate(): string {
     return `
       <div class="info ${this.concept.warning ? 'info--warning' : ''}">
-        <svg class="info__icon icon" aria-hidden="true">
-          <use xlink:href="#icon-info"></use>
-        </svg>
+      ${getSvg('info', 'info__icon')}
         <span class="info__title">${
           this.concept.warning ? 'Attention !' : 'À noter'
         }</span>
@@ -97,10 +94,7 @@ export default class ConceptComponent extends Component {
       .map(
         link => `
         <a class="link" href="${link.url}" target="_blank">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-bookmark"></use>
-          </svg>
-          <span class="link__label">${link.label}</span>
+          ${getSvg('bookmark')} <span class="link__label">${link.label}</span>
         </a>
       `
       )

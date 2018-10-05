@@ -1,4 +1,5 @@
 import Concept from '../../models/concept.interface';
+import { getSvg } from '../../utils/misc';
 import Component from '../component';
 
 export default class CheckmarkComponent extends Component {
@@ -22,9 +23,7 @@ export default class CheckmarkComponent extends Component {
         this.isDone() ? 'checked' : ''
       }>
       <div class="checkmark__icon" title="Marquer votre progression">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-checkmark"></use>
-        </svg>
+        ${getSvg('checkmark')}
       </div>
     `;
   }

@@ -1,4 +1,5 @@
 import Chapter from '../../models/chapter.interface';
+import { getSvg } from '../../utils/misc';
 import Component from '../component';
 
 export default class HeaderComponent extends Component {
@@ -28,11 +29,7 @@ export default class HeaderComponent extends Component {
       </div>
       <a class="header__slides" href="${
         this.chapter.slidesUrl
-      }" target="_blank" title="Voir la présentation">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-film"></use>
-        </svg>
-      </a>
+      }" target="_blank" title="Voir la présentation">${getSvg('film')}</a>
     `;
   }
 }

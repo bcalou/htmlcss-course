@@ -1,4 +1,5 @@
 import Concept from '../../models/concept.interface';
+import { getSvg } from '../../utils/misc';
 import Component from '../component';
 
 export default class QuestionComponent extends Component {
@@ -21,9 +22,7 @@ export default class QuestionComponent extends Component {
   /** Get question template */
   protected getTemplate(): string {
     return `
-      <svg class="question__icon icon" aria-hidden="true">
-        <use xlink:href="#icon-search"></use>
-      </svg>
+      ${getSvg('search', 'question__icon')}
       <div class="question__inner">
         <p class="question__text">${this.concept.question.text}</p>
         <div class="question__answer">
