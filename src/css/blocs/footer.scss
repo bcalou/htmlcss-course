@@ -1,0 +1,20 @@
+.footer {
+  padding: 15px;
+  bottom: 0;
+  width: 100%;
+  background: var(--primaryColor);
+  color: var(--primaryColorText);
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__twitterIcon {
+  position: relative;
+  top: 2px;
+  margin-left: 5px;
+}
+
+.footer__githubIcon {
+  font-size: 22px;
+}

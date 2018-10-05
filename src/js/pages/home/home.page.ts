@@ -1,6 +1,5 @@
 import ChaptersComponent from '../../components/chapters/chapters.component';
 import Children from '../../components/children.interface';
-import HeaderComponent from '../../components/header/header.component';
 import TwitterComponent from '../../components/twitter/twitter.component';
 import Course from '../../models/course.interface';
 import Page from '../../pages/page';
@@ -9,22 +8,16 @@ export default class HomePage extends Page {
   protected course: Course;
 
   /** Get homepage template */
-  protected getTemplate(): string {
+  protected getPageTemplate(): string {
     return `
-      <header></header>
-      <main>
-        <chapters></chapters>
-        <twitter></twitter>
-      </main>
+      <chapters></chapters>
+      <twitter></twitter>
     `;
   }
 
   /** Get homepage children elements */
-  protected getChildren(): Children {
+  protected getPageChildren(): Children {
     return {
-      header: {
-        class: HeaderComponent,
-      },
       chapters: {
         class: ChaptersComponent,
         inputs: { chapters: this.course.chapters },

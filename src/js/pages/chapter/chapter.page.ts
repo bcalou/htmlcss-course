@@ -9,8 +9,16 @@ export default class ChapterPage extends Page {
   protected chapter: Chapter;
   protected index: number;
 
+  /** Get chapter page template */
+  protected getPageTemplate(): string {
+    return `
+      <concepts></concepts>
+      <puzzle></puzzle>
+    `;
+  }
+
   /** Get children components */
-  protected getChildren(): Children {
+  protected getPageChildren(): Children {
     return {
       header: {
         class: HeaderComponent,
@@ -25,16 +33,5 @@ export default class ChapterPage extends Page {
         inputs: { chapter: this.chapter },
       },
     };
-  }
-
-  /** Get chapter page template */
-  protected getTemplate(): string {
-    return `
-      <header></header>
-      <main>
-        <concepts></concepts>
-        <puzzle></puzzle>
-      </main>
-    `;
   }
 }

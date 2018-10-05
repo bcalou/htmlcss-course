@@ -5,8 +5,10 @@
 .page {
   display: grid;
   grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+  grid-template-rows: auto 1fr auto;
   grid-column-gap: var(--gridColumnGap);
   grid-row-gap: 30px;
+  height: 100%;
 
   &::before,
   &::after {
@@ -32,7 +34,7 @@
 }
 
 .header,
-main {
+.main {
   grid-column: 2;
 }
 
@@ -40,6 +42,11 @@ main {
   grid-row: 1;
 }
 
-.page {
+.main {
   grid-row: 2;
+}
+
+.footer {
+  grid-row: 3;
+  grid-column: 1 / span 3;
 }
