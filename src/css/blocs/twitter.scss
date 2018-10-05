@@ -1,0 +1,35 @@
+.twitter {
+  margin-top: 50px;
+}
+
+.twitter__title {
+  color: var(--primaryColor);
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.twitter__accounts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.twitter__account {
+  flex: 1;
+  text-align: center;
+  margin: 20px;
+}
+
+.twitter__accountAvatar {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  margin-bottom: 5px;
+}
+
+.twitter__accountName {
+  font-size: 16px;
+
+  .twitter__account:hover & {
+    text-decoration: underline;
+  }
+}

@@ -3,7 +3,7 @@ import ConceptData from '../../store/concept-data.interface';
 import Component from '../component';
 
 export default class ChaptersComponent extends Component {
-  protected tagType = 'main';
+  protected tagType = 'section';
   protected class = 'chapters';
   protected chapters: Chapter[];
 

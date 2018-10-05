@@ -208,5 +208,47 @@
         }
       ]
     }
+  ],
+  "twitterAccounts": [
+    {
+      "name": "CSS-Tricks",
+      "id": "css",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/546011298627334146/MAeF2-yK_bigger.jpeg"
+    },
+    {
+      "name": "CodyHouse",
+      "id": "CodyWebHouse",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/972778766782140417/DzxuGyE0_bigger.jpg"
+    },
+    {
+      "name": "A List Apart",
+      "id": "alistapart",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/478913945475235840/Jv1mMBOA_bigger.jpeg"
+    },
+    {
+      "name": "Friday Front-End",
+      "id": "fridayfrontend",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/975219464823226369/eCIsZNgo_bigger.jpg"
+    },
+    {
+      "name": "Shashing Magazine",
+      "id": "smashingmag",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/1014194982499078145/ScpR-ujV_bigger.jpg"
+    },
+    {
+      "name": "Luke Wroblewski",
+      "id": "lukew",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/477610446917103616/_cjU3_ga_bigger.png"
+    },
+    {
+      "name": "HTeuMeuLeu",
+      "id": "HteuMeuLeu",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/876098522155712514/U5EX5vLT_bigger.jpg"
+    },
+    {
+      "name": "Programming Wisdom",
+      "id": "CodeWisdom",
+      "avatarUrl": "https://pbs.twimg.com/profile_images/705003311083229184/qTBCIxpk_bigger.jpg"
+    }
   ]
 }
