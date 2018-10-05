@@ -1,36 +1,33 @@
 import Chapter from '../../models/chapter.interface';
 import Concept from '../../models/concept.interface';
-import { formatCode } from '../../utils/code';
-import { getSvg } from '../../utils/misc';
 import CheckmarkComponent from '../checkmark/checkmark.component';
 import Children from '../children.interface';
-import CodepenComponent from '../codepen/codepen.component';
 import Component from '../component';
-import QuestionComponent from '../question/question.component';
 import TitleComponent from '../title/title.component';
+import ConceptContentComponent from './concept-content/concept-content.component';
 
 export default class ConceptComponent extends Component {
   protected tagType = 'article';
   protected class = 'concept';
-  protected concept: Concept;
   protected chapter: Chapter;
+  protected concept: Concept;
   protected index: number;
 
-  /** Get children components */
-  protected getChildren(): Children {
+  private hasBeenOpened = false;
+
+  /** Get concept wrapper template */
+  getTemplate(): string {
+    return `
+      <header class="concept__header">
+        <title></title>
+        <checkmark></checkmark>
+      </header>
+    `;
+  }
+
+  /** Get children for concept */
+  getChildren(): Children {
     return {
-      checkmark: {
-        class: CheckmarkComponent,
-        inputs: { concept: this.concept },
-      },
-      codepen: {
-        class: CodepenComponent,
-        inputs: { concept: this.concept, index: this.index },
-      },
-      question: {
-        class: QuestionComponent,
-        inputs: { concept: this.concept },
-      },
       title: {
         class: TitleComponent,
         inputs: {
@@ -38,84 +35,29 @@ export default class ConceptComponent extends Component {
           concept: this.concept,
           conceptEl: this.el,
           index: this.index,
+          onOpen: this.onOpen.bind(this),
         },
+      },
+      checkmark: {
+        class: CheckmarkComponent,
+        inputs: { concept: this.concept },
       },
     };
   }
 
-  /** Get the main template for the concept tag */
-  protected getTemplate(): string {
-    return `
-      <header class="concept__header">
-        <title></title>
-        <checkmark></checkmark>
-      </header>
-      <div class="concept__content">
-        <div class="concept__presentation">
-          <div class="concept__theory">
-            <p class="concept__text">${this.concept.theory}</p>
-            <div class="code">
-              ${getSvg('embed2', 'code__icon')}
-              <code class="code__content">
-                ${formatCode(this.concept.code)}
-              </code>
-            </div>
-          </div>
-          <aside class="concept__aside">
-            ${this.getInfoTemplate()}
-            ${this.concept.links ? this.getLinksTemplate() : ''}
-          </aside>
-        </div>
-        <codepen></codepen>
-        ${this.concept.question ? '<question></question>' : ''}
-        ${this.concept.figure ? this.getFigureTemplate() : ''}
-      </div>
-    `;
-  }
+  /** Generate the inside of the concept only once it is open */
+  private onOpen(): void {
+    if (!this.hasBeenOpened) {
+      this.hasBeenOpened = true;
 
-  /** Get the template for the warning element */
-  private getInfoTemplate(): string {
-    return `
-      <div class="info ${this.concept.warning ? 'info--warning' : ''}">
-      ${getSvg('info', 'info__icon')}
-        <span class="info__title">${
-          this.concept.warning ? 'Attention !' : 'À noter'
-        }</span>
-        <p>${
-          this.concept.warning ? this.concept.warning : this.concept.info
-        }</p>
-      </div>
-    `;
-  }
-
-  /** Get the template for the link element */
-  private getLinksTemplate(): string {
-    return this.concept.links
-      .map(
-        link => `
-        <a class="link" href="${link.url}" target="_blank">
-          ${getSvg('bookmark')} <span class="link__label">${link.label}</span>
-        </a>
-      `
-      )
-      .join('');
-  }
-
-  /** Get the template for the figure element */
-  private getFigureTemplate(): string {
-    const figureEl: HTMLElement = document.createElement('figure');
-    figureEl.classList.add('figure');
-    figureEl.innerHTML = `<img class="figure__image" src="${
-      this.concept.figure.src
-    }" alt="${this.concept.figure.alt}" />`;
-
-    if (this.concept.figure.caption) {
-      const figcaptionEl: HTMLElement = document.createElement('figcaption');
-      figcaptionEl.classList.add('figure__caption');
-      figcaptionEl.innerText = this.concept.figure.caption;
-      figureEl.appendChild(figcaptionEl);
+      new ConceptContentComponent(
+        this.el,
+        {
+          concept: this.concept,
+          index: this.index,
+        },
+        { injectionMethod: 'append' }
+      );
     }
-
-    return figureEl.outerHTML;
   }
 }

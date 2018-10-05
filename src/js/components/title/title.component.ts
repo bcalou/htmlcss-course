@@ -10,6 +10,7 @@ export default class TitleComponent extends Component {
   protected chapter: Chapter;
   protected conceptEl: HTMLElement;
   protected index: number;
+  protected onOpen: Function;
 
   /** Generate the title */
   protected generate(): void {
@@ -40,16 +41,20 @@ export default class TitleComponent extends Component {
         concept: this.concept,
       },
     });
+
     this.setState();
   }
 
   /** Add or remove open class depeding on the state */
   private setState(): void {
-    this.conceptEl.classList[
+    const open: boolean =
       this.store.data.concepts[this.concept.title] &&
-      this.store.data.concepts[this.concept.title].open
-        ? 'add'
-        : 'remove'
-    ]('concept--open');
+      this.store.data.concepts[this.concept.title].open;
+
+    if (open) {
+      this.onOpen();
+    }
+
+    this.conceptEl.classList[open ? 'add' : 'remove']('concept--open');
   }
 }

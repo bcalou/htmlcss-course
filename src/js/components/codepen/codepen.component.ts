@@ -38,17 +38,21 @@ export default class CodepenComponent extends Component {
         <a href="https://codepen.io/bcalou">@bcalou</a>) on
         <a href="https://codepen.io">CodePen</a>.
       </p>
+      <script src="https://static.codepen.io/assets/embed/ei.js"></script>
     `;
   }
-
-  /** Load codepen script if not already done by another component */
   private loadCodepenScript(): void {
     const scriptId = 'codepen-script';
-    if (!document.getElementById(scriptId)) {
-      const script: HTMLScriptElement = document.createElement('script');
-      script.id = 'codepen-script';
-      script.src = 'https://static.codepen.io/assets/embed/ei.js';
-      document.head.appendChild(script);
+    const existingScript: HTMLElement = document.getElementById(scriptId);
+
+    // Reload the script if not the first codepen
+    if (existingScript) {
+      document.getElementById(scriptId).remove();
     }
+
+    const script: HTMLScriptElement = document.createElement('script');
+    script.id = 'codepen-script';
+    script.src = 'https://static.codepen.io/assets/embed/ei.js';
+    document.head.appendChild(script);
   }
 }
