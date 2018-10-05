@@ -69,7 +69,7 @@
             "clue": "i"
           },
           "figure": {
-            "src": "http://uploads.siteduzero.com/files/343001_344000/343677.png",
+            "src": "https://uploads.siteduzero.com/files/343001_344000/343677.png",
             "alt": "La structure HTML5 d'un site",
             "caption": "Exemple de représentation d'un site et des balises HTML5 qui le composent. Un schéma à réaliser chaque fois que abordez un projet ou analysez un site existant."
           }
@@ -116,7 +116,7 @@
             "clue": "a"
           },
           "figure": {
-            "src": "http://webdesy.com/webdesy-wp/wp-content/uploads/2012/02/html-list-3.jpg",
+            "src": "https://webdesy.com/webdesy-wp/wp-content/uploads/2012/02/html-list-3.jpg",
             "alt": "Une liste d'action à effectuer",
             "caption": "Un autre exemple de liste dont l'ordre des items est important : une liste d'actions à effectuer en respectant un processus."
           }
