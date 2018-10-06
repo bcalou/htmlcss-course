@@ -13,10 +13,31 @@ export default class ConceptComponent extends Component {
   protected concept: Concept;
   protected index: number;
 
+  private openClass = 'concept--open';
   private hasBeenOpened = false;
 
+  /** Register special events */
+  protected generate(): void {
+    super.generate();
+
+    this.store.registerActionCallback(this.store.actions.openConcept, payload =>
+      this.onConceptOpenOrClosed(payload.concept)
+    );
+
+    this.store.registerActionCallback(
+      this.store.actions.closeConcept,
+      payload => this.onConceptOpenOrClosed(payload.concept)
+    );
+
+    this.store.registerActionCallback(this.store.actions.openConcept, payload =>
+      this.onConceptOpen(payload.concept)
+    );
+
+    this.updateState();
+  }
+
   /** Get concept wrapper template */
-  getTemplate(): string {
+  protected getTemplate(): string {
     return `
       <header class="concept__header">
         <title></title>
@@ -26,7 +47,7 @@ export default class ConceptComponent extends Component {
   }
 
   /** Get children for concept */
-  getChildren(): Children {
+  protected getChildren(): Children {
     return {
       title: {
         class: TitleComponent,
@@ -34,8 +55,6 @@ export default class ConceptComponent extends Component {
           chapter: this.chapter,
           concept: this.concept,
           conceptEl: this.el,
-          index: this.index,
-          onOpen: this.onOpen.bind(this),
         },
       },
       checkmark: {
@@ -43,6 +62,40 @@ export default class ConceptComponent extends Component {
         inputs: { concept: this.concept },
       },
     };
+  }
+
+  /** Open or close the concept if it is the one modified */
+  private onConceptOpenOrClosed(concept: Concept): void {
+    if (concept === this.concept) {
+      this.updateState();
+    }
+  }
+
+  /** Close the concept if another concept is closed */
+  private onConceptOpen(concept: Concept): void {
+    if (concept !== this.concept && this.isOpen()) {
+      this.store.action({
+        type: this.store.actions.closeConcept,
+        payload: { concept: this.concept },
+      });
+    }
+  }
+
+  /** Ask the store if the concept is open and set/remove the class */
+  private updateState(): void {
+    this.el.classList[this.isOpen() ? 'add' : 'remove'](this.openClass);
+
+    if (this.isOpen()) {
+      this.onOpen();
+    }
+  }
+
+  /** Ask the store if the concept is open */
+  private isOpen(): boolean {
+    return (
+      this.store.data.concepts[this.concept.title] &&
+      this.store.data.concepts[this.concept.title].open
+    );
   }
 
   /** Generate the inside of the concept only once it is open */

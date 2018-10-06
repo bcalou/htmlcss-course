@@ -7,7 +7,8 @@ export default class Store {
   public actions = {
     setConceptProgression: 'SET_CONCEPT_PROGRESSION',
     setQuestionAnswer: 'SET_QUESTION_ANSWER',
-    toggleConcept: 'TOGGLE_CONCEPT',
+    openConcept: 'OPEN_CONCEPT',
+    closeConcept: 'CLOSE_CONCEPT',
   };
 
   private callbacks: any = {};
@@ -40,15 +41,17 @@ export default class Store {
         this.data.concepts[action.payload.concept.title].answer =
           action.payload.answer;
         break;
-      case this.actions.toggleConcept:
-        this.data.concepts[action.payload.concept.title].open = !!!this.data
-          .concepts[action.payload.concept.title].open;
+      case this.actions.openConcept:
+        this.data.concepts[action.payload.concept.title].open = true;
+        break;
+      case this.actions.closeConcept:
+        this.data.concepts[action.payload.concept.title].open = false;
         break;
       default:
         break;
     }
 
-    this.executeCallbacks(action.type);
+    this.executeCallbacks(action.type, action.payload);
 
     localStorage.setItem('store', JSON.stringify(this.data));
   }
@@ -78,10 +81,10 @@ export default class Store {
   }
 
   /** Execute registered callback for the given action type */
-  private executeCallbacks(actionType: string): void {
+  private executeCallbacks(actionType: string, actionPayload: any): void {
     if (this.callbacks[actionType]) {
       this.callbacks[actionType].forEach(callback => {
-        callback();
+        callback(actionPayload);
       });
     }
   }

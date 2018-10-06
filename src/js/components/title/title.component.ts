@@ -8,9 +8,6 @@ export default class TitleComponent extends Component {
   protected class = 'title';
   protected concept: Concept;
   protected chapter: Chapter;
-  protected conceptEl: HTMLElement;
-  protected index: number;
-  protected onOpen: Function;
 
   /** Generate the title */
   protected generate(): void {
@@ -24,8 +21,6 @@ export default class TitleComponent extends Component {
     this.el.addEventListener('click', () => {
       this.toggleSection();
     });
-
-    this.setState();
   }
 
   /** Get title template */
@@ -36,25 +31,20 @@ export default class TitleComponent extends Component {
   /** Change the state of the concept and save it to local storage */
   private toggleSection(): void {
     this.store.action({
-      type: this.store.actions.toggleConcept,
+      type: this.isOpen()
+        ? this.store.actions.closeConcept
+        : this.store.actions.openConcept,
       payload: {
         concept: this.concept,
       },
     });
-
-    this.setState();
   }
 
-  /** Add or remove open class depeding on the state */
-  private setState(): void {
-    const open: boolean =
+  /** Ask the store if the concept is open */
+  private isOpen(): boolean {
+    return (
       this.store.data.concepts[this.concept.title] &&
-      this.store.data.concepts[this.concept.title].open;
-
-    if (open) {
-      this.onOpen();
-    }
-
-    this.conceptEl.classList[open ? 'add' : 'remove']('concept--open');
+      this.store.data.concepts[this.concept.title].open
+    );
   }
 }
