@@ -1,0 +1,25 @@
+.map {
+  margin: 75px 0;
+}
+
+.map__title {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: var(--primaryColor);
+  font-size: 22px;
+}
+
+.map__instructions {
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.map__inner:hover {
+  display: block;
+  overflow: auto;
+  height: 637px;
+
+  img {
+    max-width: none;
+  }
+}

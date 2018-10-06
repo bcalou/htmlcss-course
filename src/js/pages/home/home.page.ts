@@ -1,5 +1,6 @@
 import ChaptersComponent from '../../components/chapters/chapters.component';
 import Children from '../../components/children.interface';
+import MapComponent from '../../components/map/map.component';
 import TwitterComponent from '../../components/twitter/twitter.component';
 import Course from '../../models/course.interface';
 import Page from '../../pages/page';
@@ -11,6 +12,7 @@ export default class HomePage extends Page {
   protected getPageTemplate(): string {
     return `
       <chapters></chapters>
+      <map></map>
       <twitter></twitter>
     `;
   }
@@ -21,6 +23,9 @@ export default class HomePage extends Page {
       chapters: {
         class: ChaptersComponent,
         inputs: { chapters: this.course.chapters },
+      },
+      map: {
+        class: MapComponent,
       },
       twitter: {
         class: TwitterComponent,
