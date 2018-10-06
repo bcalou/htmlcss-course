@@ -4,7 +4,7 @@
     {
       "title": "Introduction aux balises",
       "description": "Découverte du HTML, le langage de base des pages web, et des balises principales qui le constituent.",
-      "slidesUrl": "https://docs.google.com/presentation/d/1Yubf9f1TLpxZSoVFZeP6khiEAJGCsmGdJghS_MmbrOo/edit?usp=sharing",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vT-yctmKbXxKrLaLxbQwOdvmIFTGM_iXgmopeakGyAuC5MWbXa3dd5DaP6ATM6RDBRrL5myUkhyZpEH/pub?start=true&loop=false&delayms=60000000",
       "puzzle": {
         "word": "semantic",
         "text": "La sémantique (<i>semantic</i> en anglais) est la pratique visant à donner le maximum de signification au code constituant notre page web. On ne se soucis pas seulement de ce que l'utilisateur verra au final, mais aussi de ce que le navigateur reçoit comme code. Plus la sémantique du code est précise, mieux le code pourra être interprété dans différents contextes : navigation classique, référencement par les moteurs de recherche, navigation à l'aide d'une technologie d'assistance..."
