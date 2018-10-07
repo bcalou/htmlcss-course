@@ -7,7 +7,7 @@
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vT-yctmKbXxKrLaLxbQwOdvmIFTGM_iXgmopeakGyAuC5MWbXa3dd5DaP6ATM6RDBRrL5myUkhyZpEH/pub?start=true&loop=false&delayms=60000000",
       "puzzle": {
         "word": "semantic",
-        "text": "La sémantique (<i>semantic</i> en anglais) est la pratique visant à donner le maximum de signification au code constituant notre page web. On ne se soucis pas seulement de ce que l'utilisateur verra au final, mais aussi de ce que le navigateur reçoit comme code. Plus la sémantique du code est précise, mieux le code pourra être interprété dans différents contextes : navigation classique, référencement par les moteurs de recherche, navigation à l'aide d'une technologie d'assistance..."
+        "text": "La sémantique (<i>semantic</i> en anglais) est la pratique visant à donner le maximum de signification au code constituant notre page web. On ne se soucie pas seulement de ce que l'utilisateur verra au final, mais aussi de ce que le navigateur reçoit comme code. Plus la sémantique du code est précise, mieux le code pourra être interprété dans différents contextes : navigation classique, référencement par les moteurs de recherche, navigation à l'aide d'une technologie d'assistance..."
       },
       "concepts": [
         {
@@ -189,7 +189,7 @@
           "title": "Block VS Inline",
           "theory": "Toutes ces balises sont regroupables en deux catégories : les <em>block</em>, qui provoquent un retour à la ligne et prennent toute la largeur disponible, et les <em>inline</em>, qui s'intrègrent au flux courant, en prenant juste la largeur de leur contenu. <code>div</code> et <code>span</code> sont les éléments génériques (sans signification particulière) respectifs de ces deux catégories.",
           "code": "<p>Ce paragraphe est un bloc.</p><header>Ce header est un autre bloc. Mais ce <span>span</span> à l'intérieur du header est un élément inline.</header>",
-          "info": "Quand vous cherchez quelle balise utiliser, vérifiez si il en existe une qui répond au sens que vous souhaitez donner à votre contenu. Si aucune ne correspond, utilisez <code>div</code> ou <code>span</code> selon que votre élement est un bloc ou en-ligne. Voyez ces dernières comme le dernier recours !",
+          "info": "Quand vous cherchez quelle balise utiliser, vérifiez s'il en existe une qui répond au sens que vous souhaitez donner à votre contenu. Si aucune ne correspond, utilisez <code>div</code> ou <code>span</code> selon que votre élement est un bloc ou en-ligne. Voyez ces dernières comme le dernier recours !",
           "links": [
             {
               "label": "Éléments en-ligne",
