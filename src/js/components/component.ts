@@ -5,6 +5,7 @@ import ComponentOptions from './component-options.interface';
 export default class Component {
   protected tagType: string;
   protected class: string;
+  protected id: string;
   protected el: HTMLElement;
   protected store: Store;
 
@@ -34,6 +35,11 @@ export default class Component {
   protected generate(): void {
     this.el = document.createElement(this.tagType);
     this.el.classList.add(this.class);
+
+    if (this.id) {
+      this.el.id = this.id;
+    }
+
     this.el.innerHTML = this.getTemplate();
 
     this.generateChildren();

@@ -9,6 +9,7 @@
         "word": "semantic",
         "text": "La sémantique (<i>semantic</i> en anglais) est la pratique visant à donner le maximum de signification au code constituant notre page web. On ne se soucie pas seulement de ce que l'utilisateur verra au final, mais aussi de ce que le navigateur reçoit comme code. Plus la sémantique du code est précise, mieux le code pourra être interprété dans différents contextes : navigation classique, référencement par les moteurs de recherche, navigation à l'aide d'une technologie d'assistance..."
       },
+      "correctionVideoYoutubeId": "e1_r2MWtAIs",
       "concepts": [
         {
           "title": "Notre première balise",

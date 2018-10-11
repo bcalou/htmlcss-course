@@ -32,6 +32,13 @@ export default class ChaptersComponent extends Component {
                 concept${doneConcepts > 1 ? 's' : ''}
                 validé${doneConcepts > 1 ? 's' : ''}
               </p>
+              ${
+                chapter.correctionVideoYoutubeId
+                  ? '<a class="chapter__correction" href=' +
+                    chapterUrl +
+                    '#correction>Correction disponible</a>'
+                  : ''
+              }
             </div>
             <ul class="chapter__links">
               <li class="chapter__link chapter__link--exercises">

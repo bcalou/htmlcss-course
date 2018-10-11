@@ -8,4 +8,5 @@ export default interface Chapter {
   slidesUrl: string;
   puzzle: Puzzle;
   concepts: Concept[];
+  correctionVideoYoutubeId?: string;
 }

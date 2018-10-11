@@ -1,0 +1,31 @@
+.correction {
+  margin: 50px auto 20px;
+  text-align: center;
+}
+
+.correction__title {
+  margin-bottom: 15px;
+  color: var(--primaryColor);
+  font-family: var(--sansSerifFont);
+  font-size: 24px;
+
+  @include large {
+    margin-bottom: 30px;
+  }
+}
+
+.correction__video {
+  position: relative;
+  width: 100%;
+  padding-top: calc((9 / 16) * 100%);
+
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

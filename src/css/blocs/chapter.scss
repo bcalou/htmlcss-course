@@ -24,13 +24,30 @@
   margin: 10px 0;
 }
 
+.chapter__progression,
+.chapter__correction {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .chapter__progression {
   opacity: 0.7;
   margin-bottom: 10px;
 
   .chapter--done & {
     opacity: 1;
-    color: var(--successColor);
+    color: var(--successColorDark);
+  }
+}
+
+.chapter__correction {
+  background-color: var(--successColorLight);
+  border-radius: 5px;
+  padding: 5px;
+  color: var(--successColorDark);
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 

@@ -1,5 +1,6 @@
 import Children from '../../components/children.interface';
 import ConceptsComponent from '../../components/concepts/concepts.component';
+import CorrectionComponent from '../../components/correction/correction.component';
 import HeaderComponent from '../../components/header/header.component';
 import PuzzleComponent from '../../components/puzzle/puzzle.component';
 import Chapter from '../../models/chapter.interface';
@@ -14,6 +15,9 @@ export default class ChapterPage extends Page {
     return `
       <concepts></concepts>
       <puzzle></puzzle>
+      ${
+        this.chapter.correctionVideoYoutubeId ? '<correction></correction>' : ''
+      }
     `;
   }
 
@@ -27,6 +31,10 @@ export default class ChapterPage extends Page {
       concepts: {
         class: ConceptsComponent,
         inputs: { chapter: this.chapter },
+      },
+      correction: {
+        class: CorrectionComponent,
+        inputs: { youtubeId: this.chapter.correctionVideoYoutubeId },
       },
       puzzle: {
         class: PuzzleComponent,

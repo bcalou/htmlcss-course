@@ -27,5 +27,24 @@ function init(): void {
           new HomePage({ course: course });
           break;
       }
+
+      if (window.location.hash) {
+        scrollToAnchor();
+      }
     });
+}
+
+/** Scroll to the anchor */
+function scrollToAnchor(): void {
+  const hash: string = window.location.hash.slice(1); // Remove #
+  const target: HTMLElement = document.getElementById(hash);
+
+  if (target) {
+    target.scrollIntoView();
+  } else {
+    setTimeout(() => {
+      // Keep trying until the element appears
+      scrollToAnchor();
+    }, 100);
+  }
 }
