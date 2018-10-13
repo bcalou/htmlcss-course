@@ -1,4 +1,4 @@
-.code {
+.codes {
   position: relative;
   width: 100%;
   background: var(--codeColor);
@@ -16,7 +16,7 @@
   }
 }
 
-.code__icon {
+.codes__icon {
   display: none;
 
   @include medium {
@@ -28,8 +28,20 @@
   }
 }
 
-.code__content {
+.codes__code {
   display: inline-block;
   min-width: 400px;
   font-weight: normal;
+
+  &::before {
+    content: attr(data-language);
+    display: block;
+    color: var(--codeColorDark);
+    font-family: var(--sansSerifFont);
+    text-transform: uppercase;
+  }
+
+  & + .codes__code {
+    margin-top: 20px;
+  }
 }

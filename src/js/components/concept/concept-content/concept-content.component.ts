@@ -1,8 +1,8 @@
 import Concept from '../../../models/concept.interface';
-import { formatCode } from '../../../utils/code';
 import { getSvg } from '../../../utils/misc';
 import Children from '../../children.interface';
 import CodepenComponent from '../../codepen/codepen.component';
+import CodesComponent from '../../codes/codes.component';
 import Component from '../../component';
 import QuestionComponent from '../../question/question.component';
 
@@ -15,6 +15,10 @@ export default class ConceptContentComponent extends Component {
   /** Get children components */
   protected getChildren(): Children {
     return {
+      codes: {
+        class: CodesComponent,
+        inputs: { code: this.concept.codes },
+      },
       codepen: {
         class: CodepenComponent,
         inputs: { concept: this.concept, index: this.index },
@@ -32,12 +36,7 @@ export default class ConceptContentComponent extends Component {
       <div class="concept__presentation">
         <div class="concept__theory">
           <p class="concept__text">${this.concept.theory}</p>
-          <div class="code">
-            ${getSvg('embed2', 'code__icon')}
-            <code class="code__content">
-              ${formatCode(this.concept.code)}
-            </code>
-          </div>
+          <codes></codes>
         </div>
         <aside class="concept__aside">
           ${this.getInfoTemplate()}
