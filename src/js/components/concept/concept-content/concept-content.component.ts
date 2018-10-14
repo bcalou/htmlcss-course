@@ -88,7 +88,7 @@ export default class ConceptContentComponent extends Component {
     if (this.concept.figure.caption) {
       const figcaptionEl: HTMLElement = document.createElement('figcaption');
       figcaptionEl.classList.add('figure__caption');
-      figcaptionEl.innerText = this.concept.figure.caption;
+      figcaptionEl.innerHTML = this.concept.figure.caption;
       figureEl.appendChild(figcaptionEl);
     }
 
