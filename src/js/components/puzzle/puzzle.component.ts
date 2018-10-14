@@ -64,7 +64,7 @@ export default class PuzzleComponent extends Component {
     let occurencesOfTheSameLetterBeforeIt = 0;
 
     for (let i = 0; i < index; i++) {
-      if (this.chapter.puzzle[i] === letter) {
+      if (this.chapter.puzzle.word[i] === letter) {
         occurencesOfTheSameLetterBeforeIt++;
       }
     }
