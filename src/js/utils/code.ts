@@ -51,7 +51,7 @@ function formatHtml(code: string): string {
 
 /** Add line breaks and indentation to CSS */
 function formatCss(code: string): string {
-  let source = Array.from(code.replace(/ /g, ''));
+  let source = Array.from(code.replace(/ /g, '').replace(/&nbsp;/g, ' '));
   let formatted = '';
   let indentLevel = 0;
 
@@ -73,7 +73,7 @@ function formatCss(code: string): string {
 
     formatted += char;
 
-    if (char === ':') {
+    if (char === ':' && indentLevel > 0) {
       formatted += '&nbsp;';
     }
 
@@ -84,6 +84,10 @@ function formatCss(code: string): string {
     if (char === '{') {
       indentLevel++;
       formatted += '<br/>';
+    }
+
+    if (char === '}' && source[i + 1]) {
+      formatted += '<br/><br/>';
     }
   });
 
