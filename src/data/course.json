@@ -336,7 +336,7 @@
           ],
           "codepen": "vVeBwB",
           "question": {
-            "text": "Quel symbole permet de sélectionner tout élément de classe B, à condition qu'un de ses frères précédents soit de classe A ? (un frère est un élément qui se trouve au même niveau de l'arboresence).",
+            "text": "Quel symbole permet de sélectionner tout élément de classe B, à condition que l'élément précédent soit de classe A ? (un frère est un élément qui se trouve au même niveau de l'arboresence).",
             "answer": "plus",
             "clue": "s"
           },
