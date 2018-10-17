@@ -237,7 +237,7 @@
         "word": "cascade",
         "text": "La <em>cascade</em> est le processus par lequel un document est stylisé en combinant les différentes sources CSS disponibles : le CSS du navigateur, celui du site, parfois-même celui de l'utilisateur s'il a fait des réglages spéciaux. La <em>spécificité CSS</em> fait partie de ce processsus : elle arbitre sur la règle qui sera finalement appliquée."
       },
-      "correctionVideoYoutubeId": "",
+      "correctionVideoYoutubeId": "zOsq09gNwz0",
       "concepts": [
         {
           "title": "Notre première règle CSS",
@@ -313,7 +313,7 @@
           "figure": {
             "src": "https://css-tricks.com/wp-content/csstricks-uploads/relationalpseudos2.png",
             "alt": "Ciblage d'élement HTML selon leur position",
-            "caption": "Il est fréquent de devoir cibler des éléments en fonction de leur position/environnement, et beaucoup de pseudo-classes nous le permettent (<code>nth-child</code> est le plus courant et utile !)."
+            "caption": "Il est fréquent de devoir cibler des éléments en fonction de leur position/environnement, et beaucoup de pseudo-classes nous le permettent (<code>nth-child</code> est la plus courante et utile !)."
           }
         },
         {
@@ -362,7 +362,7 @@
           ],
           "codepen": "oaGNmx",
           "question": {
-            "text": "Quelle expression, pouvant être placée à la fin d'une déclaration pour surpasser toutes les autres règles de spécificité, ne faut-il utiliser que dans les cas extrèmes ?",
+            "text": "Quelle expression, pouvant être placée à la fin d'une déclaration pour surpasser toutes les autres règles de spécificité, ne faut-il utiliser que dans les cas extrêmes ?",
             "answer": "!important",
             "clue": "a"
           },
@@ -433,11 +433,11 @@
         },
         {
           "title": "Importer une typo avec @font-face",
-          "theory": "Il y a plusieurs moyens d'utiliser une typographie non standard pour un site, et la déclaration CSS <code>@font-face</code> est sans doute la plus efficace. Beaucoup de formats de fichier existent, mais étant donnés la performance et le support navigateur de chacun, le consensus prescrit utilisation combinée des format <code>woff</code> et <code>woff2</code>. Chaque navigateur choisira ce qu'il est en mesure de comprendre, <code>woff2</code> étant plus optimisé mais pas aussi largement supporté. Il faut déclarer un @font-face par typographie et par graisse (normal, bold, italic, bold & italic...).",
+          "theory": "Il y a plusieurs moyens d'utiliser une typographie non standard pour un site, et la déclaration CSS <code>@font-face</code> est sans doute la plus efficace. Beaucoup de formats de fichier existent, mais étant donnés la performance et le support navigateur de chacun, le consensus préconise une utilisation combinée des format <code>woff</code> et <code>woff2</code>. Chaque navigateur choisira ce qu'il est en mesure de comprendre, <code>woff2</code> étant plus optimisé mais pas aussi largement supporté. Il faut déclarer un <code>@font-face</code> par typographie et par graisse (normal, bold, italic, bold & italic...).",
           "codes": {
             "css": "@font-face { font-family: \"Roboto\"; src: url(\"fonts/Roboto.woff2\")&nbsp;format(\"woff2\"),&nbsp;url(\"fonts/Roboto.woff\")&nbsp;format(\"woff\"); font-weight: normal; font-style: normal; } @font-face { font-family: \"Roboto\"; src: url(\"fonts/Roboto-Italic.woff2\")&nbsp;format(\"woff2\"),&nbsp;url(\"fonts/Roboto-Italic.woff\")&nbsp;format(\"woff\"); font-weight: normal; font-style: italic; } body { font-family: \"Roboto\", sans-serif; } em { font-style: italic; }"
           },
-          "warning": "Attention à bien regarder l'exemple : les deux déclarations utilisent la même <code>font-family</code>. La seule chose qui change, c'est le chemin du fichier et le <code>font-style</code> auquel le fichier correspond. Cela permet au navigateur de savoir qu'il faut styler le <code>body</code> avec <code>Roboto.woff2</code>, mais qu'il pourra utiliser <code>Roboto-Italic.woff2</code> pour faire ressortir les balises <code>em</code>. On pourrait également importer <code>Roboto-Bold.woff2</code>, en faisant varier <code>font-weight</code> cette fois-ci. Enfin, notez dans le sélecteur <code>body</code> la déclaration d'une police de secours (n'importe quelle <code>sans-serif</code>), au cas où la première ne peut pas être chargée.",
+          "warning": "Attention à bien regarder l'exemple : les deux déclarations utilisent la même <code>font-family</code>. Les seules choses qui changent, ce sont les chemins des fichiers et le <code>font-style</code> auquel les fichiers correspondent. Cela permet au navigateur de savoir qu'il faut styler le <code>body</code> avec <code>Roboto.woff2</code>, mais qu'il pourra utiliser <code>Roboto-Italic.woff2</code> pour faire ressortir les balises <code>em</code>. On pourrait également importer <code>Roboto-Bold.woff2</code>, en faisant varier <code>font-weight</code> cette fois-ci. Enfin, notez dans le sélecteur <code>body</code> la déclaration d'une police de secours (n'importe quelle <code>sans-serif</code>), au cas où la première ne peut pas être chargée.",
           "links": [
             {
               "label": "Les formats et leur support",
