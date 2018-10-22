@@ -478,6 +478,254 @@
           }
         }
       ]
+    },
+    {
+      "title": "Mise en page, flexbox & grid",
+      "description": "Manipuler des blocs avec flexbox, grid et d'autres techniques pour parvenir à une mise en page complexe.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vSdS_UrGr6ofEmQY-DhJRLMJr7G_qXx0XRn7-Ame2nCfz36CmIB4okg_qkvul0g8-rr7YiA8vE2oUtj/pub?start=false&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "flexible",
+        "text": "Un mot simple mais qui doit piloter toutes nos réflexions sur le web. Flexbox et Grid sont des premiers (grands) pas vers un design flexible, et par là même résilient, c'est à dire résistant aux changement de taille, ce à quoi nous ferons face très prochainement en parlant d'intégration responsive."
+      },
+      "correctionVideoYoutubeId": "",
+      "concepts": [
+        {
+          "title": "Le comportement inline-block",
+          "theory": "Tous les éléments se comportent en block ou en inline, mais on peut réunir le meilleur des deux mondes en CSS, avec <code>display: inline-block</code>. Les éléments ciblés seront des blocks (et pourront donc avoir des dimensions définies en CSS, et des marges verticales), mais suivront le flux de texte de la page, sans causer de retour à la ligne.",
+          "codes": {
+            "html": "<ul><li>Nous devrions être des blocks...</li><li>...mais nous sommes désormais...</li><li>...sur la même ligne.</li></ul>",
+            "css": "li { display: inline-block; }"
+          },
+          "info": "C'est une des techniques les plus simples et les mieux supportées pour mettre des éléments en ligne, si on ne se soucie pas trop de leur placement (pas d'alignements complexes à gérer). On peut par exemple la voir en action en haut de cette page : le numéro du chapitre et son titre sont dans deux balises séparées. Pour que le <code>h2</code> dans lequel se trouve le titre ne revienne pas à la ligne, il a été modifié en <code>inline-block</code>.",
+          "links": [
+            {
+              "label": "block VS inline VS inline-block",
+              "url": "https://stackoverflow.com/a/9189873"
+            }
+          ],
+          "codepen": "JmBjOK",
+          "question": {
+            "text": "<code>opacity: 0</code> permettrait de cacher un élément, mais il prendrait toujours de la place. Quelle valeur donner à la propriété <code>display</code> pour le faire disparaître complètement ?",
+            "answer": "none",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://i.stack.imgur.com/mGTYI.png",
+            "alt": "Comparaison des comportement inline, block et inline-block",
+            "caption": "<code>inline-block</code> permet de positionner des blocks en inline, ou, dans l'autre sens, de faire se comporter les inline comme des blocks."
+          }
+        },
+        {
+          "title": "Faire flotter des éléments avec float",
+          "theory": "La propriété <code>float</code> permet de faire flotter (sans blague) un élément. Un élément flottant à gauche, par exemple, se rangera en haut à gauche de son parent et les autres éléments viendront s'aligner à sa droite. Cette propriété à été mise en place pour permettre à du texte de s'adapter aux contours d'une image.",
+          "codes": {
+            "html": "<img src=\"cat.jpg\" alt=\"Un chat\" /><p>Je suis le texte de description du chat, j'aimerai que l'image soit flottante à ma gauche.</p>",
+            "css": "img { float: left; }"
+          },
+          "warning": "La propriété <code>float</code> est encore souvent utilisée pour des mises en page complexes, particulièrement lorsque les navigateurs à prendre en compte sont trop vieux pour <code>flexbox</code> et <code>grid</code>, que nous aborderons plus loin. Mais si vous n'êtes pas dans ce cas, passez-vous en ! À part pour adapter le texte aux contours d'une image ou d'un bloc, son utilisation est souvent abusive (et source de bugs fréquents).",
+          "links": [
+            {
+              "label": "Float & clear",
+              "url": "https://www.w3schools.com/css/css_float.asp"
+            }
+          ],
+          "codepen": "bmjNdy",
+          "question": {
+            "text": "<code>float</code> peut malheureusement causer beaucoup de problèmes. Si vous raccourcissez un des synopsis de l'exercice, de sorte à ce que le texte soit moins haut que l'image, vous verrez que cette dernière flotte en dehors de son parent. Comment s'appelle la technique que l'on est alors obligé d'utiliser pour rétablir le flux normal après le synopsis ? (la complexité de cette technique est une des raisons pour laquelle l'usage de float doit être limité au strict minimum)",
+            "answer": "clearfix",
+            "clue": "f"
+          },
+          "figure": {
+            "src": "https://d3h6k4kfl8m9p0.cloudfront.net/uploads/2014/07/roland-f.-99v.jpg",
+            "alt": "Une image flottante dans un très vieux livre",
+            "caption": "Cette idée ne date pas d'hier : le monde du print a souvent influencé celui du web."
+          }
+        },
+        {
+          "title": "La position absolute",
+          "theory": "Même si on modifie leur comportement, les éléments en <code>inline-block</code> et <code>float: left/right</code> restent dans le flux du document : ils se situent logiquement par rapport aux autres (en ligne, en flottant...). Mais il est possible de sortir complètement un élément du flux de la page avec la propriété <code>position: absolute</code>. Cela permet ensuite, avec les propriétés <code>top</code>, <code>bottom</code>, <code>left</code> et <code>right</code>, de positionner l'élément de manière absolue dans l'espace. Pratique pour les petits éléments décoratifs.",
+          "codes": {
+            "html": "<aside>Je suis une petite boîte qui s'affichera en haut à droite du document, à 10px du bord, en dehors du flux.</aside>",
+            "css": "aside { position: absolute; top: 10px; right: 10px; }"
+          },
+          "info": "Un élément positionné de manière absolue se positionne par rapport à son <em>contexte de positionnement</em>, par défaut le <code>body</code>. Mais si on veut le positionner par rapport à un de ses parents (pour le mettre dans le coin d'une boîte, par exemple), on peut créer un nouveau contexte de positionnement en appliquant au parent <code>position: relative</code>. La technique du positionnement absolue est également à utiliser avec parcimonie.",
+          "links": [
+            {
+              "label": "Exemple d'utilisation simple",
+              "url": "http://www.partage-it.com/jai-enfin-compris-comment-utiliser-position-absolute-css/"
+            }
+          ],
+          "codepen": "WaKvop",
+          "figure": {
+            "src": "http://anything.codes/gdi-intro-html-css/img/positioning-banner-concept.png",
+            "alt": "Le positionnement absolu en CSS",
+            "caption": "L'élément en position absolute se place par rapport à son plus proche parent en position relative (et le body s'il n'y en a pas)."
+          }
+        },
+        {
+          "title": "Flexbox : un modèle de positionnement puissant",
+          "theory": "Si toutes les options présentées précédemment pouvaient dépanner dans des circonstances particulières, <code>flexbox</code>, pour peu que l'on ait pas à supporter de navigateurs trop anciens, est la première méthode de positionnement des éléments suffisament solide pour être utilisée à grande échelle. Pour utiliser <code>flexbox</code>, il faut simplement un élément parent et un ou plusieurs éléments enfants : on pourra alors manipuler facilement la position et la taille de ces derniers au sein du parent.",
+          "codes": {
+            "html": "<ul><li>Accueil</li><li>Compétences</li><li>Contact</li></ul>",
+            "css": "ul { display: flex; }"
+          },
+          "info": "Dans le code d'exemple, <code>ul</code> est le <em>flex container</em>, tandis que chaque <code>li</code> est un <em>flex item</em>.",
+          "links": [
+            {
+              "label": "Support navigateur",
+              "url": "https://caniuse.com/#feat=flexbox"
+            }
+          ],
+          "codepen": "wYxaNq",
+          "question": {
+            "text": "Tout élément auquel on applique la propriété <code>display: flex</code> se comporte alors comme un block (suivi d'un retour à la ligne, donc). Avec quelle valeur peut-on garder combiner les comportements <code>inline-block</code> et <code>flex</code>, pour avoir des flexbox insérées dans le flux ?",
+            "answer": "inline-flex",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "https://cdn-images-1.medium.com/max/1250/1*ifusEqwI87nBKXgK9oZ_7A.gif",
+            "alt": "La différence entre display: block et display: flex",
+            "caption": "Un simple changement de display sur le parent de ces éléments créé un comportement similaire à <code>inline-block</code> sur chacun d'entre-eux, mais permettra par la suite beaucoup d'autres choses..."
+          }
+        },
+        {
+          "title": "Flexbox : les propriétés du conteneur",
+          "theory": "Les propriétés <code>flexbox</code> s'appliquent soit au conteneur, soit aux items. En utilisant les propriétés de conteneur (et donc en ciblant l'élément qui est en <code>display: flex</code>), on peut définir le comportement global : dans quel sens et direction les items sont disposés, comment sont-ils répartis dans l'espace disponible, si les items peuvent être disposés sur plusieurs lignes ou non...",
+          "codes": {
+            "html": "<ul><li>Accueil</li><li>Compétences</li><li>Contact</li></ul>",
+            "css": "ul { display: flex; flex-wrap: wrap; justify-content: center; }"
+          },
+          "info": "Dans l'exemple, la propriété <code>flex-wrap</code> autorise les éléments à revenir à la ligne si le conteneur devient trop petit (sinon, ils diminueront automatiquement en largeur, ce qui n'est pas toujours souhaitable). La propriété <code>justify-content</code> permet elle de centrer les éléments sur l'axe. Ce ne sont pas les seules propriétés appliquables au conteneur !",
+          "links": [
+            {
+              "label": "Propriétés flexbox",
+              "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+            }
+          ],
+          "codepen": "yRqvKv",
+          "question": {
+            "text": "Quelle valeur donner à <code>flex-direction</code> pour répartir les éléments non pas horizontalement, mais verticalement ?",
+            "answer": "column",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "/img/menu-lemonde.png",
+            "alt": "Le menu du site Le Monde",
+            "caption": "Les menus utilisent très fréquemment <code>flexbox</code> pour présenter leurs liens élégamment."
+          }
+        },
+        {
+          "title": "Flexbox : les propriétés des items",
+          "theory": "Pour affiner le tout, il est possible de définir des propriétés spécifiques pour chaque item. Il est par exemple possible de ré-ordonner les éléments sans changer le HTML, ce qui est particulièrement pratique pour le responsive (mais c'est un autre sujet). On peut aussi donner à certains éléments plus d'espace, ou les aligner différement des autres.",
+          "codes": {
+            "html": "<ul><li>Accueil</li><li>Compétences</li><li>Contact</li></ul>",
+            "css": "ul { display: flex; } li { flex-grow: 1; }"
+          },
+          "info": "Le code de l'exemple est très répandu : il permet de dire à chaque item de grandir en prenant une part de l'espace disponible. Ainsi, les 3 items vont chacun prendre un tiers de la largeur du parent. Vous trouverez souvent utilisée la propriété <code>flex</code>, qui est un raccourci pour définir en une seule ligne <code>flex-grow</code>, <code>flex-shrink</code> et <code>flex-basis</code>.",
+          "links": [
+            {
+              "label": "Propriétés flexbox",
+              "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+            }
+          ],
+          "codepen": "QZBryX",
+          "question": {
+            "text": "Quelle propriété utiliser à la place de <code>flex-grow</code> si on ne souhaite pas que les items prennent toute la largeur, mais aient une taille spécifique ? Cette propriété est donc l'équivalent de <code>width</code> en mode <code>row</code> ou de <code>height</code> en mode <code>column</code>.",
+            "answer": "flex-basis",
+            "clue": "b"
+          },
+          "figure": {
+            "src": "https://designmodo.com/wp-content/uploads/2016/04/flexbox-css-social.jpg",
+            "alt": "Une gallerie de photos",
+            "caption": "Les galleries peuvent être réalisées grâce à <code>flexbox</code>, en faisant varier la propriété <code>flex-grow</code> pour donner plus d'espace à certains éléments."
+          }
+        },
+        {
+          "title": "Grid : flexbox au carré",
+          "theory": "<code>flexbox</code> est très utile pour gérer le positionnement d'éléments sur un axe unique. Pour gérer la structure en deux dimensions d'un site, la spécification <code>grid</code> va nous prêter main forte. Elle permet de définir en CSS, une grille (sans utiliser des béquilles bientôt obsolètes telles que bootstrap), et de placer les éléments qu'elle contient à l'intérieur de cette grille. Comme <code>flexbox</code>, il faut pour l'utiliser structurer votre html avec un parent et plusieurs enfants.",
+          "codes": {
+            "html": "<body><div class=\"a\"></div><div class=\"b\"></div><div class=\"c\"></div><div class=\"d\"></div></body>",
+            "css": "body { display: grid; grid-template-columns: 100px&nbsp;200px; grid-template-rows: 200px&nbsp;300px; } .a { grid-column: 1; grid-row: 1; } .b { grid-column: 2; grid-row: 1; } .c { grid-column: 2; grid-row: 1; } .d { grid-column: 2; grid-row: 2; }"
+          },
+          "info": "L'exemple de code ici présenté est inhabituel mais lisible si on le découpe bien. On définit d'abord que le <code>body</code> sera une grille avec deux colonnes (de 100px et 200px) et deux lignes (de 200px et 300px). Ensuite, on positionne chaque enfant dans la grille. Par exemple, l'élément de classe <code>.a</code> sera dans la première colonne, première ligne.",
+          "links": [
+            {
+              "label": "Support navigateur",
+              "url": "https://caniuse.com/#feat=css-grid"
+            },
+            {
+              "label": "Tutoriel pas à pas",
+              "url": "https://www.alsacreations.com/article/lire/1388-CSS3-Grid-Layout.html"
+            },
+            {
+              "label": "Toutes les propriétés",
+              "url": "https://css-tricks.com/snippets/css/complete-guide-grid/"
+            }
+          ],
+          "codepen": "rqrqjd",
+          "question": {
+            "text": "Quelle est la propriété qui permet de définir l'espacement à laisser autour de chaque colonne et de chaque ligne d'une grille ?",
+            "answer": "grid-gap",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://herchel.com/static/firefox-grid-devtools-16dad2a34be0720e0a8aedb1d563d97b-e409e.png",
+            "alt": "Une grille CSS observée avec l'inspecteur d'éléments de Google Chrome",
+            "caption": "L'inspecteur d'élément permet de visualiser facilement une grille CSS. Essayez sur le codepen, ou sur l'élément de classe <code>.page</code> ici-même !"
+          }
+        },
+        {
+          "title": "Grid : mesures flexibles",
+          "theory": "Dans la pratique, et contrairement à l'exemple précédent, les grilles sont rarement composées uniquement de valeurs fixes, car les environnement sont de taille variable. Quand on définit une grille, on peut utiliser les <code>px</code>, mais aussi le mot-clé <code>auto</code>, qui permettra à la grille de s'adapter au contenu. On peut aussi utiliser les fragments avec <code>fr</code> : comme avec <code>flexbox</code>, les fragments permettent de distribuer l'espace restant : si les 3 colonnes ont une largeur d'<code>1fr</code>, elle prendront chacune un tiers de la taille disponible. Notez enfin le mot-clé <code>repeat</code>, qui permet de générer plusieurs colonnes ou lignes sans avoir à se répéter.",
+          "codes": {
+            "css": "body { display: grid; grid-template-columns: 1fr&nbsp;100px&nbsp;1fr; grid-template-rows: 200px&nbsp;repeat(3,&nbsp;500px); }"
+          },
+          "info": "La déclaration <code>grid-template-columns</code> se lit ainsi : une colonne de 1000px, entourée de deux colonnes remplissant l'espace restant (<code>1fr</code> chacune). On verra souvent cela pour créer un conteneur central de contenu, c'est d'ailleurs ce qui est fait sur ce site. La déclaration <code>grid-template-rows</code> se lit : une ligne de <code>200px</code>, puis 3 lignes de <code>500px</code>.",
+          "links": [
+            {
+              "label": "Toutes les propriétés",
+              "url": "https://css-tricks.com/snippets/css/complete-guide-grid/"
+            }
+          ],
+          "codepen": "QZBJzY",
+          "question": {
+            "text": "Quel mot-clé permet de définir une colonne ou une ligne dont la taille varie entre un minimum et un maximum en s'adaptant à l'espace disponible ?",
+            "answer": "minmax",
+            "clue": "x"
+          },
+          "figure": {
+            "src": "https://thedaylightstudio.com/assets/images/blog/grid-grid-smaller.gif",
+            "alt": "Une grille CSS s'adaptant à la largeur du viewport",
+            "caption": "Nous n'y sommes pas encore, mais des grilles utilisant les mesures flexibles sont le caviar des techniques responsives."
+          }
+        },
+        {
+          "title": "Grid : les zones nommées",
+          "theory": "Jusqui'ici, on assigne nos éléments à des cases en spécifiant un numéro de colonne et un numéro de ligne. Mais, bien qu'il n'y ait pas de recommendation officielle sur la meilleure méthode, on peut aussi nommer les parties avec <code>grid-template-area</code> pour placer les éléments plus facilement avec <code>grid-area</code>.",
+          "codes": {
+            "html": "<body><div class=\"a\"></div><div class=\"b\"></div><div class=\"c\"></div></body>",
+            "css": "body { display: grid; grid-template-columns: 100px&nbsp;200px; grid-template-rows: 200px&nbsp;300px; grid-template-areas: \"a a\" \"b c\" } .a { grid-area: a; } b { grid-area: b; } c { grid-area: d; } a { grid-area: d; }"
+          },
+          "info": "Quand on déclare la valeur de <code>grid-template-areas</code>, chaque chaîne entre guillemets représente une ligne. Grâce à la déclaration de l'exemple, la balise de classe <code>a</code> saura se placer sur la première ligne de la grille, en s'étalant sur deux colonnes.",
+          "links": [
+            {
+              "label": "Documentation MDN sur les zones nommées",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout/D%C3%A9finir_des_zones_sur_une_grille"
+            }
+          ],
+          "codepen": "EdpMdV",
+          "question": {
+            "text": "Quelle propriété peut-on appliquer à un item de grille pour qu'il soit centré dans sa cellule (utile dans le cas où il ne fait pas toute la taille de cette dernière) ?",
+            "answer": "place-self",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://image.slidesharecdn.com/wceu-2017-cssgridexport-170616175947/95/css-grid-changes-everything-about-web-layouts-wordcamp-europe-2017-68-638.jpg?cb=1497682800",
+            "alt": "L'utilisation de grid-template-areas",
+            "caption": "Cette technique peut-être la base de nombreux designs."
+          }
+        }
+      ]
     }
   ],
   "twitterAccounts": [
