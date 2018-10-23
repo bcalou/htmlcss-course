@@ -704,7 +704,7 @@
           "theory": "Jusqui'ici, on assigne nos éléments à des cases en spécifiant un numéro de colonne et un numéro de ligne. Mais, bien qu'il n'y ait pas de recommendation officielle sur la meilleure méthode, on peut aussi nommer les parties avec <code>grid-template-area</code> pour placer les éléments plus facilement avec <code>grid-area</code>.",
           "codes": {
             "html": "<body><div class=\"a\"></div><div class=\"b\"></div><div class=\"c\"></div></body>",
-            "css": "body { display: grid; grid-template-columns: 100px&nbsp;200px; grid-template-rows: 200px&nbsp;300px; grid-template-areas: \"a a\" \"b c\" } .a { grid-area: a; } .b { grid-area: b; } .c { grid-area: d; } .d { grid-area: d; }"
+            "css": "body { display: grid; grid-template-columns: 100px&nbsp;200px; grid-template-rows: 200px&nbsp;300px; grid-template-areas: \"a&nbsp;a\" \"b&nbsp;c\"; } .a { grid-area: a; } .b { grid-area: b; } .c { grid-area: c; } .d { grid-area: d; }"
           },
           "info": "Quand on déclare la valeur de <code>grid-template-areas</code>, chaque chaîne entre guillemets représente une ligne. Grâce à la déclaration de l'exemple, la balise de classe <code>a</code> saura se placer sur la première ligne de la grille, en s'étalant sur deux colonnes.",
           "links": [
