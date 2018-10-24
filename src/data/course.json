@@ -645,7 +645,7 @@
           "theory": "<code>flexbox</code> est très utile pour gérer le positionnement d'éléments sur un axe unique. Pour gérer la structure en deux dimensions d'un site, la spécification <code>grid</code> va nous prêter main forte. Elle permet de définir en CSS, une grille (sans utiliser des béquilles bientôt obsolètes telles que bootstrap), et de placer les éléments qu'elle contient à l'intérieur de cette grille. Comme <code>flexbox</code>, il faut pour l'utiliser structurer votre html avec un parent et plusieurs enfants.",
           "codes": {
             "html": "<body><div class=\"a\"></div><div class=\"b\"></div><div class=\"c\"></div><div class=\"d\"></div></body>",
-            "css": "body { display: grid; grid-template-columns: 100px&nbsp;200px; grid-template-rows: 200px&nbsp;300px; } .a { grid-column: 1; grid-row: 1; } .b { grid-column: 2; grid-row: 1; } .c { grid-column: 2; grid-row: 1; } .d { grid-column: 2; grid-row: 2; }"
+            "css": "body { display: grid; grid-template-columns: 100px&nbsp;200px; grid-template-rows: 200px&nbsp;300px; } .a { grid-column: 1; grid-row: 1; } .b { grid-column: 2; grid-row: 1; } .c { grid-column: 1; grid-row: 2; } .d { grid-column: 2; grid-row: 2; }"
           },
           "info": "L'exemple de code ici présenté est inhabituel mais lisible si on le découpe bien. On définit d'abord que le <code>body</code> sera une grille avec deux colonnes (de 100px et 200px) et deux lignes (de 200px et 300px). Ensuite, on positionne chaque enfant dans la grille. Par exemple, l'élément de classe <code>.a</code> sera dans la première colonne, première ligne.",
           "links": [
