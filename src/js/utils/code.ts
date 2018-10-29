@@ -61,19 +61,25 @@ function formatCss(code: string): string {
     }
 
     // Add indent spaces depending on nesting level
-    if (indentLevel > 0 && (source[i - 1] === '{' || source[i - 1] === ';')) {
+    if (
+      indentLevel > 0 &&
+      (source[i - 1] === '{' || source[i - 1] === '}' || source[i - 1] === ';')
+    ) {
       for (let j = 0; j < indentLevel; j++) {
         formatted += '&nbsp;&nbsp;';
       }
     }
 
-    if (char === '{') {
+    if (char === '{' || (char === '(' && indentLevel === 0)) {
       formatted += '&nbsp;';
     }
 
     formatted += char;
 
-    if (char === ':' && indentLevel > 0) {
+    if (
+      (char === ':' && (!isNaN(parseInt(source[i + 1])) || indentLevel > 0)) ||
+      (char === ')' && /^[a-zA-Z]/.test(source[i + 1]))
+    ) {
       formatted += '&nbsp;';
     }
 
@@ -87,7 +93,11 @@ function formatCss(code: string): string {
     }
 
     if (char === '}' && source[i + 1]) {
-      formatted += '<br/><br/>';
+      formatted += '<br/>';
+
+      if (source[i + 1] !== '}') {
+        formatted += '<br/>';
+      }
     }
   });
 
