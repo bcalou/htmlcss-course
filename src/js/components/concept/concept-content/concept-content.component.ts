@@ -36,7 +36,7 @@ export default class ConceptContentComponent extends Component {
       <div class="concept__presentation">
         <div class="concept__theory">
           <p class="concept__text">${this.concept.theory}</p>
-          <codes></codes>
+          ${this.concept.codes ? '<codes></codes>' : ''}
         </div>
         <aside class="concept__aside">
           ${this.getInfoTemplate()}

@@ -6,8 +6,8 @@ import Question from './question.interface';
 export default interface Concept {
   title: string;
   theory: string;
-  codes: Codes;
   codepen: string;
+  codes?: Codes;
   question?: Question;
   info?: string;
   links?: Link[];
