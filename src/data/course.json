@@ -726,6 +726,188 @@
           }
         }
       ]
+    },
+    {
+      "title": "Responsive & Mobile First",
+      "description": "Manipulation des media queries et autres bonnes pratiques pour réaliser des intégrations à toute épreuve face à l'imprévisible variété des terminaux client.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vRlK3Z39-Tk2IMYmGtoM4MyF3Ivp-NJpno2sVT42BpqJvDQZQ2fTKs-teRJu6qEO7yX4bNcenChHPa_/pub?start=false&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "pixels",
+        "text": "Vous ne connaîtrez jamais leur nombre exact sur l'appareil de votre cible. N'essayez pas de reproduire les maquettes au pixel près : ce sont des images fixes. Le viewport lui est un environnement à géométrie (très) variable, et votre mission et de tenir compte de cette fluidité du mieux possible."
+      },
+      "correctionVideoYoutubeId": "",
+      "concepts": [
+        {
+          "title": "Notre première media query",
+          "theory": "Une <em>media query</em> permet d'appliquer un code CSS différent selon le contexte, par exemple selon la taille de l'écran. En suivant la méthode <em>Mobile First</em>, on décidera d'appliquer par défaut les propriétés qui seront interprétées sur des petits écrans, puis de changer ces propriétés quand l'écran dépasse une certaine largeur.",
+          "codes": {
+            "html": "<div>Je suis en bleu normalement, mais en rouge sur les grands écrans.</div>",
+            "css": "div { color: blue; } @media (min-width: 1200px) { div { color: red; }}"
+          },
+          "warning": "Vous croiserez souvent la soeur de <code>min-width</code>, <code>max-width</code>, dans les exemples. C'est elle qu'on utilise lorsqu'on fait du <em>Responsive Retrofitting</em> (où l'on part des grands écrans pour aller vers les petits). C'est une technique qui s'avère moins efficace car le code le plus complexe concerne généralement les grands écrans, on préfère donc aller du plus petit au plus grand (Mobile First).",
+          "links": [
+            {
+              "label": "Doc MDN sur les media queries",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/Requ%C3%AAtes_m%C3%A9dia/Utiliser_les_Media_queries"
+            }
+          ],
+          "codepen": "WamwPm",
+          "question": {
+            "text": "Il existe une contrepartie à <code>min-width</code>, pour cibler les écrans faisant moins d'une certaine hauteur, laquelle ? Non, il n'y a pas de piège, c'est bien aussi simple que ce vous pensez.",
+            "answer": "min-height",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://d31v04zdn5vmni.cloudfront.net/blog/wp-content/uploads/2014/11/definingmobile-mediaquery.jpg",
+            "alt": "Une media query ciblant les écrans.",
+            "caption": "Vous verrez parfois précisé <code>@media screen</code> au début des media queries. Cela permet de confiner la condition aux écrans, en opposition à <code>print</code> ou <code>speech</code>. Sauf cas particulier, vous pouvez vous en passer."
+          }
+        },
+        {
+          "title": "Media queries à sélecteurs multiples",
+          "theory": "Généralement, ce n'est pas un seul élément qui sera impacté par un changement de taille, mais plusieurs. On regroupera alors les règles dans une unique media query.",
+          "codes": {
+            "css": "h1 { font-weight: bold; } h2 { margin-bottom: 20px; } @media (min-width: 768px) { h1 { font-weight: normal; } h2 { margin-bottom: 40px; }} @media (min-width: 1280px) { h2 { margin-bottom: 60px; }}"
+          },
+          "info": "C'est une autre raison d'écrire des sélecteurs les plus simples possibles (juste une classe, dans la majeure partie des cas) : cela réduit les erreurs d'une media query à une autre.",
+          "links": [
+            {
+              "label": "Exemples de designs responsives",
+              "url": "https://mediaqueri.es/"
+            }
+          ],
+          "codepen": "JmzbyX",
+          "question": {
+            "text": "En analysant le header de cette page avec les outils de développement de votre navigateur, pouvez-vous dire à partir de quelle largeur les blocs de code et les blocs \"À noter\" se placent en vis-à-vis ?",
+            "answer": "1280px",
+            "clue": "p"
+          },
+          "figure": {
+            "src": "/img/responsive.png",
+            "alt": "Le site vu sur mobile",
+            "caption": "Sans <em>media queries</em>, pas de version mobile de ce merveilleux support de cours."
+          }
+        },
+        {
+          "title": "Media queries à plusieurs conditions",
+          "theory": "Bien qu'une grande partie ne soit jamais utilisée, les media queries permettent de cibler de nombreuses spécifitées autres que la taille de l'écran. On combine différentes conditions avec le mot clé <em>and</em>.",
+          "codes": {
+            "css": "body { background-image: url(\"small.jpg\"); } @media (min-width: 768px) { body { background-image: url(\"medium.jpg\");}} @media (min-width: 768px) and (min-resolution: 192dpi) { body { background-image: url(\"large.jpg\"); }}"
+          },
+          "info": "En plus de <code>width</code> et <code>height</code>, sont parfois utilisée <code>aspect-ratio</code> (pour cibler certaines formes d'écran) <code>orientation</code> (landscape ou portrait) et <code>resolution</code> (pour cibler les écran Retina / Full HD, comme dans l'exemple). Les autres sont anecdotiques.",
+          "links": [
+            {
+              "label": "Liste des media features",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/Requ%C3%AAtes_m%C3%A9dia/Utiliser_les_Media_queries#Caract%C3%A9ristiques_m%C3%A9dia_(media_features)"
+            }
+          ],
+          "codepen": "wYOgEv",
+          "question": {
+            "text": "Le mot-clé <code>and</code> exige que les différentes conditions de l'expression soient remplies. Avec quels caractères peut-on cibler plusieurs conditions séparément, pourvu que l'une d'entre elles soit remplie ?",
+            "answer": "virgules",
+            "clue": "s"
+          },
+          "figure": {
+            "src": "https://www.iab.com/wp-content/uploads/2017/11/Mobile_Video_Screen_Orientation.png",
+            "alt": "Statistiques d'orientation des appareils mobiles",
+            "caption": "Les appareils mobiles et plus particulièrement les tablettes seront amenées à pivoter, vous obligeant parfois à adapter votre contenu (bien que souvent <code>min-width</code> suffise !)"
+          }
+        },
+        {
+          "title": "Media queries & flexbox",
+          "theory": "C'est combinées aux techniques de layout que les media queries prennent tout leur intérêt. Il est très fréquent de voir des éléments disposés les uns sous les autres en mobile se placer en ligne lorsque la place leur permet. Les menus sont un exemple courant de ce comportement.",
+          "codes": {
+            "html": "<ul><li>Présentation</li><li>Compétences</li><li>Contact</li></ul>",
+            "css": "@media (min-width: 768px) { ul { display: flex; justify-content: space-between; }}"
+          },
+          "info": "Vous comprenez peut-être ici pourquoi on part d'une intégration mobile vers une intégration plus large : si on partait du desktop, il faudrait de base définir <code>display: flex</code>, et ensuite annuler ce comportement avec <code>display: block</code> pour les écrans plus petits. En codant en <em>Mobile First</em>, on tire parti du fait que le layout se complexifie généralement avec la taille de l'écran, et non l'inverse.",
+          "links": [
+            {
+              "label": "Flexbox Cheat Sheet",
+              "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+            }
+          ],
+          "codepen": "OBGWbB",
+          "question": {
+            "text": "Quelle propriété utiliser sur un conteneur flex pour permettre à ses enfants de revenir à la ligne plutôt que de s'écraser ?",
+            "answer": "flex-wrap",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "https://thedaylightstudio.com/assets/images/blog/flexbox-grid-smaller.gif",
+            "alt": "Un conteneur flexbox réagissant à la taille du viewport",
+            "caption": "Une fois que vous savez faire ça, tout devient possible !"
+          }
+        },
+        {
+          "title": "Media queries & grid",
+          "theory": "De la même façon qu'avec <em>flexbox</em>, la combinaison des media queries et de <em>grid</em> va nous permettre de faire évoluer la mise en page d'une taille d'écran à une autre.",
+          "codes": {
+            "html": "<body><div class=\"a\"></div><div class=\"b\"></div><div class=\"c\"></div></body>",
+            "css": "@media (min-width: 900px) {body { display: grid; grid-template-columns: 1fr&nbsp;2fr; grid-template-rows: repeat(2,&nbsp;auto); grid-template-areas: \"a&nbsp;a\" \"b&nbsp;c\"; } .a { grid-area: a; } .b { grid-area: b; } .c { grid-area: c; }}"
+          },
+          "warning": "Contrairement au code de l'exemple, nommez vos zones avec des termes sémantiques, c'est à dire qui désignent la fonction de l'élément (header, main, list, menu...). Comme pour les classes.",
+          "links": [
+            {
+              "label": "Grid Cheat Sheet",
+              "url": "https://css-tricks.com/snippets/css/complete-guide-grid/"
+            }
+          ],
+          "codepen": "wYZpKB",
+          "question": {
+            "text": "Quel caractère utiliser dans la propriété <code>grid-template-areas</code> si on souhaite laisser une cellule vide ?",
+            "answer": "point",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://mdn.mozillademos.org/files/14755/11-grid-inspector-12col-layout.png",
+            "alt": "Une grille analysée avec les outils de développement",
+            "caption": "N'oubliez pas que vous pouvez analyser les grilles de votre page avec les outils de développement. Cela est indispensable pour mettre en évidence les erreurs possibles."
+          }
+        },
+        {
+          "title": "Trouver les bons breakpoints",
+          "theory": "Un <em>breakpoint</em> (point de rupture) est une taille à laquelle le contenu du site ou une partie de ce contenu change d'apparence (autrement dit, les dimensions utilisées dans les media queries). On ne sait pas toujours quelle taille utiliser, car les appareils ont des tailles très variées. 768px, 1024px, 1280px ? Il n'y a pas de bonne réponse : laisser votre contenu dicter vos media queries, et non l'inverse. Ne vous imposez pas des breakpoints avant d'intégrer, les contraintes que vous rencontrerez les révèleront progressivement.",
+          "info": "Généralement, un site compte un, deux ou trois breakpoints majeurs (ré-organisation du layout global). Mais il peut y avoir en plus des breakpoints secondaires, qui ne concernent qu'une section en particulier. L'important est l'harmonie du site à toutes les tailles.",
+          "links": [
+            {
+              "label": "Les innombrables tailles d'écrans",
+              "url": "http://screensiz.es/"
+            }
+          ],
+          "codepen": "VENxaV",
+          "figure": {
+            "src": "/img/breakpoints.png",
+            "alt": "Start with the small screen first, then expand until it looks like shit. Time for a breakpoint !"
+          }
+        },
+        {
+          "title": "Les unités vw & vh",
+          "theory": "Au-delà des media queries, faire un site responsive c'est aussi utiliser les unités qui permettent de s'adapter à la taille du viewport. Par exemple, <code>1vw</code> et <code>1vh</code> équivalent respectivement à 1 centième de la largeur et de la hauteur du viewport. Ainsi, la mesure <code>100vh</code> représente la totalité de la hauteur du viewport.",
+          "codes": {
+            "html": "<div class=\"hero\">Je prends toute la taille disponible !</div>",
+            "css": ".hero { width: 100vw; height: 100vh; }"
+          },
+          "info": "Les blocks prenant 100% de la largeur disponible par défaut, le <code>100vw</code> de l'exemple est en réalité superflu. Pour les hauteurs en revanche, c'est beaucoup moins simple et il est bien pratique d'avoir accès à cette unité.",
+          "links": [
+            {
+              "label": "La difficulté avec height",
+              "url": "https://la-cascade.io/pourquoi-height-100-ne-marche-pas/"
+            }
+          ],
+          "codepen": "KGYeeG",
+          "question": {
+            "text": "Quelle unité représente 1 centième du côté le plus grand du viewport ? (par exemple, sur un écran de 800*600, un centième de 800)",
+            "answer": "vmax",
+            "clue": "x"
+          },
+          "figure": {
+            "src": "https://www.yunbitsoftware.com/blog/wp-content/uploads/2017/06/imagen2-vh.png",
+            "alt": "La mesure 100vh utilisée sur différents appareils",
+            "caption": "La mesure <code>100vh</code> est régulièrement utilisée pour faire référence à la hauteur du viewport.S"
+          }
+        }
+      ]
     }
   ],
   "twitterAccounts": [
