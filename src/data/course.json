@@ -778,7 +778,7 @@
           ],
           "codepen": "JmzbyX",
           "question": {
-            "text": "En analysant le header de cette page avec les outils de développement de votre navigateur, pouvez-vous dire à partir de quelle largeur les blocs de code et les blocs \"À noter\" se placent en vis-à-vis ?",
+            "text": "En analysant le code de cette page de cette page avec les outils de développement de votre navigateur, pouvez-vous dire à partir de quelle largeur les blocs de code et les blocs \"À noter\" se placent en vis-à-vis ?",
             "answer": "1280px",
             "clue": "p"
           },
