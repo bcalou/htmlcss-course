@@ -735,7 +735,7 @@
         "word": "pixels",
         "text": "Vous ne connaîtrez jamais leur nombre exact sur l'appareil de votre cible. N'essayez pas de reproduire les maquettes au pixel près : ce sont des images fixes. Le viewport lui est un environnement à géométrie (très) variable, et votre mission et de tenir compte de cette fluidité du mieux possible."
       },
-      "correctionVideoYoutubeId": "",
+      "correctionVideoYoutubeId": "f3oRKzE9o_s",
       "concepts": [
         {
           "title": "Notre première media query",
