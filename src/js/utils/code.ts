@@ -5,6 +5,8 @@ export function formatCode(code: string, type: string): string {
       return formatHtml(code);
     case 'css':
       return formatCss(code);
+    case 'js':
+      return formatJs(code);
     default:
       console.error('Unsupported language : ' + type);
       break;
@@ -102,4 +104,9 @@ function formatCss(code: string): string {
   });
 
   return formatted;
+}
+
+/** Format JS code - No formatting at this time, format directly in source */
+function formatJs(code: string): string {
+  return code;
 }

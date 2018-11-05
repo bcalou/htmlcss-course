@@ -908,6 +908,260 @@
           }
         }
       ]
+    },
+    {
+      "title": "Transitions & Animations CSS",
+      "description": "Utiliser les fonctionnalités du CSS pour effectuer des transitions fluides et des animations plus complexes.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQVdYR6AlPe-T8nu0FUShzORZIDPl6yGp_9hVxtY_nVy7AMkdHjou4E4Sfu7IeSxQ9Ew6VtkqhEQCYE/pub?start=false&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "repaint",
+        "text": "Un <em>repaint</em> est l'opération effectuée par un navigateur lorsqu'il doit \"repeindre\", c'est à dire rendre visuellement un élément à nouveau. C'est ce qu'il se passe de nombreuses fois par seconde lorsqu'on utilise les transitions et les animations, et cela est coûteux en performance sur certains terminaux, alors attention à ne pas en abuser !"
+      },
+      "correctionVideoYoutubeId": "",
+      "concepts": [
+        {
+          "title": "Une première transition",
+          "theory": "Pour chaque élément, vous pouvez définir en CSS lesquelles de ses propriétés devront transitionner avec la propriété <code>transition</code>. Dès que la propriété concernée changera, elle le fera en respectant la transition demandée. On précise d'abord quelle propriété est concernée, puis combien de temps doit prendre la transition.",
+          "codes": {
+            "html": "<div>Je grandis quand je suis survolée</div>",
+            "css": "div { width: 200px; transition: width&nbsp;0.5s; } div:hover { width: 300px; }"
+          },
+          "warning": "Notez bien que la propriété <code>transition</code> se place dans le sélecteur CSS concernant l'état initial de l'élémenent concerné, pas au moment où la transition s'applique. Autrement dit, on \"prépare\" la transition à venir.",
+          "links": [
+            {
+              "label": "Introduction aux transitions",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Transitions/Utiliser_transitions_CSS"
+            }
+          ],
+          "codepen": "xQxPVy",
+          "question": {
+            "text": "La propriété <code>animation</code> est une propriété raccourcie (tout comme <code>background</code> est en fait un raccourci permettant de définir <code>background-image</code>, <code>background-color</code>...). Quel est le nom de la propriété permettant spécifiquement de définir la durée de la transition ?",
+            "answer": "transition-duration",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://cdn-images-1.medium.com/max/1000/1*0bES0_PCswamMscW-uUuYg.gif",
+            "alt": "Les valeurs de transition souvent utilisées sur le web",
+            "caption": "L'animation sur le web va vite : on compte souvent en dixièmes de secondes. C'est le meilleur compris entre visuel et réactivité pour les utilisateurs."
+          }
+        },
+        {
+          "title": "Le timing de la transition",
+          "theory": "À ne pas confondre avec la durée de la transition, le <em>timing</em> détermine la répartition temporelle des étapes de la transition (rapide au début et lent à la fin, par exemple). Il est le troisième paramètre de la propriété <code>transition</code> et vaut par défaut <code>ease</code>, ce qui est adapté à la plupart des cas. Mais il est parfois utile de le modifier.",
+          "codes": {
+            "css": "div { width: 200px; transition: width&nbsp;0.5s&nbsp;cubic-bezier(.29,&nbsp1.01,&nbsp1,&nbsp-0.68); } div:hover { width: 300px; }"
+          },
+          "info": "L'instruction <code>cubic-bezier</code> permet de définir des timing customisés. Heureusement, les mots-clés disponibles (<code>ease</code>, <code>linear</code>...) nous évitent d'avoir à utiliser cela sauf cas particulier. Par exemple, <code>linear</code> correspond à <code>cubic-bezier(0, 0, 1, 1)</code>.",
+          "links": [
+            {
+              "label": "Visualisation des timings possibles",
+              "url": "https://cssreference.io/property/transition-timing-function/"
+            },
+            {
+              "label": "Générateur de cubic-bezier",
+              "url": "http://cubic-bezier.com"
+            }
+          ],
+          "codepen": "dQyJYM",
+          "question": {
+            "text": "Quel mot clé permet d'avoir une transition non pas continue, mais s'effectuant en un nombre fini d'étapes ?",
+            "answer": "steps",
+            "clue": "p"
+          },
+          "figure": {
+            "src": "https://static.commonlounge.com/fp/600w/DR4iAGakwKWanzAqAZrSE7Y091530232546_kc",
+            "alt": "Comparaison de différent timing de transition",
+            "caption": "<code>ease</code> est la valeur par défaut et fera souvent l'affaire, mais il est toujours intéressant d'essayer d'autres effets."
+          }
+        },
+        {
+          "title": "Décaler le départ d'une transition",
+          "theory": "Par défaut, les transitions sont immédiates. Mais il est possible de leur ajouter un délai qui précédera leur déclanchement. C'est le quatrième paramètre de la propriété <code>transition.</code>",
+          "codes": {
+            "css": "div { width: 200px; transition: width&nbsp;0.5s&nbsp;ease&nbsp;1s; } div:hover { width: 300px; }"
+          },
+          "warning": "Si vous voulez simplement modifier le décalage de transition d'un élément dont la transition est déjà définie par un autre sélecteur, utilisez la propriété <code>transition-delay</code> directement, plutôt que de redéfinir les 4 paramètres à chaque fois.",
+          "links": [
+            {
+              "label": "La propriété transition-delay",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/transition-delay"
+            }
+          ],
+          "codepen": "bQGaKx",
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2016/08/start-stop1b.gif",
+            "alt": "Des éléments animés en CSS avec un délai différent",
+            "caption": "<code>transition-delay</code> est indispensable pour réaliser ce genre d'effet."
+          }
+        },
+        {
+          "title": "Animer plusieurs propriétés en même temps",
+          "theory": "Comment animer l'opacité et la taille d'un élément simultanément ? Il suffit de déclarer une animation pour chaque propriété, en les séparant par des virgules.",
+          "codes": {
+            "html": "<div>Au survol, ma hauteur, ma largeur et mon opacité transitionnent, chacune avec leurs paramètres spécifiques.</div>",
+            "css": "div { width: 200px; height: 200px; opacity: 0.5; transition: width&nbsp;0.5s,&nbsp;height&nbsp;0.5s,&nbsp;opacity&nbsp;0.3s&nbsp;linear; } div:hover { width: 300px; height: 300px; opacity: 1; }"
+          },
+          "info": "Si toutes les propriétés concernés ont la même durée, le même timing ou le même décalage, il peut être intéressant d'utiliser les propriétés spécifiques plutôt que de répéter ces informations pour chaque propriété.",
+          "codepen": "xQxYgL",
+          "question": {
+            "text": "Un mot clé permet de faire transitionner toutes les propriétés d'un élément à la fois, lequel ? On évite cependant de l'utiliser pour éviter les effets secondaires et ne pas dégrader la performance de le page.",
+            "answer": "all",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://i.pinimg.com/originals/83/b9/5b/83b95b986e8d940031de5c2624da3537.gif",
+            "alt": "Une transition CSS complexe",
+            "caption": "Un savant mélange de transitions (certaines retardées) sur différentes propriétés de l'élément survolé et de ses enfants."
+          }
+        },
+        {
+          "title": "Transition déclenchées par JavaScript",
+          "theory": "Toutes les transitions ne sont pas déclenchées par un survol, loin de là. On utilisera souvent JavaScript pour écouter un événement (scroll, click...) et manipuler des classes pour permettre au CSS de réagir en conséquence.",
+          "codes": {
+            "html": "<div id=\"element\">Cliquez sur moi pour que je devienne bleu</div>",
+            "css": "div { background-color: yellow; transition: background-color&nbsp;0.3s; } .is-clicked { background-color: blue; }",
+            "js": "document<br/>&nbsp;&nbsp;.getElementById('element')<br/>&nbsp;&nbsp;.addEventListener('click', function(e) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;e.target.classList.add('is-clicked');<br/>&nbsp;&nbsp;});"
+          },
+          "info": "Que fait le JavaScript de ce code ? Lorsqu'on clique sur la div ayant l'id <code>element</code>, il ajoute à l'élement en question (<code>e.target</code>) la classe <code>is-clicked</code>. Cela permet au CSS de faire une modification, avec la transition associée.",
+          "links": [
+            {
+              "label": "Écouter des événements en JS",
+              "url": "https://www.w3schools.com/jsref/met_element_addeventlistener.asp"
+            }
+          ],
+          "codepen": "pQoLPW",
+          "question": {
+            "text": "Quel événement peut-on écouter en JavaScript pour produire le même effet que le sélecteur CSS <code>:hover</code> ?",
+            "answer": "mouseover",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "http://developer.telerik.com/wp-content/uploads/2016/09/scrollreveal_basic_opt.gif",
+            "alt": "Un élément apparaissant lorsqu'il entre dans le viewport",
+            "caption": "On peut mener ça loin, mais la logique de base reste toujours la même. Ici, lorsque l'entreé de l'élément dans le viewport est détéctée par le JavaScript, une classe est ajoutée qui permet au CSS d'effectuer une transition d'apparition."
+          }
+        },
+        {
+          "title": "La propriété transform ",
+          "theory": "Avant de passer aux transitions, un petit aparté sur la propriété <code>transform</code>. À elle seule, elle permet de modifier l'aspect d'un élément de nombreuses façon : modification de la taille, translation, rotation, déformation... C'est <em>la</em> propriété à utiliser dès que possible, d'autant plus qu'elle est optimisée pour les performances d'affichage. Bonus : les éléments sont transformés sans impact sur le flux des éléments de la page (autrement dit, ça ne fait pas bouger les éléments alentours), ce qui serait très problématique dans le cas contraire.",
+          "codes": {
+            "html": "<div>Transformez-moi !</div>",
+            "css": "div { transform: translateY(50px) scale(1.2) rotate(45deg); }"
+          },
+          "info": "Il n'y a pas de propriétés individuelles pour <code>translate</code>, <code>scale</code>... toutes les transformations doivent être chaînées dans la même déclaration <code>transform</code>.",
+          "links": [
+            {
+              "label": "La propriété transform",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/transform"
+            }
+          ],
+          "codepen": "eQNJOK",
+          "figure": {
+            "src": "http://nikpro.com.au/wp-content/uploads/2018/07/css-transform.png",
+            "alt": "Un exemple de transformation CSS 3D",
+            "caption": "On peut aussi gérer de la 3D avec les transformations. Quelle que soit la transformation appliquée, ce n'est qu'une modification visuelle : du point de vue du flux, l'élément n'a changé ni de taille ni de position."
+          }
+        },
+        {
+          "title": "Une animation CSS simple",
+          "theory": "Les transitions CSS ne peuvent pas gérer tous les cas, notamment si on souhaite animer un élément sans qu'un événement extérieur ne vienne changer ses propriétés : autrement dit, si on souhaite qu'il soit animé par nature plutôt que par les circonstances. Comme avec les blocs <code>@font-face</code>, on peut déclarer une ou plusieurs animations en haut de notre code avec un bloc <code>@keyframes</code>. Ce bloc décrit les états successivement appliqués à l'élément qui les recevra grâce à la propriété <code>animation</code>. Comme avec les animations, le deuxième paramètre est la durée prise.",
+          "codes": {
+            "html": "<div>Je me déplace vers la droite en 5 secondes !</div>",
+            "css": "@keyframes&nbsp;move-to-right { from { transform: translateX(0); } to { transform: translateX(500px); }} div { animation: move-to-right&nbsp;5s; }"
+          },
+          "warning": "<code>from</code> et <code>to</code> correspondent respectivement à l'état de début et de fin de l'animation. En réalité, <code>from</code> est inutile dans cet exemple, car l'élément a déjà une translation horizontale de 0 pixel, autrement dit son état normal. Quand on part de l'état normal pour aller vers un autre état, on peut donc simplement utiliser le bloc <code>to</code>. À l'inverse, on peut utiliser le bloc <code>from</code> uniquement si on part d'un état différent pour revenir à l'état initial.",
+          "links": [
+            {
+              "label": "La propriété raccourcie animation",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/animation"
+            }
+          ],
+          "codepen": "xQxYgL",
+          "question": {
+            "text": "Quel est le nom complet de la propriété qui permet de jouer l'animation un nombre spécifique de fois, ou bien à l'infini ?",
+            "answer": "animation-iteration-count",
+            "clue": "t"
+          },
+          "figure": {
+            "src": "https://projects.lukehaas.me/css-loaders/screenshot.gif",
+            "alt": "Différents indicateurs d'activité",
+            "caption": "Les indicateurs d'activité (<em>throbber</em> en anglais) sont un exemple courant d'animations perpétuelles."
+          }
+        },
+        {
+          "title": "Délai et timing des animations",
+          "theory": "Les animations ont beaucoup en commun avec les transitions, notamment le fait de pouvoir prendre une fonction de timing et un délai avant le déclanchement, respectivement en 3e et 4e paramètres.",
+          "codes": {
+            "html": "<div>Je me déplace vers la droite en 5 secondes !</div>",
+            "css": "@keyframes&nbsp;move-to-right { from { transform: translateX(0); } to { transform: translateX(500px); }} div { animation: move-to-right&nbsp;5s&nbsp;cubic-bezier(.29,&nbsp1.01,&nbsp1,&nbsp-0.68)&nbsp;1s; }"
+          },
+          "info": "Comme toujours, vous pouvez utiliser directement des propriétés spécifiques si besoin, ici <code>animation-timing-function</code> et <code>animation-delay</code>.",
+          "links": [
+            {
+              "label": "Visualisation des timings possibles",
+              "url": "https://cssreference.io/property/transition-timing-function/"
+            },
+            {
+              "label": "Générateur de cubic-bezier",
+              "url": "http://cubic-bezier.com"
+            }
+          ],
+          "codepen": "vQEPro",
+          "question": {
+            "text": "Quel <em>timing function</em> représente un départ progressif et une arrivée brusque ?",
+            "answer": "ease-in",
+            "clue": "n"
+          },
+          "figure": {
+            "src": "http://www.desarrollolibre.net/public/images/example/css/letra/letras_animacion.gif",
+            "alt": "Un effet CSS utilisant les délais d'animation",
+            "caption": "Les délais peuvent servir à décaler les points de démarrage de différents constituants d'une animation plus vaste."
+          }
+        },
+        {
+          "title": "Ajouter des images clés",
+          "theory": "Lorsqu'on utilise des transitions CSS, on contrôle le départ et l'arrivée, mais pas ce qui se passe entre les deux. Les animations nous permettent de définir des images clés, étapes par lesquelles devront passer les éléments animés, plutôt que d'effectuer une transition directe. Cela permet d'obtenir des effets beaucoup plus complexes.",
+          "codes": {
+            "html": "<div>Je me déplace d'abord vers la droite, puis vers le bas... Avec une transition, je me déplacerai directement en diagonale.</div>",
+            "css": "@keyframes&nbsp;right-and-down { 50% { transform: translateX(300px); } to { transform: translate(300px,&nbsp;200px); }} div { animation: right-and-down&nbsp;5s; }"
+          },
+          "warning": "La propriété <code>transform</code> est puissante, mais elle nous oblige à combiner les différentes valeurs que l'on souhaite appliquer. Dans l'exemple, on a du préciser dans la deuxième étape <code>translate(300px, 200px)</code> pour ne pas perdre la translation préalablement effectuée sur l'axe X.",
+          "links": [
+            {
+              "label": "Quelques exemples impressionnants",
+              "url": "https://codeburst.io/html-css-and-javascript-10-awesome-codepens-to-inspire-you-420bbde87be1"
+            }
+          ],
+          "codepen": "jQPEoQ",
+          "figure": {
+            "src": "https://s3.amazonaws.com/media-p.slid.es/uploads/174419/images/2582937/husky.gif",
+            "alt": "Un chien animé avec les animations CSS",
+            "caption": "Il y a les personnes qui font des gifs. Et puis il y a les personnes qui font tout avec des transformations CSS."
+          }
+        },
+        {
+          "title": "Animations déclenchées par JavaScript",
+          "theory": "Similairement aux transitions, les animations peuvent être appliquées à un moment précis grâce à l'utilisation de JavaScript.",
+          "codes": {
+            "html": "<div id=\"element\">Cliquez sur moi pour que je tourne sur moi-même.</div>",
+            "css": "@keyframes&nbsp;rotate { to { transform: rotate(360deg); } } .is-clicked { animation: rotate&nbsp;1s; }",
+            "js": "document<br/>&nbsp;&nbsp;.getElementById('element')<br/>&nbsp;&nbsp;.addEventListener('click', function(e) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;e.target.classList.add('is-clicked');<br/>&nbsp;&nbsp;});"
+          },
+          "warning": "N'oubliez pas de n'utiliser les animations que si les transitions ne sont pas suffisantes, par soucis de simplicité !",
+          "links": [
+            {
+              "label": "Écouter des événements en JS",
+              "url": "https://www.w3schools.com/jsref/met_element_addeventlistener.asp"
+            }
+          ],
+          "codepen": "KrpzaL",
+          "question": {
+            "text": "Quel événement observable sur l'objet <code>window</code> permet d'éxécuter une action lorsque la fenêtre du navigateur est redimensionnée ?",
+            "answer": "resize",
+            "clue": "r"
+          }
+        }
+      ]
     }
   ],
   "twitterAccounts": [
