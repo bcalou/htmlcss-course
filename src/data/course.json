@@ -1076,7 +1076,7 @@
               "url": "https://developer.mozilla.org/fr/docs/Web/CSS/animation"
             }
           ],
-          "codepen": "xQxYgL",
+          "codepen": "wQBNyO",
           "question": {
             "text": "Quel est le nom complet de la propriété qui permet de jouer l'animation un nombre spécifique de fois, ou bien à l'infini ?",
             "answer": "animation-iteration-count",
