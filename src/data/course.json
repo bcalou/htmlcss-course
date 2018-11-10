@@ -917,7 +917,7 @@
         "word": "repaint",
         "text": "Un <em>repaint</em> est l'opération effectuée par un navigateur lorsqu'il doit \"repeindre\", c'est à dire rendre visuellement un élément à nouveau. C'est ce qu'il se passe de nombreuses fois par seconde lorsqu'on utilise les transitions et les animations, et cela est coûteux en performance sur certains terminaux, alors attention à ne pas en abuser !"
       },
-      "correctionVideoYoutubeId": "",
+      "correctionVideoYoutubeId": "w6ihp1keW1s",
       "concepts": [
         {
           "title": "Une première transition",
