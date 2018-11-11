@@ -1,6 +1,6 @@
 import Chapter from '../../models/chapter.interface';
 import Component from '../component';
-import ConceptComponent from '../concept/concept.component';
+import ConceptComponent from './concept.component';
 
 export default class ConceptsComponent extends Component {
   protected tagType = 'div';

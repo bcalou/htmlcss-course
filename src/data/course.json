@@ -1164,6 +1164,24 @@
       ]
     }
   ],
+  "videos": [
+    {
+      "title": "Git, Github & Netlify",
+      "youtubeId": "07Kb-_TzVdU"
+    },
+    {
+      "title": "Parallaxe avec Relax",
+      "youtubeId": "nXXhS50l_54"
+    },
+    {
+      "title": "Détection de scroll avec Waypoints",
+      "youtubeId": "9Mq9ktRcrZs"
+    },
+    {
+      "title": "Menu burger fullscreen & responsive",
+      "youtubeId": "4y_GGOY035s"
+    }
+  ],
   "twitterAccounts": [
     {
       "name": "CSS-Tricks",
@@ -1188,7 +1206,7 @@
     {
       "name": "Shashing Magazine",
       "id": "smashingmag",
-      "avatarUrl": "https://pbs.twimg.com/profile_images/1014194982499078145/ScpR-ujV_bigger.jpg"
+      "avatarUrl": "https://pbs.twimg.com/profile_images/1057746497884880898/lyruNAFp_400x400.jpg"
     },
     {
       "name": "Luke Wroblewski",
