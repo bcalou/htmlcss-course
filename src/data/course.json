@@ -1162,6 +1162,219 @@
           }
         }
       ]
+    },
+    {
+      "title": "Formulaires HTML",
+      "description": "Concevoir des formulaires HTML tirant parti des capacités natives du navigateur et en améliorer l'interactivité en CSS et JavaScript.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vS9AUFGLpU54akzrKMNjhURGrzSlBOmvuVI9kRe4l-cEWZSZketNZC3_B9wB_ZWlYL-Esx4CmVpqjYg/pub?start=false&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "formdata",
+        "text": "En JavaScript, il est possible de récupérer les données d'un formulaire sous la forme d'un objet appelé <code>FormData</code>. Il permet la manipulation des données du formulaire, qu'on pourra décider d'envoyer au serveur, sous la forme d'une requête GET ou POST, mais c'est une autre histoire !"
+      },
+      "correctionVideoYoutubeId": "",
+      "concepts": [
+        {
+          "title": "Un premier formulaire",
+          "theory": "Un formulaire est constitué d'une balise <code>form</code> contenant un ou plusieurs inputs, chacun identifié par un attribut <code>name</code>. Chaque <code>input</code> est généralement accompagné d'un <code>label</code> indiquant le nom du champ. Le label et l'input sont liés par leurs attributs, respectivement <code>for</code> et <code>id</code>. Les inputs possèdent aussi généralement un <code>placeholder</code> aidant l'utilisateur avec un exemple de valeur. Le dernier élément indispensable est un input de type <code>submit</code>, permettant la validation du formulaire.",
+          "codes": {
+            "html": "<form><label for=\"movie\">Film préféré</label><input id=\"movie\" name=\"movie\" placeholder=\"Vertigo, Le Parrain...\" /><input type=\"submit\" value=\"Envoyer\" /></form>"
+          },
+          "warning": "Vous pouvez être surpris par la redondance entre l'attribut <code>name</code> et <code>id</code> dans le code ci-contre, mais ils n'ont pas le même but. L'attribut <code>name</code> sert à identifier le champ lorsque les données sont envoyées au serveur, tandis que l'<code>id</code> fait la liaison avec le <code>label</code>, et éventuellement avec le JavaScript. Dans certains cas plus complexe, ces valeurs ne seront pas identiques. Précisez toujours les deux.",
+          "links": [
+            {
+              "label": "Guide global MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires"
+            }
+          ],
+          "codepen": "LXzwdB",
+          "question": {
+            "text": "Quel est le comportement de display par défaut d'un élément <code>form</code> ?",
+            "answer": "block",
+            "clue": "o"
+          },
+          "figure": {
+            "src": "https://developer.mozilla.org/files/4291/client-server.png",
+            "alt": "Schéma d'un échange client/serveur",
+            "caption": "Une fois le formulaire rempli, il pourra être envoyé au serveur qui répondra de manière adéquate. Finalement, on peut voir cela comme une requête similaire aux autres, avec quelques infos en plus (les champs du formulaire). Mais nous ne nous intéréssons ici qu'à la saisie des données côté client."
+          }
+        },
+        {
+          "title": "Les types de champs",
+          "theory": "Par défaut, les champs sont de type <code>text</code>. Bien que cela suffise théoriquement, vous devez impérativement renseigner un type plus précis dès que possible : <code>email</code>, <code>number</code>, <code>date</code>... Cela permet au navigateur de savoir quel type d'information est attendue, et d'aider l'utilisateur à la saisie. Par exemple, le type <code>date</code> mettra un calendrier à disposition de l'utilisateur, le type <code>number</code> sortira le clavier des chiffres sur mobile, etc. Des types précis fluidient énormément l'expérience.",
+          "codes": {
+            "html": "<input id=\"age\" name=\"age\" type=\"number\" />"
+          },
+          "warning": "N'utilisez le type par défaut (<code>text</code>) que si aucun autre ne peut correspondre, de la même façon que <code>div</code> et <code>span</code> sont des éléments sans sémantique à n'utiliser qu'en dernier recours.",
+          "links": [
+            {
+              "label": "Liste des types d'input",
+              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#Attributs"
+            }
+          ],
+          "codepen": "KryKmE",
+          "question": {
+            "text": "Quel type d'input permet de saisir une date associée à une heure précise ?",
+            "answer": "datetime-local",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://ambientimpact.com/sites/default/files/styles/content_image_large/public/paragraphs/images/input_type_date_across_mobile_browsers.png?itok=DOhCPule",
+            "alt": "Un input de type date vu sur plusieurs appareil",
+            "caption": "Le type <code>date</code> permet de profiter du calendrier natif des appareils, ce qui fluidifie considérablement la saisie, en plus de garder l'utilisateur dans un environnement qui lui est familier."
+          }
+        },
+        {
+          "title": "Attributs de validation",
+          "theory": "Toujours dans le but de faciliter l'expérience, ajoutons à nos inputs des informations concernant leurs contraintes respectives. Le plus simple est l'attribut <code>required</code>, à ajouter à tous les inputs non-optionnels. Les attributs <code>minlength</code> et <code>maxlength</code> permettent de borner la longueur du texte attendu, et <code>min</code> et <code>max</code> permettent de border des valeurs numériques. Une utilisation intelligente de ces attributs permet de mettre en forme une validation front native (sans JavaScript), qui ne doit pas se substituer à une validation back, mais qui permettra à l'utilisateur de voir ses erreurs sans envoyer le formulaire pour rien.",
+          "codes": {
+            "html": "<input id=\"pseudo\" name=\"pseudo\" required minlength=\"3\" maxlength=\"32\" />"
+          },
+          "warning": "Attention à réfléchir à la logique des contraintes que vous imposez, quitte à les préciser avec un petit texte explicatif associé à l'input. Les histoire de personnes dont le nom de famille fait 2 lettres seulement, ne pouvant pas s'inscrire à un service à cause d'un <code>maxlength=\"3\"</code> ne manquent pas. Pensez que ces règles sont plus là pour guider que pour contraindre.",
+          "links": [
+            {
+              "label": "Validation front des formulaires",
+              "url": "https://developer.mozilla.org/fr/docs/Web/Guide/HTML/Formulaires/Validation_donnees_formulaire"
+            }
+          ],
+          "codepen": "LXOVbo",
+          "question": {
+            "text": "Quel attribut permet de valider un input selon une forme précise ? Par exemple, si on attend spécifiquement une lettre suivie d'un nombre pour identifier une case sur un plateau d'échec ?",
+            "answer": "pattern",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "/img/form-validation.png",
+            "alt": "La validation d'un champ sur plusieurs navigateurs",
+            "caption": "L'attribut <code>required</code> permet au navigateur de ne pas laisser passer un champ vide. On pourra customiser tout cela en CSS et JS, mais il est déjà bon d'avoir ce comportement de base."
+          }
+        },
+        {
+          "title": "Styles basés sur l'état des champs",
+          "theory": "Comme <code>:hover</code> ou <code>:first-child</code>, des pseudo-classes existent, basées cette fois sur l'état de validation des champs. Par exemple, il est possible de cibler un input mal rempli avec la pseudo classe <code>:invalid</code>. Il est en effet important d'aider le visiteur à repérer où se trouve ses erreurs, en faisant ressortir certains champs en CSS.",
+          "codes": {
+            "html": "<input id=\"pseudo\" name=\"pseudo\" required minlength=\"3\" maxlength=\"32\" />",
+            "css": "input:valid { color: green; } input:invalid { color: red; }"
+          },
+          "warning": "Il faudra cependant ajouter du JS pour ne pas reprocher des erreurs à l'utilisateur alors qu'il n'a même pas commencé à taper. On pourrait par exemple ajouter la classe <code>is-touched</code> lorsque l'utilisateur a interagi avec un champ, et combiner cette classe avec les pseudo-classes de validation pour afficher les styles d'erreur seulement lorsqu'ils sont pertinents.",
+          "links": [
+            {
+              "label": "Pseudo-classes d'inputs",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/:valid"
+            }
+          ],
+          "codepen": "vQWNXm",
+          "question": {
+            "text": "Quelle pseudo-classe permet de cibler les inputs dont la valeur numérique ne correspond pas au <code>min</code> et au <code>max</code> demandés ?",
+            "answer": "out-of-range",
+            "clue": "r"
+          },
+          "figure": {
+            "src": "https://3lhowb48prep40031529g5yj-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/reactjs_form_validation_simple_form_animation.gif",
+            "alt": "Une validation de formulaire en JavaScript",
+            "caption": "La validation de formulaire au fil de la frappe est un art délicat mais qui fera une énorme différence pour vos utilisateurs."
+          }
+        },
+        {
+          "title": "Saisie de textes longs avec textarea",
+          "theory": "La balise <code>input</code> n'est pas la seule à pouvoir accueillir les données de l'utilisateur. La balise <code>textarea</code> permet, comme son nom l'indique, de fournir une zone de texte à l'utilisateur pour qu'il puisse taper un texte plus long. Elle peut prendre des attributs similaires à ceux des inputs, et sa taille peut être définie avec <code>cols</code> et <code>rows</code>.",
+          "codes": {
+            "html": "<textarea name=\"bio\" id=\"bio\" placeholder=\"Renseignez votre bio\" cols=\"50\" rows=\"10\"></textarea>"
+          },
+          "warning": "Notez que contrairement à la balise <code>input</code>, <code>textarea</code> n'est pas auto-fermante : il lui faut une balise de fermeture.",
+          "links": [
+            {
+              "label": "La balise textarea",
+              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Textarea"
+            }
+          ],
+          "codepen": "YREwER",
+          "question": {
+            "text": "Quel attribut pourrait-on ajouter à un <code>textarea</code> (ou n'importe quel input) pour empêcher la saisie (par exemple temporairement, le temps qu'un processus se termine).",
+            "answer": "disabled",
+            "clue": "d"
+          },
+          "figure": {
+            "src": "https://ps.w.org/tinymce-advanced/trunk/screenshot-1.png?rev=1919237",
+            "alt": "L'édition d'un texte avec TinyMCE",
+            "caption": "Certains plugins tels que TinyMCE permettent de présenter des zones de texte aux capacités très avancées."
+          }
+        },
+        {
+          "title": "Cases à cocher",
+          "theory": "Les cases à cocher sont un élément basique des formulaires : valider des CGU, choisir des éléments parmi une liste, activer ou désactiver une option... On les obtient simplement en changeant le type d'un input en <code>checkbox</code>. Il suffit ensuite d'ajouter un label pour décrire l'action associée à cette case. Dans le cas où plusieurs checkboxes sont liées entre elles, on leur donne alors toutes le même attribut <code>name</code> pour les lier et on utilise l'attribut <code>value</code> pour les différencier.",
+          "codes": {
+            "html": "<div><input type=\"checkbox\" name=\"terms\" id=\"terms\" /><label for=\"terms\">J'accepte les CGU</label></div><div><div><input type=\"checkbox\" name=\"shipping_option\" value=\"fast\" id=\"fast\" /><label for=\"fast\">Livraison express</label></div><div><input type=\"checkbox\" name=\"shipping_option\" value=\"gift\" id=\"gift\" /><label for=\"gift\">Papier cadeau</label></div></div>"
+          },
+          "info": "Dans l'exemple, la première checkbox est indépendante, elle a seulement un attribut <code>name</code>. Mais les deux autres checkboxes, qui correspondent aux options de livraisons, sont liées : elles ont donc le même <code>name</code> (<code>shipping_option</code>), avec un attribut <code>value</code> différent (<code>fast</code> et <code>gift</code>). Cela facilitera la réception des données côté serveur.",
+          "links": [
+            {
+              "label": "Doc MDN sur les checkboxes",
+              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input/checkbox"
+            }
+          ],
+          "codepen": "YREGpj",
+          "question": {
+            "text": "Quelle pseudo-classe permet de cibler un élément étant actuellement ciblé par la souris (par exemple un input lorsqu'on clique dedans) ou par le clavier (dans le cas d'une navigation avec la touche tab) ?",
+            "answer": "focus",
+            "clue": "f"
+          },
+          "figure": {
+            "src": "https://mdbootstrap.com/wp-content/uploads/2017/07/bootstrap-checkbox.jpg",
+            "alt": "Différentes checkboxes",
+            "caption": "Beaucoup de rendus sont possibles à partir de ce simple input ! Tous les éléments présentés ici sont de simples checkboxes."
+          }
+        },
+        {
+          "title": "Boutons radio",
+          "theory": "Très similaires aux checkboxes, les boutons radio sont créés en utilisant le type <code>radio</code>. La grosse différence, c'est qu'au sein d'un même groupe, on ne peut en sélectionner qu'un à la fois. On aura donc toujours deux boutons radio ou plus, possédant le même attribut <code>name</code> et des attributs <code>value</code> différents.",
+          "codes": {
+            "html": "<div><input type=\"radio\" name=\"size\" value=\"m\" id=\"m\" /><label for=\"m\">M</label></div><div><input type=\"radio\" name=\"size\" value=\"l\" id=\"l\" /><label for=\"l\">L</label></div><div><input type=\"radio\" name=\"size\" value=\"xl\" id=\"xl\" /><label for=\"xl\">XL</label></div>"
+          },
+          "info": "Une autre différence avec les checkboxes est qu'un bouton radio ne peut pas être décoché. C'est pour cela qu'un bouton radio seul n'a pas de sens.",
+          "links": [
+            {
+              "label": "Doc MDN sur les boutons radio",
+              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input/radio"
+            }
+          ],
+          "codepen": "xQPRrM",
+          "question": {
+            "text": "Quel attribut ajouter à un input pour qu'il capture le focus dès l'affichage de la page ? (autrement dit, que le curseur s'y place automatiquement)",
+            "answer": "autofocus",
+            "clue": "t"
+          },
+          "figure": {
+            "src": "https://app.knowledgeowl.com/app/image/id/5421e22bfe775a9d61000060/n/2014-09-23_1511.png",
+            "alt": "Une liste de checkboxes et de boutons radio",
+            "caption": "Tous les utilisateurs le savent, peut-être même avant de savoir parler : rond = un seul choix, carré = plusieurs choix."
+          }
+        },
+        {
+          "title": "Les listes d'options",
+          "theory": "Quand le nombre d'options devient trop grand, les checkboxes et les boutons radio ne font plus l'affaire d'un point de vue ergonomique. On peut alors recourir à l'élément <code>select</code>, qui contiendra autant d'éléments <code>option</code> qu'il n'y a... d'options. Elles se présenteront alors sous la forme d'une liste déroulante. Le <code>select</code> prend l'attribut <code>name</code> et chaque <code>option</code> prend un attribut <code>value</code>.",
+          "codes": {
+            "html": "<select name=\"size\"><option value=\"m\">M</option><option value=\"l\">L</option><option value=\"XL\">XL</option></select>"
+          },
+          "warning": "L'exemple est volontairement court, mais réservez cet élément aux listes trop longues pour utiliser les checkboxes ou boutons radio.",
+          "links": [
+            {
+              "label": "L'élément select",
+              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/select"
+            }
+          ],
+          "codepen": "aQVJzJ",
+          "question": {
+            "text": "Quel attribut peut-on ajouter au <code>select</code> pour permettre à l'utilisateur de sélectionner plusieurs options ?",
+            "answer": "multiple",
+            "clue": "m"
+          },
+          "figure": {
+            "src": "https://www.jquery-az.com/wp-content/uploads/2016/02/5.0_10-HTML-select-Bootstrap-search.png",
+            "alt": "Un élément de sélection avancée",
+            "caption": "D'innombrables librairies JavaScript permettent de réaliser des élements de sélection beaucoup plus avancés, si besoin"
+          }
+        }
+      ]
     }
   ],
   "videos": [
