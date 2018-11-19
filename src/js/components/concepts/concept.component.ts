@@ -100,6 +100,10 @@ export default class ConceptComponent extends Component {
 
   /** Generate the inside of the concept only once it is open */
   private onOpen(): void {
+    setTimeout(() => {
+      this.el.scrollIntoView(); // TODO : improve fluidity
+    });
+
     if (!this.hasBeenOpened) {
       this.hasBeenOpened = true;
 
