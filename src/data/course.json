@@ -1171,7 +1171,7 @@
         "word": "formdata",
         "text": "En JavaScript, il est possible de récupérer les données d'un formulaire sous la forme d'un objet appelé <code>FormData</code>. Il permet la manipulation des données du formulaire, qu'on pourra décider d'envoyer au serveur, sous la forme d'une requête GET ou POST, mais c'est une autre histoire !"
       },
-      "correctionVideoYoutubeId": "",
+      "correctionVideoYoutubeId": "cjtDrxALhkw",
       "concepts": [
         {
           "title": "Un premier formulaire",
