@@ -1375,6 +1375,234 @@
           }
         }
       ]
+    },
+    {
+      "title": "Pré-processeur SASS",
+      "description": "Utiliser le pré-processeur SASS et son langage SCSS pour écrire un CSS plus cohérent, maintenable et efficace.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vTJV3zDUl9FNi_5kOk0S3ajpiTyifTJ2Gs1nSf58NH1FO5EGisuTXptWpwt05Nsv3tkfYeTZVY7xVbS/pub?start=false&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "transpile",
+        "text": "Lorsque CodePen traduit votre code SCSS en CSS pur pour le navigateur, on dit qu'il <em>transpile</em> le code : il le transforme d'un langage à un autre. En dehors du contexte de CodePen, il nous faudra donc un outil pour effectuer cette transpilation nous-même."
+      },
+      "correctionVideoYoutubeId": "",
+      "concepts": [
+        {
+          "title": "Sélecteurs imbriqués",
+          "theory": "Une des capacités les plus intéressantes de SASS est l'imbrication de sélecteurs les uns dans les autres. Cela permet de ne jamais répéter les sélecteurs, et donc d'éviter les erreurs. Cela facilite également l'écriture du code et favorise une lisibilité et maintenabilité optimales.",
+          "codes": {
+            "html": "<ul class=\"menu\"><li>Stylez-moi !</li></ul><ul><li>Laissez-moi tranquille</li></ul>",
+            "scss": ".menu { display: flex; li { color: red; }}"
+          },
+          "warning": "Vous pouvez imbriquer les sélecteurs à l'infini mais il ne faut pas le faire car cela produirait un code illisible et non maintenable. De la même manière que l'on s'attachait à écrire des sélecteurs CSS simples, essayez de ne pas créer plus de trois niveaux d'imbrication (un sélecteur dans un sélecteur dans un sélecteur).",
+          "links": [
+            {
+              "label": "Nested rules",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#nested_rules"
+            }
+          ],
+          "codepen": "gQzpdy",
+          "question": {
+            "text": "Le pré-processeur SASS vous permet de coder avec deux syntaxes différentes. La plus répendue et celle utilisée dans ce cours s'appelle SCSS (<i>Sassy CSS</i>). Quelle est l'autre ?",
+            "answer": "sass",
+            "clue": "s"
+          },
+          "figure": {
+            "src": "https://cdn-images-1.medium.com/max/1600/1*iSWNgPM9Ew-zyR8QfdYNmw.png",
+            "alt": "Une imbrication profonde avec SASS",
+            "caption": "SASS est une opportunité de rendre votre code plus clair et non l'inverse. Évitez donc le <i>deep nesting</i>, soit une imbrication des règles inutilement profonde. Le code de cet exemple est illisible."
+          }
+        },
+        {
+          "title": "Référence à l'élément parent avec &",
+          "theory": "À l'intérieur d'une imbrication, il est possible de faire référence au sélecteur parent avec le signe <code>&</code>. Cela permet principalement de gérer les combinaisons de classes et les pseudo-classes.",
+          "codes": {
+            "html": "<ul class=\"menu\"><li>Stylez-moi !</li></ul><ul><li>Laissez-moi tranquille</li></ul>",
+            "scss": ".ul { display: flex; &.menu { justify-content: center; } &:hover { li { color: red; }}}"
+          },
+          "warning": "Prenez le temps de comprendre le code de l'exemple. Tous les <code>ul</code> sont en flex, mais si <em>en plus</em> le <code>ul</code> possède la classe <code>.menu</code>, on lui ajoute une propriété d'alignement. Il y a une grosse différence entre <code>&.menu</code> et <code>.menu</code>. Dans le premier cas, il faut que ce soit le <code>ul</code> lui-même qui possède la classe, dans le second, on cherche un élément enfant. La règle <code>&:hover</code> quant à elle permet de cibler le menu quand il est survolé.",
+          "links": [
+            {
+              "label": "Référence à l'élément parent",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#parent-selector"
+            }
+          ],
+          "codepen": "bQKNKL",
+          "question": {
+            "text": "Quel mot anglais désigne le signe <code>&</code> ?",
+            "answer": "ampersand",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2016/01/scss-to-css.gif",
+            "alt": "Un sélecteur de parent avec SASS",
+            "caption": "Utiliser <code>&</code> revient à demander à SASS de concaténer les sélecteurs, sans espacement."
+          }
+        },
+        {
+          "title": "Stocker des variables",
+          "theory": "En développement, on aime pas particulièrement se répéter, et le CSS ne fait pas exception. Il est possible de stocker une dimension, une couleur ou encore le nom d'une typographie dans une variable. On déclare ainsi les variables de notre site au début, et on les utilise plus loin dans le code. Ainsi, si une valeur change, tous les changements sont répercutés. C'est le principe de <i>Single source of truth</i>, source unique de vérité.",
+          "codes": {
+            "scss": "$title-color: #45EFFA; h1 { color: $title-color; } h2 { color: $title-color; }"
+          },
+          "warning": "Certaines valeurs se répètent parfois par hasard, il ne faut pas essayer de tout mettre dans des variables non plus. La question à se poser est : \"si la couleur ou la taille de tel élément venait à changer, quoi d'autre devrait être impacté ?\". Tous les éléments concernés devraient alors partager la même variable.",
+          "links": [
+            {
+              "label": "Variables SCSS",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#variables_"
+            }
+          ],
+          "codepen": "xQzwja",
+          "question": {
+            "text": "Le site sur lequel vous lisez ces mots utilise aussi des variables, mais en CSS natif (il ne fonctionnera donc pas correctement sur IE11, par exemple). Mais le principe est le même et vous pouvez le voir en action avec l'inspecteur. Quel est le nom de la variable grâce à laquelle le header du site et le titre de chaque partie partagent la même couleur rouge cramoisi ?",
+            "answer": "primaryColor",
+            "clue": "r"
+          },
+          "figure": {
+            "src": "https://responsivedesign.is/wp-content/uploads/2017/06/CSS-Variables.png",
+            "alt": "Variables CSS natives",
+            "caption": "Ce n'est pas encore utilisable à grande échelle, notamment à cause d'IE11, mais les variables CSS natives (sans SASS) sont en train de devenir un standard. La syntaxe est différente mais la logique similaire."
+          }
+        },
+        {
+          "title": "Les mixins",
+          "theory": "Les <em>mixins</em> sont des sortes de fonctions css. Elles stockent un ensemble de définitions CSS qui peuvent être utilisées à différents endroit d'un fichier CSS. Leur utilisation est comparable à celle des variables, mais au lieu de stocker des valeurs, elles stockent un ensemble de propriétés et de valeurs. La mixin est créée avec le mot clé <code>@mixin</code> et utilisée avec <code>@include</code>.",
+          "codes": {
+            "scss": "@mixin hoverable { transition: transform&nbsp;0.3s; &:hover { transform: scale(1.1); }} img { @include hoverable; } .button { @include hoverable; }"
+          },
+          "info": "Comme vous pouvez le voir dans l'exemple, une mixin peut même contenir un sous-sélecteur ! Le mot-clé <code>@include</code> agit comme un copier/coller de la mixin à l'endroit où elle est appelée. Tous les éléments incluant la mixin <code>hoverable</code> grossiront au survol.",
+          "links": [
+            {
+              "label": "Mixins SASS",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#defining_a_mixin"
+            }
+          ],
+          "codepen": "zMaBaj",
+          "question": {
+            "text": "Quel mot-clé, déconseillé car aboutissant trop rapidement à des situations confuses, permet d'étendre les propriétés appliquées à un sélecteur ? Par exemple, il permettrait de dire que l'élément <code>.subtitle</code>, en plus de toutes ses propriétés, hérite aussi des propriétés de <code>.title</code>.",
+            "answer": "extend",
+            "clue": "n"
+          }
+        },
+        {
+          "title": "Mixins avec paramètres",
+          "theory": "Toute la puissance des mixins vient de leur capacité à accepter un ou plusieurs paramètres, ce qui permet de factoriser des comportement CSS mais en faisant varier les valeurs. On passe les paramètres comme pour une fonction, entre parenthèses, et on peut utiliser des valeurs par défaut.",
+          "codes": {
+            "scss": "@mixin absolute($top: 0,&nbsp;$left: 0) { position: absolute; top: $top; left: $left; } .menu { @include absolute(15px,&nbsp;50px); } .button { @include absolute; }"
+          },
+          "warning": "Malgré leur puissance, utilisez les mixins avec parcimonie, quand un ensemble de propriétés/valeurs se répètent dans la codebase sans qu'on puisse donner une classe commune aux éléments de manière logique. Par exemple, les éléments positionnés en <code>absolute</code> partagent souvent un ensemble de propriété communes (position, top, left...). Mais on ne va pas leur donner la classe non-sémantique <code>.absolute</code>, une mixin est donc un bon choix pour éviter les redondances. Continuez à utiliser des classes sémantiques quand c'est possible, cela reste le plus maintenable.",
+          "links": [
+            {
+              "label": "Paramètres de mixins",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixin-arguments"
+            }
+          ],
+          "codepen": "GwGjXm",
+          "question": {
+            "text": "Quel bloc permettant de déclarer une typographie pourrait fortement bénéficier de l'utilisation d'une mixin prenant en paramètres, entre autres, un chemin de fichier et un nom de <code>font-family</code> ? On aurait ainsi beaucoup moins de répétition.",
+            "answer": "@font-face",
+            "clue": "t"
+          },
+          "figure": {
+            "src": "https://www.sodifrance.fr/blog/wp-content/uploads/2016/05/blog-mixin-info_bulle.png",
+            "alt": "Plusieurs boîtes avec des styles différents",
+            "caption": "Les mixins peuvent être un moyen très pratique de générer des variations sur un même modèle."
+          }
+        },
+        {
+          "title": "Media queries incluses dans les sélecteurs",
+          "theory": "Jusqu'ici, nos media queries étaient reléguées en fin de fichier, ce qui voulait dire qu'un même élément pouvait être concerné par du CSS dispersé à deux, trois (voire plus !) endroits du fichier. Cela nous contraint à parcourir les fichiers de long en large pour retrouver le code concernant un élément et favorise les erreurs puisqu'on recopie chaque sélecteur pour chaque media query. SASS nous permet un changement de paradigme salvateur : ne plus inclure les sélecteurs dans les media queries, mais include les media queries dans les sélecteurs ! Ainsi, chaque sélecteur n'est écrit qu'une fois et tout le code concernant un élément se trouve au même endroit.",
+          "codes": {
+            "scss": ".menu { display: flex; flex-direction: column; @media (min-width: 800px) { flex-direction: row; } @media (min-width: 1200px) { justify-content: center; } li { margin-bottom: 15px; @media (min-width: 800px) { margin-bottom: 0; }}}"
+          },
+          "warning": "La syntaxe peut paraître un peu lourde pour l'instant, mais heureusement ce n'est pas sa forme finale. On voit cependant déjà que tout le code concernant un élément (<code>.menu</code>, <code>li</code>) est au même endroit, et qu'aucun sélecteur n'est répété.",
+          "codepen": "JeZbEb",
+          "question": {
+            "text": "Vrai ou faux ? Grâce à SASS, on peut inclure une media query dans une autre pour combiner des conditions (<code>min-height</code> & <code>min-width</code> par exemple).",
+            "answer": "vrai",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://i.pinimg.com/originals/16/54/da/1654da2d9ddb6bcf4efa4099a98099f9.jpg",
+            "alt": "Media queries utilisant des variables",
+            "caption": "Et si on utilisait des variables pour ne pas répéter les conditions à chaque fois ? Nous allons faire encore mieux dès le prochain exercice."
+          }
+        },
+        {
+          "title": "Mixins & media queries",
+          "theory": "Les mixins vont nous permettre d'utiliser le nouveau paradigme (media queries <em>dans</em> les sélecteurs) sans avoir à répéter à chaque fois les conditions. Grâce au mot clé <code>@content</code>, on peut écrire une mixin qui injectera un ensemble de déclarations dans une media query. On obtient ainsi un des meilleurs modèles disponibles pour gérer du CSS Mobile First. À appliquer dès aujourd'hui !",
+          "codes": {
+            "scss": "@mixin medium { @media (min-width: 768px) { @content; } } @mixin large { @media (min-width: 1280px) { @content; } } .menu { display: flex; flex-direction: column; @include medium { flex-direction: row; } @include large { justify-content: center; } li { margin-bottom: 15px; @include medium { margin-bottom: 0; }}}"
+          },
+          "info": "Voici donc la forme \"finale\" de notre CSS, la plus maintenable / solide / organisée possible. Quand on utilise <code>@include</code> avec les acollades, le contenu de la mixin est importé mais le mot-clé <code>@content</code> est remplacé par le contenu entre acollades, ce qui permet cette écriture.",
+          "links": [
+            {
+              "label": "Write better media queries with SASS",
+              "url": "https://davidwalsh.name/write-media-queries-sass"
+            }
+          ],
+          "codepen": "yQEVGY",
+          "question": {
+            "text": "Avoir toutes les règles concernant un même élément au même endroit nous procurera l'avantage de pouvoir diviser plus facilement notre CSS en plusieurs fichiers. D'ailleurs, avec quelle instruction SASS pourra-t-on importer nos sous-fichiers dans un fichier principal ?",
+            "answer": "import",
+            "clue": "p"
+          },
+          "figure": {
+            "src": "/img/media-queries.png",
+            "alt": "Mixins de media queries utilisant des variables",
+            "caption": "Pour des projets massifs utilisant un nombre de breakpoints plus important, la combinaison de tout cela avec des variables s'avère très intéressante."
+          }
+        },
+        {
+          "title": "Conditions @if",
+          "theory": "Leur utilisation est clairement anecdotique à côté de tout le reste, mais il est possible avec SASS d'écrire des conditions, avec le mot clé <code>@if</code>. Cela permet, principalement dans les mixins, de faire varier le code en fonction d'une ou plusieurs valeurs. Si besoin, vous pouvez compléter avec un bloc <code>@else</code> pour décrire ce qui se passe dans l'autre cas.",
+          "codes": {
+            "scss": "@mixin background($color:&nbsp;black) { background-color: $color; @if ($color&nbsp;==&nbsp;black) { border: 3px&nbsp;solid&nbsp;white; } @else { border: 3px&nbsp;solid&nbsp;black; }}"
+          },
+          "warning": "Réservez l'emploi de conditions aux rares cas où une valeur d'une mixin dépend directement d'une autre. Pour la maintenabilité globale du code, les classes doivent rester le moyen par défaut d'introduire des variations, lorsque c'est possible.",
+          "links": [
+            {
+              "label": "Conditions SASS",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#if"
+            }
+          ],
+          "codepen": "oQyWNY",
+          "question": {
+            "text": "Quel mot clé peut-on utiliser après un bloc <code>@if</code>, pour enchaîner plusieurs blocs <code>@else</code> ? (réponse sans espace)",
+            "answer": "elseif",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "https://image.slidesharecdn.com/sass-compass-141101111112-conversion-gate02/95/getting-started-with-sass-compass-65-638.jpg?cb=1414840419",
+            "alt": "Implémentation de thèmes avec @if",
+            "caption": "Exemple d'utilisation de <code>@if</code> en dehors d'une mixin, pour introduire le concept de thème à l'ensemble du site."
+          }
+        },
+        {
+          "title": "Boucles @for",
+          "theory": "Également rares mais puissantes, les boucles SASS permettent généralement de faire varier une valeur par itération. Elles ressemblent à une boucle for en Javascript : le mot clé <code>@for</code>, puis une variable <code>i</code> qui varie entre deux bornes et est accessible avec une valeur différente à chaque itération de la boucle.",
+          "codes": {
+            "scss": "li { @for&nbsp;$i&nbsp;from&nbsp;1&nbsp;through&nbsp;10 { &:nth-child(#{$i}) { margin-left: $i&nbsp;*&nbsp;10px; }}}"
+          },
+          "info": "Le code de d'exemple permet d'appliquer une <code>margin-left</code> différente pour chaque <code>li</code> : 10px, puis 20px, 30px, etc... Ce qui permet de donner un effet d'escalier.",
+          "links": [
+            {
+              "label": "Boucles SASS",
+              "url": "https://sass-lang.com/documentation/file.SASS_REFERENCE.html#for"
+            }
+          ],
+          "codepen": "KremGK",
+          "question": {
+            "text": "Quelle instruction SASS permet de réaliser une itération sur les éléments d'une liste ?",
+            "answer": "each",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2016/08/start-stop1b.gif",
+            "alt": "Une animation utilisant transition-delay sur de nombreux éléments",
+            "caption": "Les boucles <code>@for</code> permettent d'éviter beaucoup de répétitions lorsqu'on souhaite faire varier une valeur (ici <code>transition-delay</code>)."
+          }
+        }
+      ]
     }
   ],
   "videos": [
