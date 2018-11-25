@@ -4,6 +4,7 @@ export function formatCode(code: string, type: string): string {
     case 'html':
       return formatHtml(code);
     case 'css':
+    case 'scss':
       return formatCss(code);
     case 'js':
       return formatJs(code);
@@ -69,28 +70,40 @@ function formatCss(code: string): string {
   let indentLevel = 0;
 
   source.forEach((char, i) => {
-    if (char === '}') {
+    if (char === '}' && source[i + 1] !== ')') {
       indentLevel--;
     }
 
     // Add indent spaces depending on nesting level
     if (
       indentLevel > 0 &&
-      (source[i - 1] === '{' || source[i - 1] === '}' || source[i - 1] === ';')
+      (source[i - 1] === '{' ||
+        source[i - 1] === '}' ||
+        source[i - 1] === ';') &&
+      char !== '$' &&
+      source[i - 3] !== '$'
     ) {
       for (let j = 0; j < indentLevel; j++) {
         formatted += '&nbsp;&nbsp;';
       }
     }
 
-    if (char === '{' || (char === '(' && indentLevel === 0)) {
+    if (
+      (char === '{' ||
+        (char === '(' && indentLevel === 0 && source[i + 1] !== '$')) &&
+      source[i - 1] !== '#'
+    ) {
       formatted += '&nbsp;';
     }
 
     formatted += char;
 
     if (
-      (char === ':' && (!isNaN(parseInt(source[i + 1])) || indentLevel > 0)) ||
+      (char === ':' &&
+        source[i - 1] !== '&' &&
+        (!isNaN(parseInt(source[i + 1])) ||
+          source[i + 1] === '#' ||
+          indentLevel > 0)) ||
       (char === ')' && /^[a-zA-Z]/.test(source[i + 1]))
     ) {
       formatted += '&nbsp;';
@@ -98,14 +111,24 @@ function formatCss(code: string): string {
 
     if (char === ';') {
       formatted += '<br/>';
+
+      if (
+        source[i + 1] === '&' ||
+        source[i + 1] === '@' ||
+        (source.slice(i).indexOf('{') > -1 &&
+          source.slice(i).indexOf('{') < source.slice(i).indexOf(':') &&
+          source.slice(i).indexOf('{') < source.slice(i).indexOf('}'))
+      ) {
+        formatted += '<br/>';
+      }
     }
 
-    if (char === '{') {
+    if (char === '{' && source[i + 1] !== '$') {
       indentLevel++;
       formatted += '<br/>';
     }
 
-    if (char === '}' && source[i + 1]) {
+    if (char === '}' && source[i + 1] && source[i + 1] !== ')') {
       formatted += '<br/>';
 
       if (source[i + 1] !== '}') {
@@ -114,7 +137,12 @@ function formatCss(code: string): string {
     }
   });
 
-  return formatted;
+  return formatted
+    .replace(/@mixin/g, '@mixin ')
+    .replace(/@include/g, '@include ')
+    .replace(/<br\/><br\/>&nbsp;&nbsp;@else/g, '&nbsp;@else')
+    .replace(/@if/g, '@if ')
+    .replace(/@media\(/g, '@media (');
 }
 
 /** Format JS code - No formatting at this time, format directly in source */
