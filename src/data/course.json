@@ -1402,7 +1402,7 @@
           ],
           "codepen": "gQzpdy",
           "question": {
-            "text": "Le pré-processeur SASS vous permet de coder avec deux syntaxes différentes. La plus répendue et celle utilisée dans ce cours s'appelle SCSS (<i>Sassy CSS</i>). Quelle est l'autre ?",
+            "text": "Le pré-processeur SASS vous permet de coder avec deux syntaxes différentes. La plus répandue et celle utilisée dans ce cours s'appelle SCSS (<i>Sassy CSS</i>). Quelle est l'autre ?",
             "answer": "sass",
             "clue": "s"
           },
@@ -1417,7 +1417,7 @@
           "theory": "À l'intérieur d'une imbrication, il est possible de faire référence au sélecteur parent avec le signe <code>&</code>. Cela permet principalement de gérer les combinaisons de classes et les pseudo-classes.",
           "codes": {
             "html": "<ul class=\"menu\"><li>Stylez-moi !</li></ul><ul><li>Laissez-moi tranquille</li></ul>",
-            "scss": ".ul { display: flex; &.menu { justify-content: center; } &:hover { li { color: red; }}}"
+            "scss": "ul { display: flex; &.menu { justify-content: center; } &:hover { li { color: red; }}}"
           },
           "warning": "Prenez le temps de comprendre le code de l'exemple. Tous les <code>ul</code> sont en flex, mais si <em>en plus</em> le <code>ul</code> possède la classe <code>.menu</code>, on lui ajoute une propriété d'alignement. Il y a une grosse différence entre <code>&.menu</code> et <code>.menu</code>. Dans le premier cas, il faut que ce soit le <code>ul</code> lui-même qui possède la classe, dans le second, on cherche un élément enfant. La règle <code>&:hover</code> quant à elle permet de cibler le menu quand il est survolé.",
           "links": [
