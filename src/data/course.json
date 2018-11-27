@@ -1583,7 +1583,7 @@
           "codes": {
             "scss": "li { @for&nbsp;$i&nbsp;from&nbsp;1&nbsp;through&nbsp;10 { &:nth-child(#{$i}) { margin-left: $i&nbsp;*&nbsp;10px; }}}"
           },
-          "info": "Le code de d'exemple permet d'appliquer une <code>margin-left</code> différente pour chaque <code>li</code> : 10px, puis 20px, 30px, etc... Ce qui permet de donner un effet d'escalier.",
+          "info": "Le code d'exemple permet d'appliquer une <code>margin-left</code> différente pour chaque <code>li</code> : 10px, puis 20px, 30px, etc... Ce qui permet de donner un effet d'escalier.",
           "links": [
             {
               "label": "Boucles SASS",
