@@ -1384,7 +1384,7 @@
         "word": "transpile",
         "text": "Lorsque CodePen traduit votre code SCSS en CSS pur pour le navigateur, on dit qu'il <em>transpile</em> le code : il le transforme d'un langage à un autre. En dehors du contexte de CodePen, il nous faudra donc un outil pour effectuer cette transpilation nous-même."
       },
-      "correctionVideoYoutubeId": "",
+      "correctionVideoYoutubeId": "ReTyFgvXceI",
       "concepts": [
         {
           "title": "Sélecteurs imbriqués",
