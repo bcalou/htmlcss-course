@@ -22,7 +22,7 @@ function formatHtml(code: string): string {
   let tree: string[] = [];
 
   source.forEach((char, i) => {
-    if (char === '<') {
+    if (char === '<' && source[i + 1] !== '!') {
       const tag: string = source
         .slice(i + 1, i + source.slice(i).indexOf('>'))
         .join('');
