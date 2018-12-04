@@ -1603,6 +1603,169 @@
           }
         }
       ]
+    },
+    {
+      "title": "Convention BEM",
+      "description": "Utiliser la convention de nommage BEM pour écrire un CSS plus prédictible, maintenable et efficace.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vR8pTgz-g8QkdQuJa5elvgbolUAbLLxPBWcdDkNcBvjyWf7W0YV5ctUY-RAOB67yq5JY19qRdUcidnG/pub?start=false&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "scaling",
+        "text": "Le <i>scaling</i> est la mise à l'échelle d'un projet. Pour qu'un code soit <i>scalable</i>, il faut qu'il soit organisé, et le CSS ne fait pas exception. BEM est une des méthodes permettant de coder seul ou à plusieurs sans se heurter à des incompréhensions. Il simplifie considérablement le nommage et l'organisation du CSS pour que les développeurs puissent se concentrer sur l'essentiel : les propriétés à utiliser et les valeurs à appliquer."
+      },
+      "concepts": [
+        {
+          "title": "Blocs BEM",
+          "theory": "Le <em>bloc</em> est l'élément de base de la logique BEM. Un site est alors considéré comme un ensemble de blocs. Chaque bloc peut être ré-utilisé autant de fois que nécessaire (une des raisons pour lesquelles on utilise toujours des classes plutôt que des id). Bien que BEM n'ait pas de style d'écriture officiel, on utilisera désormais le <em>lowerCamelCase</em>. Chaque mot commence par une majuscule sauf le premier. On utilise pas de tirets ou d'underscores, qu'on réservera à d'autres aspects de BEM. Un grand bloc (ici <code>main</code>) peut contenir d'autres blocs (ici <code>company</code> et <code>contactForm</code>).",
+          "codes": {
+            "html": "<header class=\"header\">...</header><main class=\"main\"><section class=\"company\">...</section><form class=\"contactForm\">...</form></main><footer class=\"footer\">...</footer>"
+          },
+          "warning": "Évitez à partir de maintenant de baser votre code sur le nom des tag (<code>header</code>, <code>p</code>, etc) car ils peuvent parfois évoluer, contrairement au nom d'une classe qui est plus précis et durable. Soyez prévenus, en BEM il y a beaucoup de classes, et c'est pour le mieux !",
+          "links": [
+            {
+              "label": "Conventions d'écriture",
+              "url": "https://wprock.fr/blog/conventions-nommage-programmation/"
+            }
+          ],
+          "codepen": "KrEEzm",
+          "question": {
+            "text": "On a décidé de se séparer de la convention d'écriture habituelle pour utiliser BEM de la façon la plus claire possible, en utilisant à la place le <em>lowerCamelCase</em>. Quelle était la convention que nous utilisions auparavant pour le CSS ?",
+            "answer": "kebab-case",
+            "clue": "c"
+          },
+          "figure": {
+            "src": "/img/bem-blocks.png",
+            "alt": "Identification des blocs BEM sur une page",
+            "caption": "La première étape à la réception d'un design est d'en identifier les principaux blocs et de leur donner le nom le plus clair possible."
+          }
+        },
+        {
+          "title": "Modifier un bloc",
+          "theory": "Les <em>modifiers</em> (prononcer à l'anglaise) sont un autre des concepts centraux de BEM. Il est fréquent que des blocs partagent des styles similaires, mais avec parfois quelques variations. Plutôt que de créer une classe différente avec beaucoup de redondances, les deux éléments garderont la classe du bloc de base, et les variations seront introduites par une seconde classe, appelée <em>modifier</em>. On utilisera alors le double tiret de cette façon : <code>bloc--modifier</code> (le double tiret n'a aucune valeur programmatique, c'est une convention). Un même bloc peut avoir aucune, une ou plusieurs variations, et ces variations peuvent même être combinées.",
+          "codes": {
+            "html": "<article class=\"product\"></article><article class=\"product product--new\"></article><article class=\"product product--soldOut\"></article><article class=\"product product--new product--soldOut\"></article>",
+            "css": ".product { background-color: yellow; } .product--new { border: 3px&nbsp;solid&nbsp;red; } .product--soldOut { color: red; }"
+          },
+          "warning": "Notez bien que <em>tous</em> les blocs ont la classe <code>product</code>, et éventuellement un ou plusieurs <em>modifier</em>. Un élément ne peut jamais avoir un <em>modifier</em> sans posséder la classe de base, cela n'aurait pas de sens avec BEM. Pour le dire en français, un produit nouveau est aussi... un produit.",
+          "codepen": "BGbEEq",
+          "question": {
+            "text": "Continuons notre apprentissage de l'anglais technique qui nous sera bien utile pour résoudre nos problèmes avec Google. Quel mot désigne le fameux \"tiret du 6\", utilisé pour écrire un <em>modifier</em> ?",
+            "answer": "dash",
+            "clue": "s"
+          },
+          "figure": {
+            "src": "https://media.merixstudio.com/uploads/modifier2.png",
+            "alt": "Boutons utilisant les modifier BEM",
+            "caption": "Un bouton est souvent lui-même un bloc BEM (après tout, c'est un composant ré-utilisable régulièrement). L'application de <em>modifiers</em> est alors tout à fait appropriée."
+          }
+        },
+        {
+          "title": "Éléments BEM",
+          "theory": "Au sein des blocs se trouvent des <em>éléments</em>, et c'est le troisième et dernier concept de BEM. Chaque élément est désigné par la classe la plus simple possible, préfixée par la classe du bloc suivie de deux underscores : <code>block__element</code>. La relation entre chaque bloc et ses éléments devient ainsi évidente, et deux éléments <code>title</code> ne pourront plus rentrer en conflit, puisqu'ils auront par exemple les classes <code>book__title</code> et <code>movie__title</code>.",
+          "codes": {
+            "html": "<article class=\"product\"><h2 class=\"product__title\">Lecteur Blu-Ray</h2><img class=\"product__picture\" src=\"product.jpg\" /><div class=\"product__price\">159€</div></article>",
+            "css": ".product { background-color: yellow; } .product__title { font-size: 22px; } .product__picture { width: 200px; }"
+          },
+          "warning": "Bien que nous connaissions SASS, il serait dommage d'imbriquer <code>.product__title</code> dans <code>.product</code>. Les classes sont déjà \"imbriquées\" par la convention de nommage, ce qui a l'avantage de créer une spécificité la plus plate possible (tous les sélecteurs ont le même poids CSS), et donc la plus maintenable possible. BEM est partisan d'un CSS plat.",
+          "codepen": "vQPqgo",
+          "question": {
+            "text": "Inspection d'élément ! Quelle classe, suivant la convention de nommage BEM, est utilisée pour styliser l'élément contenant le texte que vous êtes en train de lire ?",
+            "answer": "question__text",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/cb5574c7-13e3-45a3-acc5-1865ac270674/menu-items.png",
+            "alt": "Un bloc BEM contenant plusieurs éléments identiques",
+            "caption": "Les éléments d'un bloc ne sont pas forcément uniques : ils peuvent être présents plusieurs fois dans le bloc. Ici, on aurait par exemple 4 <code>.tabs__tab</code>."
+          }
+        },
+        {
+          "title": "Plusieurs niveaux de blocs",
+          "theory": "Les règles de BEM sont épurées et strictes, et elles permettent ainsi d'imposer une certaine simplicité à notre code. Une des interdictions les plus formelles de BEM est d'avoir plusieurs niveaux de sous éléments : la classe <code>.product__gallery__picture</code> est donc <em>illégale</em>. Elle semble pourtant répondre à un besoin basique : comment faire, dans <code>product</code> pour gérer un élément <code>gallery</code> contenant plusieurs <code>picture</code> ? Pour rester dans la convention BEM et la simplicité maximale, soit on nomme les classes directement <code>product__gallery</code> et <code>product__picture</code> (exemple 1), soit on créé un nouveau bloc BEM <code>gallery</code>, qui contiendra des classes <code>gallery__picture</code> (exemple 2). Chaque bloc peut donc en contenir d'autres.",
+          "codes": {
+            "html": "<!-- 1ère possibilité, classes simples --><article class=\"product\"><h2 class=\"product__title\"></h2><div class=\"product__gallery\"><img class=\"product__picture\" src=\"image1.jpg\" /><img class=\"product__picture\" src=\"image2.jpg\" /></div></article><!-- 2e possibilité, sous-bloc --><article class=\"product\"><h2 class=\"product__title\"></h2><div class=\"product__gallery gallery\"><img class=\"gallery__picture\" src=\"image1.jpg\" /><img class=\"gallery__picture\" src=\"image2.jpg\" /></div></article>"
+          },
+          "info": "Dans la deuxième situation de l'exemple, <code>.product__gallery</code> est à la fois un élément de <code>.product</code> et un bloc <code>.gallery</code> à part entière. Comment savoir quelle solution choisir ? Fixez vous la limite de 100 lignes de CSS pour chaque fichier (et donc chaque bloc, puisqu'un bloc = un fichier). Si vous dépassez, c'est probablement que votre bloc pourrait être découpé en plusieurs sous-blocs.",
+          "codepen": "rQbVOe",
+          "question": {
+            "text": "Inspection à nouveau : le bloc <code>question</code> qui vous est présenté ici est lui-même inclus dans un bloc plus vaste : lequel ?",
+            "answer": "concept",
+            "clue": "n"
+          },
+          "figure": {
+            "src": "/img/bem-blocks.png",
+            "alt": "Page web comprenant plusieurs niveaux de blocs",
+            "caption": "En reprenant ce design d'exemple, il apparaît évident que les 4 éléments présentant les membres seront trop complexes pour ne pas être des blocs à part entière. Ils seront donc à la fois des <code>.group__member</code> et des <code>.member</code>, avec leurs propres enfants (<code>.member__name</code>...)."
+          }
+        },
+        {
+          "title": "Modifier un élément",
+          "theory": "Certains blocs sont légèrement différents des autres, mais parfois c'est un élément qui est différent des autres. Le principe est alors le même : on peut lui appliquer un <em>modifier</em>, en plus de sa classe de base, pour lui appliquer des styles spécifiques. On atteint ici la forme la plus complexe possible avec BEM : <code>block__element--modifier</code>.",
+          "codes": {
+            "html": "<ul class=\"meals\"><li class=\"meals__meal\">Hamburger</li><li class=\"meals__meal\">Fish & Chips</li><li class=\"meals__meal meals__meal--veggie\">Veggie Burger</li></ul>",
+            "css": ".meals__meal { font-size: 18px; } .meals__meal--veggie { color: green; }"
+          },
+          "warning": "Comme avec les modifiers de blocs, chaque élément possédant une classe <code>modifier</code> doit aussi obligatoirement posséder la classe de base. Si on reprend l'exemple en français : chaque plat végétarien est aussi un plat.",
+          "links": [
+            {
+              "label": "Site non officiel BEM (variante de la syntaxe, sans camelCase)",
+              "url": "https://en.bem.info/methodology/quick-start/"
+            }
+          ],
+          "codepen": "OaGyKm",
+          "question": {
+            "text": "Lorsque vous répondez à une question, le champ correspondant à la lettre qui sera utilisée pour former le mot final est d'une couleur différente. Grâce à quel <code>modifier</code> ?",
+            "answer": "clue",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "https://cdn.1min30.com/wp-content/uploads/2018/06/be.png",
+            "alt": "Les 4 sélecteurs BEM possibles",
+            "caption": "Une des forces de BEM est sa simplicité et nous avons ici les 4 formes de sélecteur possibles : bloc, élément de bloc, élément de bloc modifié, bloc modifié. Ça ne va pas plus loin !"
+          }
+        },
+        {
+          "title": "Élément au sein d'un bloc modifié",
+          "theory": "Lorsqu'un bloc possède un <code>modifier</code>, cela impacte ses styles, mais il est aussi possible que cela impacte les styles de ses éléments. Plutôt que d'ajouter un <code>modifier</code> à chacun d'entre eux, on va invoquer la puissance de SASS pour cibler l'élément à l'intérieur du bloc modifié.",
+          "codes": {
+            "html": "<div class=\"product product--new\"><h2 class=\"product__name\">Lecteur Blu-Ray</h2></div>",
+            "scss": ".product--new { border: 3px&nbsp;solid&nbsp;red; .product__name { font-weight: bold; }} .product__name { font-size: 20px; }"
+          },
+          "info": "C'est la première fois dans cette exploration de BEM qu'imbriquer des styles a son intérêt : les éléments <code>.product__name</code> auront toujours une taille de 20px, et seront en plus en gras s'ils sont à l'intérieur d'un <code>.product--new</code>.",
+          "links": [
+            {
+              "label": "Article CSS-Tricks sur BEM",
+              "url": "https://css-tricks.com/bem-101/"
+            }
+          ],
+          "codepen": "vQMXNK",
+          "question": {
+            "text": "Vrai ou faux ? Dans la convention BEM, un élément peut avoir à la fois la classe <code>.product--new</code> et la classe <code>.product__name</code>.",
+            "answer": "faux",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://ashleynolan.co.uk/assets/img/blog/tooling-survey/2018/q10.jpg",
+            "alt": "L'utilisation des différentes méthodologies CSS",
+            "caption": "En 2018, BEM est la plus utilisée des conventions de nommages (les autres sur ce graphique étant Atomic Design, OOCSS, SMACSS, ITCSS et SUIT CSS). Attention, ce n'est pas parce que c'est populaire que c'est bien. Mais là, c'est bien."
+          }
+        },
+        {
+          "title": "Et SASS dans tout ça ?",
+          "theory": "Peut-être l'absence quasi-totale de <code>scss</code> dans ce cours vous étonne-t-elle, mais ce langage va rester très utile. Pour cibler les éléments à l'intérieur de blocs modifiés, d'abord. Mais aussi pour tout ce qui ne concerne pas BEM : sélecteurs <code>nth-child</code>, <code>:hover</code>... et bien sûr, les variables, les mixins et les media queries imbriquées !",
+          "info": "BEM nous permet de garder un CSS de base très plat, permettant une utilisation de SASS encore plus claire car les niveaux d'imbrication seront peu nombreux et lisibles. BEM + SASS = <3",
+          "codepen": "zMXKgr",
+          "figure": {
+            "src": "https://cdn-images-1.medium.com/max/970/1*O0LXIvlRrhsXqHBBmibuhA.png",
+            "alt": "Utilisation de l'esperluette pour écrire des sélecteurs BEM",
+            "caption": "Vous croiserez peut-être ce genre de syntaxe, permise par SCSS. Malgré son élégance apparente, elle cause plus de problèmes qu'elle n'en résout ! En effet, les sélecteurs complets n'apparaissent plus et la lecture devient plus difficile."
+          },
+          "question": {
+            "text": "BEM s'appliquent aux blocs de votre page, mais cette dernière peut aussi avoir des styles beaucoup plus globaux, qu'on mettra souvent dans un dossier <code>/global</code>. Par exemple, quelle est la classe de l'élément non BEM qui contient ici le header, le body et le footer ?",
+            "answer": "page",
+            "clue": "g"
+          }
+        }
+      ]
     }
   ],
   "videos": [
