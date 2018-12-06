@@ -1760,7 +1760,7 @@
             "caption": "Vous croiserez peut-être ce genre de syntaxe, permise par SCSS. Malgré son élégance apparente, elle cause plus de problèmes qu'elle n'en résout ! En effet, les sélecteurs complets n'apparaissent plus et la lecture devient plus difficile."
           },
           "question": {
-            "text": "BEM s'appliquent aux blocs de votre page, mais cette dernière peut aussi avoir des styles beaucoup plus globaux, qu'on mettra souvent dans un dossier <code>/global</code>. Par exemple, quelle est la classe de l'élément non BEM qui contient ici le header, le body et le footer ?",
+            "text": "BEM s'appliquent aux blocs de votre page, mais cette dernière peut aussi avoir des styles beaucoup plus globaux, qu'on mettra souvent dans un dossier <code>/global</code>. Par exemple, quelle est la classe de l'élément non BEM qui contient ici le header, le main et le footer ?",
             "answer": "page",
             "clue": "g"
           }
