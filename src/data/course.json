@@ -1612,6 +1612,7 @@
         "word": "scaling",
         "text": "Le <i>scaling</i> est la mise à l'échelle d'un projet. Pour qu'un code soit <i>scalable</i>, il faut qu'il soit organisé, et le CSS ne fait pas exception. BEM est une des méthodes permettant de coder seul ou à plusieurs sans se heurter à des incompréhensions. Il simplifie considérablement le nommage et l'organisation du CSS pour que les développeurs puissent se concentrer sur l'essentiel : les propriétés à utiliser et les valeurs à appliquer."
       },
+      "correctionVideoYoutubeId": "tRdrod_3tlE",
       "concepts": [
         {
           "title": "Blocs BEM",
