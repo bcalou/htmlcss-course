@@ -1767,6 +1767,259 @@
           }
         }
       ]
+    },
+    {
+      "title": "Effets CSS avancés",
+      "description": "Créer des effets visuels avancés mêlant textes, images et animations grâce aux propriétés CSS.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vR4Bi1_6E6rN9-LnLi9WZCh3RTXZKGHn272tCUelyi-2RZFgKjAu_LSXBF2xHoowhJ735zfdNINlYPV/pub?start=true&loop=false&delayms=6000000",
+      "puzzle": {
+        "word": "engine",
+        "text": "Un moteur de rendu, ou <em>browser engine</em> en anglais, est un composant essentiel de chaque navigateur, chargé de transformer le HTML et le CSS en une représentation visuelle interactive. Il peut être différent selon chaque navigateur, ce qui peut entraîner des différences de support pour certaines propriétés. Comme autres composants essentiels d'un navigateur, on trouve notamment le moteur JavaScript et l'interface utilisateur (barre de recherche, favoris...)."
+      },
+      "concepts": [
+        {
+          "title": "Dégradés CSS",
+          "theory": "Commençons par quelque chose de simple et extrèmement courant : les dégradés CSS. La propriété <code>background</code>, en plus des couleurs et urls, peut prendre en valeur la fonction de dégradé. Les deux dégradés les plus courants sont <code>linear-gradient</code> (dégradé linéaire) et <code>radial-gradient</code> (dégradé radial). Il est alors possible de définir une couleur de départ, une couleur d'arrivée (et une direction pour les dégradés linéaires). Il est également possible de combiner plusieurs dégradés dans un même fond.",
+          "codes": {
+            "html": "<div class=\"linear-gradient\"></div><div class=\"radial-gradient\"></div>",
+            "css": ".linear-gradient { background: linear-gradient(to&nbsp;right,&nbsp;red,&nbsp;yellow); } .radial-gradient { background: radial-gradient(blue&nbsp;30%,&nbsp;green); }"
+          },
+          "info": "Par défaut, le dégradé produit une transition entre deux couleurs ou plus, de façon linéaire. Il est possible de paramétrer la manière dont les couleurs sont réparties en ajoutant des valeurs en pourcentage derrière elles, ce qui permet \"d'étaler\" plus ou moins une couleur sur l'espace disponible.",
+          "links": [
+            {
+              "label": "linear-gradient",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/linear-gradient"
+            },
+            {
+              "label": "radial-gradient",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/radial-gradient"
+            },
+            {
+              "label": "Générateur en ligne",
+              "url": "http://www.colorzilla.com/gradient-editor/"
+            }
+          ],
+          "codepen": "maKPYe",
+          "figure": {
+            "src": "https://bennettfeely.com/gradients/img/gradient_24.png",
+            "alt": "Dégradé CSS à deux dimensions",
+            "caption": "Ce dégradé bi-dimensionnel peut être réalisé grâce à plusieurs dégradés linéaires, à condition qu'ils aient des directions différentes et qu'ils se dissolvent les uns dans les autres en utilisant des couleurs d'arrivé transparentes type <code>rgba(154, 111, 18, 0)</code>."
+          }
+        },
+        {
+          "title": "Filtres CSS",
+          "theory": "Les filtres CSS permettent de réaliser des effets très variés, du simple noir et blanc à des manipulations dignes de certains logiciels de retouche. Dans leur forme la plus simple, ils s'utilisent avec la propriété <code>filter</code>, qui prend en valeur une ou plusieurs fonctions de transformation.",
+          "codes": {
+            "html": "<img class=\"grayscale\" src=\"cat.jpg\" /><img class=\"sepia\" src=\"cat.jpg\" /><img class=\"blur\" src=\"cat.jpg\" />",
+            "css": ".grayscale { filter: grayscale(100%); } .sepia { filter: sepia(100%); } .blur { filter: blur(5px); }"
+          },
+          "warning": "Beaucoup des effets CSS décrits dans ce cours ne sont pas compatibles avec certains navigateurs, notamment IE11. Cela ne doit pas nous empêcher de les utiliser, mais assurez-vous que votre contenu est toujours lisible et cohérent malgré leur absence.",
+          "links": [
+            {
+              "label": "Doc MDN sur les filtres",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/filter"
+            },
+            {
+              "label": "Testez les filtres dynamiquement",
+              "url": "https://codepen.io/SitePoint/pen/KwmeJZ"
+            }
+          ],
+          "codepen": "EGLPeb",
+          "question": {
+            "text": "Quel filtre CSS permet de modifier la teinte d'une image ?",
+            "answer": "hue-rotate",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://camo.githubusercontent.com/636a52b7216246cdcd121d15aaef95084cbee4c1/687474703a2f2f7777772e773363706c75732e636f6d2f73697465732f64656661756c742f66696c65732f626c6f67732f323031352f313530362f6373732d626c656e642d6d6f64652d352e676966",
+            "alt": "Un filtre CSS animé au survol d'une image",
+            "caption": "Comparé à une manipulation en amont dans un logiciel, un avantage majeur de CSS est le fait de pouvoir animer les filtres en question."
+          }
+        },
+        {
+          "title": "Filtres utilisant un SVG",
+          "theory": "Certains effets sont trop complexes pour être réalisés avec les filtres CSS de base. Mais il est possible de définir un filtre plus complexe grâce à <code>SVG</code>. <code>SVG</code> est un format d'image vectoriel, qui a en commun avec le HTML sa syntaxe utilisant des balises (syntaxe <code>XML</code>). Ce format permet de définir des images, mais aussi des filtres, se présentant comme une suite d'opérations plus ou moins complexes. On donne un <code>id</code> au filtre, ce qui nous permettra d'appliquer le filtre en CSS.",
+          "codes": {
+            "html": "<svg><filter id=\"turbulence\"><feTurbulence type=\"turbulence\" baseFrequency=\"0.05\" numOctaves=\"2\" result=\"turbulence\" /> <feDisplacementMap in2=\"turbulence\" in=\"SourceGraphic\" scale=\"50\" xChannelSelector=\"R\" yChannelSelector=\"G\" /></filter></svg><main><img src=\"cat.jpg\" /></main>",
+            "css": "img { filter: url(#turbulence); }"
+          },
+          "info": "Le code de l'exemple applique un effet de turbulence à l'image. La légende ne dit pas si certains êtres humains parviennent à écrire cela sans utiliser Google. N'ayez pas peur de faire jouer vos talents de recherche.",
+          "links": [
+            {
+              "label": "Liste des filtres SVG",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter#See_also"
+            },
+            {
+              "label": "Démo interactives des filtres SVG",
+              "url": "https://yoksel.github.io/svg-filters/#/"
+            },
+            {
+              "label": "Les matrices de couleurs",
+              "url": "https://alistapart.com/article/finessing-fecolormatrix"
+            }
+          ],
+          "codepen": "XoqpML",
+          "question": {
+            "text": "Quel filtre SVG permet floutter une image ? On peut le faire avec <code>filter: blur</code>, mais utiliser un filtre SVG permettra des combinaisons plus complexes.",
+            "answer": "feGaussianBlur",
+            "clue": "n"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2017/12/svg-duotone-beforeafter.png",
+            "alt": "Une photo modifiée grâce à un filtre SVG",
+            "caption": "Même Instagram ne saurait rivaliser face aux filtres SVG."
+          }
+        },
+        {
+          "title": "Masques textuels",
+          "theory": "Un effet courant est l'apparition d'une image au travers d'un texte, comme si le texte découpait l'écran. Cet effet peut être réalisé de nombreuses manières, certaines utilisant SVG, d'autres non. Dans sa forme la plus modeste, le code est assez simple. Il s'agit d'une part de limiter l'apparition du <code>background</code> à la zone définie par le texte, et d'autre part de définir la couleur de ce texte comme étant transparente.",
+          "codes": {
+            "html": "<p>Le fond de mon texte est une image !</p>",
+            "css": "p { color: transparent; -webkit-background-clip: text; background-image: url(\"ocean.jpg\"); }"
+          },
+          "info": "Les navigateurs basés sur le moteur WebKit ou dérivés (Chrome, Safari...) ont besoin du préfixe <code>-webkit-</code> pour la propriété <code>background-clip</code> car elle est encore expérimentale. Firefox ignore le préfixe et comprend la propriété telle quelle.",
+          "links": [
+            {
+              "label": "La propriété background-clip",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/background-clip"
+            },
+            {
+              "label": "Les différentes techniques",
+              "url": "https://css-tricks.com/how-to-do-knockout-text/"
+            },
+            {
+              "label": "Quelques dérivés astucieux",
+              "url": "https://codepen.io/Jintos/pen/crlxk"
+            }
+          ],
+          "codepen": "aPGaNB",
+          "question": {
+            "text": "Quelle valeur donner à <code>background-clip</code> pour que le fond ne s'applique pas sur la zone de padding d'une boîte ? (uniquement sur le contenu, laissant ainsi une marge)",
+            "answer": "content-box",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://i.ytimg.com/vi/KsrX1qyQDRs/maxresdefault.jpg",
+            "alt": "Un effet de masque textuel avec fond décalé",
+            "caption": "En utilisant un masque textuel + la même image légèrement décalée, vous pouvez facilement obtenir cet effet."
+          }
+        },
+        {
+          "title": "Masque à partir d'une forme",
+          "theory": "Comment faire apparaître seulement une partie d'un élément ? C'est possible grâce à la propriété <code>clip-path</code>, qui définit un chemin (rectangle, cercle ou polygone customisé) en dehors duquel l'élément ne sera pas visible.",
+          "codes": {
+            "html": "<img src=\"huge-image.jpg\">",
+            "css": "img { clip-path: inset(100px&nbsp;100px); }"
+          },
+          "info": "Le code de l'exemple va faire disparaître 100px sur chaque bord de l'image. Firefox possède un excellent éditeur de <code>clip-path</code> au sein de son inspecteur d'élément, à essayer !",
+          "links": [
+            {
+              "label": "clip-path sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/clip-path"
+            },
+            {
+              "label": "Éditeur de path en ligne",
+              "url": "https://bennettfeely.com/clippy/"
+            }
+          ],
+          "codepen": "VqxEzO",
+          "question": {
+            "text": "À quelle forme géométrique correspond le code suivant ? <code>polygon(50% 0%, 75% 50%, 50% 100%, 25% 50%)</code>",
+            "answer": "losange",
+            "clue": "g"
+          },
+          "figure": {
+            "src": "https://cdn.csswinner.com/images/winners/2017/may/51605166.jpg",
+            "alt": "Une utilisation de clip-path pour un portefolio",
+            "caption": "Les possibilités sont infinies, des plus discrètes aux plus inventives et osées."
+          }
+        },
+        {
+          "title": "Flux de texte autour d'une forme",
+          "theory": "Si l'observation est votre point fort, vous avez peut-être remarqué que les images .jpg et .png sont toujours rectangulaires. Est-il alors possible de faire suivre à du texte les contours d'un objet représenté au sein d'une image ? La propriété <code>shape-outside</code> le permet. C'est la zone définie par cette dernière qui sera utilisée pour calculer la position du texte flottant autour, et non pas l'entièreté de l'image.",
+          "codes": {
+            "html": "<img src=\"baloon.jpg\" /><p>Ce texte flottera en suivant la forme circulaire du ballon et non pas la forme rectangulaire de l'image.</p>",
+            "css": "img {float: left; shape-outside: circle(50%); }"
+          },
+          "info": "On retrouve ici l'intention de base derrière l'invention de la propriété <code>float</code> : faire flotter du texte autour d'une ou plusieurs images, comme dans le monde du print. L'usage de <code>float</code> fût longtemps également nécessaire pour gérer les mises en page (blocs en vis-à-vis, etc), jusqu'à ce que des propriétés dédiées telles que flexbox et grid prennent le relais.",
+          "links": [
+            {
+              "label": "shape-outside sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/shape-outside"
+            }
+          ],
+          "codepen": "ebrqKd",
+          "question": {
+            "text": "Quelle valeur peut-on donner à <code>shape-outside</code> pour faire suivre un dégradé aux éléments alentour ?",
+            "answer": "linear-gradient",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "http://razvancaliman.com/writing/css-shapes-editor-chrome/edit.gif",
+            "alt": "L'éditeur de formes CSS sur Firefox",
+            "caption": "Un éditeur de formes CSS tel que celui présenté dans l'inspecteur d'éléments Firefox peut nous procurer un grand confort."
+          }
+        },
+        {
+          "title": "Transformations 3D",
+          "theory": "Une transformation 3D courante est la rotation sur elle-même d'une tuile afin de dévoiler son verso. La stratégie globale est la suivante : deux éléments, dont un a subi une rotation sur l'axe Y de 180 degrés (il est donc de dos). Au moment souhaité, on fait également subir au parent une rotation sur l'axe Y de 180 degrés, ce qui inverse les rôles : le verso devient le côté présenté. L'effet est renforcé en définissant une perspective sur la \"scène\" (un élément parent à tout cela).",
+          "codes": {
+            "html": "<div class=\"scene\"><div class=\"scene__card\"><div class=\"scene__side scene__side--front\"></div><div class=\"scene__side scene__side--back\"></div></div></div>",
+            "css": ".scene { perspective: 500px; perspective-origin: 100px&nbsp;100px; } .scene__card { position: relative; transform-style: preserve-3d; width: 200px; height: 200px; transition: transform&nbsp;1s; } .scene__card:hover { transform: rotateY(180deg); } .scene__side { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; } .scene__side--front { background-color: red; } .scene__side--back { transform: rotateY(180deg); background-color: yellow; }"
+          },
+          "info": "Le code d'exemple est long mais facile à décliner une fois qu'on en a compris la logique. N'hésitez pas à prendre le temps de le reproduire dans un CodePen pour le décortiquer.",
+          "links": [
+            {
+              "label": "La propriété perspective",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/perspective"
+            },
+            {
+              "label": "La propriété perspective-origin",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/perspective-origin"
+            },
+            {
+              "label": "La propriété backface-visibility",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/backface-visibility"
+            }
+          ],
+          "codepen": "OrZqrv",
+          "figure": {
+            "src": "https://codetea.com/content/images/2017/10/World-Places--CSS-3d-hover-.gif",
+            "alt": "Un effet CSS 3d qui dévoile une carte",
+            "caption": "Tout le reste n'est que déclinaison. Un habile mélange de <code>translate</code>, <code>rotate</code> et <code>perspective</code> permet de réaliser cet effet simplement."
+          }
+        },
+        {
+          "title": "Fusions de calques",
+          "theory": "On peut obtenir grâce à la propriété <code>mix-blend-mode</code> ce qu'on pourrait apparenter à de la fusion de calques sur des logiciels de retouche. De nombreux algorithmes de combinaison des couleurs sont proposés, permettant une impressionante variété de résultats. Un calque peut être n'importe quel élément : image, texte ou autre.",
+          "codes": {
+            "html": "<img src=\"cat1.jpg\" /><img src=\"cat2.jpg\" />",
+            "css": "img { mix-blend-mode: multiply; }"
+          },
+          "warning": "Réaliser ces effets en CSS procure l'avantage de pouvoir modifier des images qu'on ne connaît pas encore pendant le processus de développement (ajoutées plus tard comme sur un blog, par exemple), ou encore de réagir aux interactions (<code>:hover</code>, etc). Mais n'oubliez pas de toujours vérifier la compatibilité des effets que vous utilisez, par exemple sur <em>caniuse.com</em>.",
+          "links": [
+            {
+              "label": "mix-blend-mode sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/mix-blend-mode"
+            },
+            {
+              "label": "Un exemple poussé et puissant",
+              "url": "https://codepen.io/danwilson/pen/dqZvmx"
+            }
+          ],
+          "codepen": "BvxgZw",
+          "question": {
+            "text": "En colorimétrie, quel est le nom donné à l'intensité d'une couleur ou d'une teine ? C'est aussi une valeur possible pour <code>mix-blend-mode</code>",
+            "answer": "saturation",
+            "clue": "n"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2015/10/xoxo.jpg",
+            "alt": "Un design utilisant mix-blend-mode",
+            "caption": "Pas besoin de pousser la complexité à l'extrême pour obtenir des résultats visuellement intéressants."
+          }
+        }
+      ]
     }
   ],
   "videos": [
