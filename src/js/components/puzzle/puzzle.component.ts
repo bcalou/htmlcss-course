@@ -53,6 +53,7 @@ export default class PuzzleComponent extends Component {
 
   /** Get the concept title for the given letter */
   private getConceptTitleForLetter(letter: string, index: number): string {
+    console.log(letter, index);
     return getConceptTitle(
       this.getConceptForLetter(letter, index),
       this.chapter

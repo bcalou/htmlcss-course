@@ -142,7 +142,8 @@ function formatCss(code: string): string {
     .replace(/@include/g, '@include ')
     .replace(/<br\/><br\/>&nbsp;&nbsp;@else/g, '&nbsp;@else')
     .replace(/@if/g, '@if ')
-    .replace(/@media\(/g, '@media (');
+    .replace(/@media\(/g, '@media (')
+    .replace(/@supports\(/g, '@supports (');
 }
 
 /** Format JS code - No formatting at this time, format directly in source */

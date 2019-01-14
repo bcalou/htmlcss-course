@@ -1772,6 +1772,7 @@
       "title": "Effets CSS avancés",
       "description": "Créer des effets visuels avancés mêlant textes, images et animations grâce aux propriétés CSS.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vR4Bi1_6E6rN9-LnLi9WZCh3RTXZKGHn272tCUelyi-2RZFgKjAu_LSXBF2xHoowhJ735zfdNINlYPV/pub?start=true&loop=false&delayms=6000000",
+      "correctionVideoYoutubeId": "LskT4TrAyJg",
       "puzzle": {
         "word": "engine",
         "text": "Un moteur de rendu, ou <em>browser engine</em> en anglais, est un composant essentiel de chaque navigateur, chargé de transformer le HTML et le CSS en une représentation visuelle interactive. Il peut être différent selon chaque navigateur, ce qui peut entraîner des différences de support pour certaines propriétés. Comme autres composants essentiels d'un navigateur, on trouve notamment le moteur JavaScript et l'interface utilisateur (barre de recherche, favoris...)."
@@ -2020,6 +2021,269 @@
           }
         }
       ]
+    },
+    {
+      "title": "S'adapter au contexte",
+      "description": "Bonnes pratiques et outils pour s'adapter aux capacités des écrans, des navigateurs et des utilisateurs.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQ0mXT6ESa5oXsRi5nxs2poDkX9xDMImupSdMhNPOTpvFdZysXGjs2K9Fih6DkY3eZ-IAknE6yu7sL9/pub?start=true&loop=false&delayms=60000",
+      "puzzle": {
+        "word": "capacite",
+        "text": "Seules les capacités des appareils que nous ciblons devraient nous intéresser, pas les appareils eux-mêmes, l'immense variété de ces derniers empêchant toute prédiction. Les capacités (ou <i>features</i>), elles, peuvent être testées de manière quasi-déterministe, nous permettant de réaliser des sites solides se construisant selon la nature précise de chaque contexte."
+      },
+      "concepts": [
+        {
+          "title": "Image de background responsive",
+          "theory": "Une immense économie de données et de temps peut être effectuée en changeant la source d'une image en fonction de la taille/densité de l'écran. Il serait absurde de fournir la même image sur une tablette de faible densité que sur un grand écran ultra HD. Les media queries nous permettent de modifier la propriété <code>background-image</code> en fonction du contexte. Ces techniques peuvent aisément diviser par 2, voire plus, le poids d'une page web.",
+          "codes": {
+            "html": "<div class=\"cat\" src=\"cat.jpg\"></div>",
+            "scss": ".cat { width: 200px; height: 200px; background-image: url(\"cat-small.jpg\"); @media (min-width: 600px) { width: 500px; height: 500px; background-image: url(\"cat-medium.jpg\"); } @media (min-width: 1150px) { width: 800px; height: 800px; background-image: url(\"cat-large.jpg\"); @media (min-resolution: 192dpi) { background-image: url(\"cat-xlarge.jpg\"); }}}"
+          },
+          "info": "Un écran est dit HD (ou <i>Retina</i>, bien qu'il s'agisse d'un terme dépose par Apple), lorsque sa densité de pixels (dpi = <i>dot per inch</i>) est plus elevée que la normale. Elle varie pour chaque écran, allant de <code>96dpi</code> pour les écrans classiques à <code>568dpi</code> pour le Galaxy S8, parfois au-delà. On peut considérer qu'un écran au dessus de <code>192dpi</code> est HD. On parle aussi parfois de PPI (<i>pixel per inch</i>), mais la différence n'a d'importance que si on considère le print.",
+          "links": [
+            {
+              "label": "La media query resolution",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/@media/resolution"
+            },
+            {
+              "label": "Testez votre appareil",
+              "url": "https://www.mydevice.io/"
+            },
+            {
+              "label": "Liste des densités par appareil",
+              "url": "http://dpi.lv/"
+            }
+          ],
+          "codepen": "XoyZYm",
+          "question": {
+            "text": "Quelle valeur, à ne pas confondre avec la densité de pixels exprimée en <em>dpi</em>, représente le rapport entre le nombre de pixels réels et le nombre de pixels CSS ?",
+            "answer": "pixel ratio",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "http://teknosrc.com/wp-content/uploads/2013/12/Pixel-Density-Comparison-of-Displays-with-Different-Resolution.gif",
+            "alt": "Zoom sur deux écrans de densité différente",
+            "caption": "Plus il y a de pixels dans le même pouce (<i>inch</i> en anglais), plus la densité de pixels / points est elevée. En CSS, la notion de <em>pixel ratio</em> permet de définir deux éléments de même taille CSS qui auront une taille physique similaire sur tous les écrans malgré la différence de densité."
+          }
+        },
+        {
+          "title": "Balises img responsives avec srcset",
+          "theory": "Nous pouvons rendre les images de background responsive, mais quid des balises <code>img</code> ? Grâce à l'attribut <code>srcset</code>, cela est encore plus simple qu'avec les media queries. En effet, nous n'allons plus décider nous-même de quand charger quoi, mais plutôt fournir une liste de ressources au navigateur, chaque ressource étant associée à sa largeur (avec l'unité <code>w</code>, pour <i>width</i>). Et c'est le navigateur qui sera maître de la décision en fonction du contexte : taille de l'écran, densité des pixels, qualité de la connexion... En plus de la simplicité d'écriture, l'avantage est majeur : le navigateur est bien mieux placé que nous pour savoir quelle est l'image la plus adaptée.",
+          "codes": {
+            "html": "<img src=\"cat-large.jpg\" srcset=\"cat-large.jpg 200w, cat-medium.jpg 500w, cat-large.jpg 800w, cat-xlarge.jpg 1600w\">"
+          },
+          "warning": "N'oubliez pas de laisser l'attribut <code>src</code> pour les navigateurs ne comprenant pas <code>srcset</code>.",
+          "links": [
+            {
+              "label": "Images adaptatives sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Apprendre/HTML/Comment/Ajouter_des_images_adaptatives_%C3%A0_une_page_web"
+            },
+            {
+              "label": "Support de la fonctionnalité",
+              "url": "https://caniuse.com/#feat=picture"
+            }
+          ],
+          "codepen": "ebQrwX",
+          "question": {
+            "text": "Quel élément HTML doit-on utiliser si on souhaite maîtriser avec exactitude quelle image sera chargée en fonction de la taille de l'écran, sans laisser le choix au navigateur ?",
+            "answer": "picture",
+            "clue": "c"
+          },
+          "figure": {
+            "src": "https://designshack.net/wp-content/uploads/focalpoint-1.jpg",
+            "alt": "Une image originale et sa version découpée",
+            "caption": "Une image plus petite n'est pas forcément une réduction directe de l'image originale. Vous pouvez tirer parti des techniques responsives pour mettre en valeur le sujet sur des écrans plus petits, en recadrant l'image."
+          }
+        },
+        {
+          "title": "Prendre en compte la taille de l'écran avec l'attribut sizes",
+          "theory": "Lorsqu'on utilise <code>srcset</code>, le navigateur part du principe que l'image sera affichée avec la même largeur que le viewport pour décider quelle ressource charger. C'est souvent vrai sur mobile, beaucoup moins sur des écrans plus grands. On va donc informer le navigateur des dimensions appliquées aux images pour qu'il puisse faire le choix le plus optimisé possible. Il s'agit de retranscrire les dimensions définies dans le CSS grâce à l'attribut <code>sizes</code>. Chaque valeur dans cette liste est une condition (<code>max-width</code>) suivie d'une dimension en <code>vw</code> ou <code>px</code>. La dernière valeur n'a pas de condition, c'est la dimension de l'image sur les écrans les plus grands.",
+          "codes": {
+            "html": "<img src=\"cat-large.jpg\" srcset=\"cat-large.jpg 200w, cat-medium.jpg 500w, cat-large.jpg 800w, cat-xlarge.jpg 1600w\" sizes=\"(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 800px\">",
+            "scss": "img { width: 100vw; @media (min-width: 768px) { width: 50vw; } @media (min-width: 1024px) { width: 800px; }}"
+          },
+          "warning": "Contrairement à la stratégie Mobile First utilisant <code>min-width</code> dans le CSS, on utilise <code>max-width</code> dans l'attribut <code>sizes</code>, et c'est la première condition valable qui est prise en compte. C'est pour cela que les valeurs sont différentes d'un pixel : <code>min-width: 768px</code> équivaut à <code>max-width: 767px</code>. Malheureusement, le HTML ne peut pas \"deviner\" ces informations à partir du CSS, d'où la redondance.",
+          "links": [
+            {
+              "label": "Images adaptatives sur MDN",
+              "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images"
+            },
+            {
+              "label": "Un article poussé et interactif sur les sizes",
+              "url": "https://beta.observablehq.com/@eeeps/w-descriptors-and-sizes-under-the-hood"
+            }
+          ],
+          "codepen": "OraEBo",
+          "question": {
+            "text": "Si on définit <code>sizes=\"(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 800px\"</code>, quelle sera la taille de l'image sur un écran de 850px ?",
+            "answer": "425px",
+            "clue": "p"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2014/05/sizes-attribute1.svg",
+            "alt": "La syntaxe des attributs srcset et sizes",
+            "caption": "La syntaxe peut sembler difficile au départ, mais la puissance qu'elle offre dans la gestion des images responsive en vaut chaque caractère."
+          }
+        },
+        {
+          "title": "Tester le viewport avec matchMedia",
+          "theory": "Il est important que les fonctionnalités gérées par le JavaScript (slider, menu, scroll customisé...) soient tout aussi responsive que le CSS. Il est courant de vouloir désactiver certaines fonctionnalités selon la taille du viewport, en miroir avec les media queries utilisées dans le CSS. La fonction <code>matchMedia</code> permet de tester à un instant précis si le viewport satisfait la condition donnée.",
+          "codes": {
+            "html": "<header>Bienvenue !</header>",
+            "scss": "header {@media (min-width: 800px) {position: fixed; }}",
+            "js": "window.addEventListener('resize',&nbsp;function()&nbsp;{<br/>&nbsp;&nbsp;if&nbsp;(window.matchMedia('(min-width:&nbsp;800px)').matches)&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Screen&nbsp;is&nbsp;wide,&nbsp;do&nbsp;special&nbsp;things&nbsp;!<br/>&nbsp;&nbsp;}&nbsp;else&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Screen&nbsp;is&nbsp;small,&nbsp;do&nbsp;nothing<br/>&nbsp;&nbsp;}<br/>});"
+          },
+          "warning": "Faîtes en sorte que votre JavaScript ne contienne pas de \"valeurs magiques\". Si vous avez besoin d'une dimension pour faire des calculs par exemple, récupérez cette dimension en JavaScript en interrogeant directement l'élément CSS pour avoir les valeurs réelles. Mais attention à mettre à jour cette valeur et les calculs dès que la taille de l'écran est modifiée.",
+          "links": [
+            {
+              "label": "matchMedia sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/API/Window/matchMedia"
+            }
+          ],
+          "codepen": "MZZpQV",
+          "question": {
+            "text": "En JavaScript, quelle propriété d'un élément HTML permet de récupérer sa largeur, bordures incluses ?",
+            "answer": "offsetWidth",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://cdn.dribbble.com/users/688456/screenshots/2050775/dribbbleanim2.gif",
+            "alt": "Un portefolio animé",
+            "caption": "En parallèle de vos travaux d'animation JavaScript, posez-vous toujours la question de la \"responsivité\" de ces animations : comment devront-elles s'adapter sur mobile ?"
+          }
+        },
+        {
+          "title": "Feature query @supports",
+          "theory": "Lorsqu'on veut implémenter une fonctionnalité avancée en termes de règles CSS, on risque parfois de laisser des navigateurs plus vieux (et donc des visiteurs) sur le bord de la route. Pour faire varier les règles en fonction du support navigateur, on peut utiliser la règle <code>@supports</code>. Comme les media query testant par exemple la taille d'un appareil, <code>@supports</code> permet d'appliquer du CSS seulement si il est compris par le navigateur.",
+          "codes": {
+            "html": "<main><section>Section 1</section><section>Section 2</section><section>Section 3</section><section>Section 4</section></main>",
+            "scss": "section { width: 200px; height: 200px; display: inline-block;  @supports (display: grid) { display: block; }} main { @supports (display: grid) {display: grid; grid-template-rows: repeat(2,&nbsp;auto); grid-template-columns: repeat(2,&nbsp;auto); }}"
+          },
+          "warning": "Vous croiserez dans certaines documentation la syntaxe <code>@supports not</code>, permettant de cibler les navigateur ne comprenant <em>pas</em> la règle proposée. Mais il ne faut pas l'utiliser, car certains navigateurs ne comprennent simplement pas la règle <code>@supports</code> elle-même. Il faut donc écrire du code adapté à tous les navigateurs, et ensuite l'améliorer pour les navigateurs récents avec <code>@supports</code> (voir l'exemple ou les sections sont en <code>inline-block</code> par défaut, et passent en <code>grid</code> si possible).",
+          "links": [
+            {
+              "label": "@supports sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/@supports"
+            },
+            {
+              "label": "Comment l'utiliser correctement",
+              "url": "https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/"
+            },
+            {
+              "label": "Support... de @supports",
+              "url": "https://caniuse.com/#feat=css-featurequeries"
+            }
+          ],
+          "codepen": "pqqNOB",
+          "question": {
+            "text": "Avec quel mot clé peut-on tester si le navigateur comprend un sélecteur donné ?",
+            "answer": "selector",
+            "clue": "t"
+          },
+          "figure": {
+            "src": "https://la-cascade.io/content/images/2017/02/css-shapes-supports-fallback.small-compressor.jpeg",
+            "alt": "Un exemple de règle @supports",
+            "caption": "La règle <code>@supports</code> vous permet d'éviter de rendre votre contenu innaccessible. Ici, l'image de fond n'est changée que si la propriété <code>background-blend-mode</code> est comprise. Sinon, on utilise la première, avec laquelle on sait que le texte sera lisible."
+          }
+        },
+        {
+          "title": "Tester un support CSS en JavaScript",
+          "theory": "Il peut être parfois avantageux de savoir si une fonctionnalité CSS est disponible ou non dans le JavaScript, afin de ne pas exécuter un script qui n'aura aucun effet, ou au contraire de compenser l'absence de fonctionnalité avec un script de secours. Le mot clé <code>@supports</code> en CSS est transposé en JavaScript sous la forme d'une fonction <code>CSS.supports</code>, qui fonctionne de la même manière.",
+          "codes": {
+            "js": "if&nbsp;(CSS.supports('clip-path',&nbsp;'circle(50px)'))&nbsp;{<br/>&nbsp;&nbsp;//&nbsp;Do&nbsp;awesome&nbsp;things<br/>}&nbsp;else&nbsp;{<br/>&nbsp;&nbsp;//&nbsp;Provide&nbsp;fallback<br/>}"
+          },
+          "warning": "Comme <code>@supports</code>, la fonction <code>CSS.supports</code> n'est comprise que par certains navigateurs. Souvent, un navigateur ne comprenant pas <code>CSS.supports</code> ne comprendra pas la fonctionnalité en question, mais attention aux \"faux négatifs\". Par exemple, IE11 ne comprendrait pas <code>CSS.supports('display', 'flex')</code>, alors qu'il est capable d'utiliser flexbox. Il faut donc bien vérifier les supports respectifs et faire le bon choix.",
+          "links": [
+            {
+              "label": "CSS.supports() sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/API/CSS/supports"
+            },
+            {
+              "label": "Support navigateur",
+              "url": "https://caniuse.com/#search=CSS.supports"
+            }
+          ],
+          "codepen": "rooQyL",
+          "question": {
+            "text": "Petit rappel JavaScript : quel caractère doit-on utiliser devant <code>CSS.supports(...)</code> si on souhaite détecter que le navigateur ne supporte <em>pas</em> la fonctionnalité ?  Un...",
+            "answer": "point d'exclamation",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://www.sunshinesupport.com/Images/browser_not_supported.png",
+            "alt": "Une page invitant à mettre à jour son navigateur",
+            "caption": "Mauvaise pratique : bloquer la visite du site à un utilisateur possédant un navigateur trop vieux. Bonne pratique : offrir une version simple à tous et utilser l'amélioration progressive, en invitant les utilisateurs utilisant un vieux navigateur à le mettre à jour <em>s'ils le souhaitent</em>. Bien sûr, on attend pas le même support de la part d'un site gouvernemental, censé être accessible à tous, et d'un portefolio, ciblant plutôt les gens de la profession, souvent mieux équipés. Adaptez-vous !"
+          }
+        },
+        {
+          "title": "Feature query en JavaScript",
+          "theory": "Nous savons détecter le support de fonctionnalités CSS, il serait évidemment intéressant de pouvoir faire de même pour les fonctionnalités JavaScript (géolocalisation, <i>device motion</i>, webcam...). Des outils comme <em>Modernizr</em> sont souvent utilisés. Ce dernier est capable de tester des centaines de fonctionnalités dans le navigateur. Selon la fonctionnalité à tester, il est parfois tout aussi pratique de le faire à la main. Le principe reste le même : on demande au navigateur s'il comprend l'instruction avant de l'utiliser, et de fournir une alternative si ce n'est pas le cas.",
+          "codes": {
+            "html": "<h1>Remuez votre téléphone !</h1>",
+            "css": "h1 {display: none; } body.has-devicemotion { h1 { display: block; }}",
+            "js": "if (window.ondevicemotion) {<br/>&nbsp;&nbsp;document.body.classList.add('has-devicemotion');<br/>&nbsp;&nbsp;// Do some motion detection<br/>} else {<br/>&nbsp;&nbsp;// Provide fallback<br/>}"
+          },
+          "info": "Le code de l'exemple teste la présence de la propriété <code>ondevicemotion</code> avant d'effectuer des opérations impliquant la position du téléphone. En plus, il ajoute une classe <code>has-devicemotion</code> au <code>body</code>, permettant au CSS de \"savoir\" que la fonctionnalité est disponible et de s'adapter.",
+          "links": [
+            {
+              "label": "L'amélioration progressive",
+              "url": "https://fr.wikipedia.org/wiki/Am%C3%A9lioration_progressive"
+            },
+            {
+              "label": "La librairie Modernizr",
+              "url": "https://modernizr.com/docs/"
+            },
+            {
+              "label": "Testez votre navigateur",
+              "url": "https://browserleaks.com/features"
+            }
+          ],
+          "codepen": "roomzE",
+          "question": {
+            "text": "Quel est le nom, en anglais, donné à une solution de repli lorsque la fonctionnalité voulue n'est pas supportée ?",
+            "answer": "fallback",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://cdn.shopify.com/s/files/1/0533/2089/files/partners_blog_progressive_enhancement_hero_e1db29d2-6a0e-4df9-8ed9-5888d27940e0.gif?v=1487161323",
+            "alt": "Allégorie comparant un gâteau à l'amélioration progressive",
+            "caption": "Une allégorie de l'amélioration progressive : le gâteau est le HTML, accessible et universel. Le glaçage est le CSS, décoratif. Les bougies sont les fonctionnalités JavaScript avancées que vous allez proposer... à condition d'avoir ce qu'il faut pour allumer les bougies."
+          }
+        },
+        {
+          "title": "Adapter la taille des éléments avec rem",
+          "theory": "La taille de base de police sur les navigateurs est souvent 16px, ce qui permet d'avoir un affichage relativement uniforme sur tous les appareils. Mais ce n'est pas toujours le cas. D'une part, certains appareils ou navigateurs peuvent proposer une taille de base plus petite ou plus grande, selon leur écran. Situation plus courante, les utilisateurs peuvent décider eux-même de modifier la taille de base dans les paramètres de leur navigateur (ce qui est une action différente de zoomer). Si on utilise les <code>px</code> pour dimensionner notre contenu, ces dimensions ne réagiront pas à un changement de contexte. <code>32px</code> par exemple, sont toujours égaux à <code>32px</code>... Mais si on utilise l'unité <code>rem</code>, le contenu réagit à ces changements ! <code>1rem</code> vaudra <code>16px</code> sur la plupart des appareils, mais vaudra plus sur un navigateur dont l'utilisateur a augmenté la taille de la police de base. Il est donc recommandé d'utiliser cette unité pour les <code>font-size</code>, ainsi que toutes les autres dimensions (<code>margin</code>, <code>width...</code>). Pas d'inquiétude, cette traduction <code>rem</code> -> <code>px</code> est souvent automatisée.",
+          "codes": {
+            "html": "<h1>Bienvenue !</h1><h2>Voici un beau site en rem</h2>",
+            "css": "h1 { font-size: 2.5rem; margin-bottom: 1.2rem; } h2 { font-size: 1.8rem; width: 8.4rem; }"
+          },
+          "info": "Vous croiserez aussi l'unité <code>em</code>, relative à la taille du bloc parent. Par exemple, <code>font-size: 0.5em</code> dans un conteneur dont la taille de police est <code>20px</code> donnera une taille de <code>10px</code>. <code>rem</code> signifie <i><em>root</em> em</i> : c'est en effet le même principe qu'avec <em>em</em>, mais on se réfère toujours à la racine (la taille de police de l'élément <code>html</code>, définie par le navigateur), ce qui rend les calculs plus simples. <code>0.5rem</code> vaut bien <code>0.5rem</code> partout dans le code.",
+          "links": [
+            {
+              "label": "REM calculator",
+              "url": "https://offroadcode.com/rem-calculator/"
+            },
+            {
+              "label": "Démo interactive",
+              "url": "https://codepen.io/tutsplus/pen/bdxWbB"
+            },
+            {
+              "label": "Pourquoi la taille de base peut changer",
+              "url": "https://nicolas-hoizey.com/2016/03/people-don-t-change-the-default-16px-font-size-in-their-browser.html"
+            }
+          ],
+          "codepen": "YddmEo",
+          "question": {
+            "text": "Quelle unité peut être utilisée avec <code>font-size</code> pour dimensionner un bloc non pas à partir d'une taille, mais en fonction du nombre approximatif de caractères qu'on souhaite présenter sur une seule ligne ? C'est une unité qui est équivalente à la largeur du chiffre 0 dans la fonte.",
+            "answer": "ch",
+            "clue": "c"
+          },
+          "figure": {
+            "src": "https://imgflip.com/s/meme/Grandma-Finds-The-Internet.jpg",
+            "alt": "Une grande-mère consultant une page web",
+            "caption": "Bien que peu nombreuses, certaines études indiquent que 3% des utilisateurs ont une taille de police différente de 16px sur leur navigateur. Pensez à eux, ils vous le rendront bien."
+          }
+        }
+      ]
     }
   ],
   "videos": [
@@ -2048,7 +2312,7 @@
     {
       "name": "CSS-Tricks",
       "id": "css",
-      "avatarUrl": "https://pbs.twimg.com/profile_images/546011298627334146/MAeF2-yK_bigger.jpeg"
+      "avatarUrl": "https://pbs.twimg.com/profile_images/1080202898372362240/akqRGyta_400x400.jpg"
     },
     {
       "name": "CodyHouse",
