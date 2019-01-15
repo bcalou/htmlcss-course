@@ -2069,7 +2069,7 @@
           "title": "Balises img responsives avec srcset",
           "theory": "Nous pouvons rendre les images de background responsive, mais quid des balises <code>img</code> ? Grâce à l'attribut <code>srcset</code>, cela est encore plus simple qu'avec les media queries. En effet, nous n'allons plus décider nous-même de quand charger quoi, mais plutôt fournir une liste de ressources au navigateur, chaque ressource étant associée à sa largeur (avec l'unité <code>w</code>, pour <i>width</i>). Et c'est le navigateur qui sera maître de la décision en fonction du contexte : taille de l'écran, densité des pixels, qualité de la connexion... En plus de la simplicité d'écriture, l'avantage est majeur : le navigateur est bien mieux placé que nous pour savoir quelle est l'image la plus adaptée.",
           "codes": {
-            "html": "<img src=\"cat-large.jpg\" srcset=\"cat-large.jpg 200w, cat-medium.jpg 500w, cat-large.jpg 800w, cat-xlarge.jpg 1600w\">"
+            "html": "<img src=\"cat-small.jpg\" srcset=\"cat-large.jpg 200w, cat-medium.jpg 500w, cat-large.jpg 800w, cat-xlarge.jpg 1600w\">"
           },
           "warning": "N'oubliez pas de laisser l'attribut <code>src</code> pour les navigateurs ne comprenant pas <code>srcset</code>.",
           "links": [
