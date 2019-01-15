@@ -2038,7 +2038,7 @@
             "html": "<div class=\"cat\" src=\"cat.jpg\"></div>",
             "scss": ".cat { width: 200px; height: 200px; background-image: url(\"cat-small.jpg\"); @media (min-width: 600px) { width: 500px; height: 500px; background-image: url(\"cat-medium.jpg\"); } @media (min-width: 1150px) { width: 800px; height: 800px; background-image: url(\"cat-large.jpg\"); @media (min-resolution: 192dpi) { background-image: url(\"cat-xlarge.jpg\"); }}}"
           },
-          "info": "Un écran est dit HD (ou <i>Retina</i>, bien qu'il s'agisse d'un terme dépose par Apple), lorsque sa densité de pixels (dpi = <i>dot per inch</i>) est plus elevée que la normale. Elle varie pour chaque écran, allant de <code>96dpi</code> pour les écrans classiques à <code>568dpi</code> pour le Galaxy S8, parfois au-delà. On peut considérer qu'un écran au dessus de <code>192dpi</code> est HD. On parle aussi parfois de PPI (<i>pixel per inch</i>), mais la différence n'a d'importance que si on considère le print.",
+          "info": "Un écran est dit HD (ou <i>Retina</i>, bien qu'il s'agisse d'un terme déposé par Apple), lorsque sa densité de pixels (dpi = <i>dot per inch</i>) est plus elevée que la normale. Elle varie pour chaque écran, allant de <code>96dpi</code> pour les écrans classiques à <code>568dpi</code> pour le Galaxy S8, parfois au-delà. On peut considérer qu'un écran au dessus de <code>192dpi</code> est HD. On parle aussi parfois de PPI (<i>pixel per inch</i>), mais la différence n'a d'importance que si on considère le print.",
           "links": [
             {
               "label": "La media query resolution",
@@ -2055,7 +2055,7 @@
           ],
           "codepen": "XoyZYm",
           "question": {
-            "text": "Quelle valeur, à ne pas confondre avec la densité de pixels exprimée en <em>dpi</em>, représente le rapport entre le nombre de pixels réels et le nombre de pixels CSS ?",
+            "text": "Quelle valeur, à ne pas confondre avec la densité de pixels exprimée en <em>dpi</em>, représente le rapport entre le nombre de pixels CSS et le nombre de pixels réels ?",
             "answer": "pixel ratio",
             "clue": "a"
           },
