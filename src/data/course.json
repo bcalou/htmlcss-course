@@ -2114,7 +2114,7 @@
           ],
           "codepen": "OraEBo",
           "question": {
-            "text": "Si on définit <code>sizes=\"(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 800px\"</code>, quelle sera la taille de l'image sur un écran de 850px ?",
+            "text": "Si on définit <code>sizes=\"(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 800px\"</code>, quelle sera la taille de l'image en pixels sur un écran de 850px ?",
             "answer": "425px",
             "clue": "p"
           },
