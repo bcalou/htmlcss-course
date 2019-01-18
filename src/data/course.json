@@ -2026,6 +2026,7 @@
       "title": "S'adapter au contexte",
       "description": "Bonnes pratiques et outils pour s'adapter aux capacités des écrans, des navigateurs et des utilisateurs.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQ0mXT6ESa5oXsRi5nxs2poDkX9xDMImupSdMhNPOTpvFdZysXGjs2K9Fih6DkY3eZ-IAknE6yu7sL9/pub?start=true&loop=false&delayms=60000",
+      "correctionVideoYoutubeId": "GJCh4LFAWdo",
       "puzzle": {
         "word": "capacite",
         "text": "Seules les capacités des appareils que nous ciblons devraient nous intéresser, pas les appareils eux-mêmes, l'immense variété de ces derniers empêchant toute prédiction. Les capacités (ou <i>features</i>), elles, peuvent être testées de manière quasi-déterministe, nous permettant de réaliser des sites solides se construisant selon la nature précise de chaque contexte."
@@ -2095,7 +2096,7 @@
           }
         },
         {
-          "title": "Prendre en compte la taille de l'écran avec l'attribut sizes",
+          "title": "Prendre en compte la taille de l'image avec l'attribut sizes",
           "theory": "Lorsqu'on utilise <code>srcset</code>, le navigateur part du principe que l'image sera affichée avec la même largeur que le viewport pour décider quelle ressource charger. C'est souvent vrai sur mobile, beaucoup moins sur des écrans plus grands. On va donc informer le navigateur des dimensions appliquées aux images pour qu'il puisse faire le choix le plus optimisé possible. Il s'agit de retranscrire les dimensions définies dans le CSS grâce à l'attribut <code>sizes</code>. Chaque valeur dans cette liste est une condition (<code>max-width</code>) suivie d'une dimension en <code>vw</code> ou <code>px</code>. La dernière valeur n'a pas de condition, c'est la dimension de l'image sur les écrans les plus grands.",
           "codes": {
             "html": "<img src=\"cat-large.jpg\" srcset=\"cat-large.jpg 200w, cat-medium.jpg 500w, cat-large.jpg 800w, cat-xlarge.jpg 1600w\" sizes=\"(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 800px\">",
@@ -2273,7 +2274,7 @@
           ],
           "codepen": "YddmEo",
           "question": {
-            "text": "Quelle unité peut être utilisée avec <code>font-size</code> pour dimensionner un bloc non pas à partir d'une taille, mais en fonction du nombre approximatif de caractères qu'on souhaite présenter sur une seule ligne ? C'est une unité qui est équivalente à la largeur du chiffre 0 dans la fonte.",
+            "text": "Quelle unité peut être utilisée avec <code>width</code> pour dimensionner un bloc non pas à partir d'une taille, mais en fonction du nombre approximatif de caractères qu'on souhaite présenter sur une seule ligne ? C'est une unité qui est équivalente à la largeur du chiffre 0 dans la fonte.",
             "answer": "ch",
             "clue": "c"
           },
