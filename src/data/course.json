@@ -2285,6 +2285,234 @@
           }
         }
       ]
+    },
+    {
+      "title": "Le format d'image SVG",
+      "description": "Intégrer, composer et animer des images utilisant SVG, un format d'image léger et responsive.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQBKGcwQ1oSPzchoPY1A-g4d6on8SnmKwlgVoxOA4Sb1oNIZwng7XitNHytTUaYLVnm9aTThPNNrfMp/pub?start=true&loop=false&delayms=60000000",
+      "correctionVideoYoutubeId": "",
+      "puzzle": {
+        "word": "scalable",
+        "text": "La <em>scalabilité</em> désigne la capacité d'un système à s'adapter aux changement de grandeur. C'est un terme qui s'applique très bien aux images vectorielles, mais aussi par exemple à un système de serveurs qui serait capable de s'adapter rapidement à une demande intense de la part du réseau."
+      },
+      "concepts": [
+        {
+          "title": "Intégrer un SVG avec la balise img",
+          "theory": "Vue de l'extérieur, une image SVG ne diffère en rien d'un JPEG ou d'un PNG. Il est possible de l'intégrer de la même façon, grâce à une balise <code>img</code>. Un gain immédiat et majeur est que la taille de l'image n'impactera pas sa qualité, faisant du SVG un format à privilégier lorsque le type d'image le permet (logo, graphique, dessin simple...).",
+          "codes": {
+            "html": "<img src=\"paris.svg\" alt=\"La carte de Paris\">"
+          },
+          "info": "Un SVG peut également être utilisé en tant que <code>background-image</code>.",
+          "links": [
+            {
+              "label": "SVG sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/SVG"
+            }
+          ],
+          "codepen": "NeQvML",
+          "question": {
+            "text": "Les images SVG ne perdent pas en qualité avec leur taille car il s'agit d'un format d'image <em>vectoriel</em>, composé d'opérations géométriques. À l'inverse, quel est le format d'une image constituéé de pixels en nombre précis ?",
+            "answer": "matriciel",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://img.pagecloud.com/wAegMZSQrxtIBtV-i7jBCW-Ho7Y=/1000x0/filters:no_upscale()/blogmerge/cf67f56e-00e6-48c0-a1a4-31a8e3baf0de.jpeg",
+            "alt": "Comparaison des formats d'images sur le web.",
+            "caption": "Comparaison des formats d'images. <i>Raster</i> désigne les images constituées de pixels. <i>Lossy</i> signifie que le format implique une perte d'information lors de la compression."
+          }
+        },
+        {
+          "title": "SVG inline, viewport & viewBox",
+          "theory": "Si l'on peut inclure un SVG avec la balise <code>img</code>, pourquoi irions-nous en intégrer le code directement dans notre page à la place ? Cela présente plusieurs avantages explorés dans ce chapitre, le plus direct étant l'économie d'une requête http (chaque requête ayant un impact significatif sur la performance). Cela impose néamoins de comprendre qu'un svg ne se comporte plus comme une image classique une fois intégré. Les attributs <code>width</code> et <code>height</code> de la balise SVG (ou du CSS) définissent une fenêtre d'affichage appelée <em><i>viewport</i></em>, tandis que l'attribut <code>viewBox</code> détermine quelle partie du SVG sera affichée dans cette fenêtre d'affichage. Si la <code>viewBox</code> correspond aux dimensions du <i>viewport</i>, le SVG est affiché en entier. Des valeurs différentes permettent de \"zoomer\" sur une partie du SVG ou l'afficher en plus petit que la zone du <i>viewport</i>.",
+          "codes": {
+            "html": "<svg viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"50\" /></svg>",
+            "css": "svg { width: 300px; height: 300px; }"
+          },
+          "info": "Il est difficile de savoir par quel bout aborder les dimensions en SVG. Quand vous intégrez un SVG dans une page, commencez par définir sa largeur et hauteur en CSS, éventuellement avec une bordure temporaire pour bien voir la zone définie (le <i>viewport</i>). Ensuite, appliquez ou modifiez l'attribut <code>viewBox</code> pour adapter le contenu du SVG au <i>viewport</i>. Dans le code de l'exemple, on souhaite afficher le SVG à une taille de <code>300px</code>, d'où le code CSS. Le svg définit un cercle de <code>50px</code> de rayon, donc <code>100px</code> de diamètre. Pour l'afficher en entier dans la zone définie par le CSS, on utilise donc <code>viewBox=\"0 0 100 100\"</code>. Le résultat est un cercle de <code>300px</code> de diamètre, mais rien ne nous interdit d'utiliser une dimension relative en CSS, telle que <code>50vw</code>.",
+          "links": [
+            {
+              "label": "Comprendre le viewport et viewBox",
+              "url": "https://webdesign.tutsplus.com/fr/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844"
+            },
+            {
+              "label": "How to scale SVG",
+              "url": "https://css-tricks.com/scale-svg/"
+            }
+          ],
+          "codepen": "NeQJEj",
+          "question": {
+            "text": "Avez-vous bien compris <code>viewBox</code> ? Pour le savoir, imaginez un code svg décrivant en son sein un losange de 100 pixels de large et de 200 pixels de haut. Si l'on définit <code>viewBox=\"0 0 100 100\"</code>, quelle sera la forme géométrique réellement affichée ?",
+            "answer": "triangle",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "http://buildawesomewebsites.com/assets/uploads/viewbox_explained.svg",
+            "alt": "L'attribut viewBox de la baslise svg.",
+            "caption": "La balise <code>svg</code> définit des formes géométriques (ici, le cercle jaune) dans un repère infini. L'attribut <code>viewBox</code> permet de définir la zone effectivement présentée dans l'espace disponible."
+          }
+        },
+        {
+          "title": "L'attribut preserveAspectRatio",
+          "theory": "Dans un monde responsive, la taille du <i>viewport</i> du SVG peut changer en fonction de la taille du <i>viewport</i> navigateur, notamment si on la définit en pourcentages. Que se passe t-il si la taille du <i>viewport</i> n'a plus le même ratio que la zone définie par l'attribut <code>viewBox</code>, par exemple si on se retrouve à afficher un cercle SVG dans un viewport n'étant pas carré ? Par défaut, l'image est reduite et le ratio est conservé, comme si on utilisait <code>background-position: contain</code> ou <code>object-fit: contain</code>. On peut obtenir d'autres comportements, et gérer la position du rognage si rognage il y a, grâce à l'attribut <code>preserveAspectRatio</code>.",
+          "codes": {
+            "html": "<svg viewBox=\"0 0 100 100\" preserveAspectRatio=\"xMinYMid meet\"><circle cx=\"50\" cy=\"50\" r=\"50\" /></svg>",
+            "css": "svg { width: 300px; height: 100px; }"
+          },
+          "info": "Dans l'exemple, le cercle (ratio 1:1) n'a pas le même ratio que ce qui est défini en CSS (3:1). L'attribut <code>preserveAspectRatio</code> est découpé en deux parties. La première, <code>xMinYMid</code>, définit que le contenu du svg devra se placer au début de l'espace disponible en X, au milieu en Y. La seconde, <code>meet</code>, est l'équivalent de <code>contain</code> en CSS, alors qu'un comportement équivalent à <code>cover</code> peut être obtenu avec <code>slice</code>.",
+          "links": [
+            {
+              "label": "preserveAspectRatio sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/SVG/Attribute/preserveAspectRatio"
+            },
+            {
+              "label": "Comprendre preserveAspectRatio",
+              "url": "https://la-cascade.io/comprendre-svg-preserveaspectratio/"
+            },
+            {
+              "label": "Démo interactive",
+              "url": "https://codepen.io/giodif/pen/VYpaeo"
+            }
+          ],
+          "codepen": "zygQKB",
+          "question": {
+            "text": "Quelle valeur peut-on donner à <code>preserveAspectRatio</code> pour forcer l'image à se déformer (équivalent de <code>background-size: 100% 100%</code>) ?",
+            "answer": "none",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "http://res.cloudinary.com/dno0vkynk/image/upload/v1475392871/SVGPreserveAspectRatio.png",
+            "alt": "Schéma du fonctionnement de preserveAspectRatio",
+            "caption": "<code>preserveAspectRatio</code> est la bouée de sauvetage du SVG dans un environnement responsive."
+          }
+        },
+        {
+          "title": "Formes simples",
+          "theory": "Il est temps de ne plus seulement inclure du SVG, mais d'en écrire nous-même. Le format SVG fournit plusieurs balises pour produire des formes de base : <code>circle</code>, <code>ellipse</code>, <code>rect</code>... La balise <code>polygon</code> permet, elle, de définir une forme sur mesure. Pour chaque forme, on indiquera ses coordonnées en X et Y et ses propriétés spéciales : rayon, hauteur, largeur...",
+          "codes": {
+            "html": "<svg><circle cx=\"50\" cy=\"50\" r=\"50\" /><rect x=\"100\" y=\"100\" width=\"150\" height=\"200\" /><polygon points=\"100,80 20,80 20,40\" /></svg>"
+          },
+          "info": "C'est en réalité ce que font <i>Illustrator</i> ou tout autre logiciel de design vectoriel lorsque vous leur donnez des instructions. On ira guère plus loin en termes de code, ces outils se révélant quasi-indispensables dès que la situation se complexifie un peu.",
+          "links": [
+            {
+              "label": "Formes de bases sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/SVG/Tutoriel/Formes_de_base"
+            }
+          ],
+          "codepen": "aPegxX",
+          "question": {
+            "text": "Quelle forme géométrique, disponible en SVG, est caractérisée par deux rayons au lieu d'un seul pour un cercle ?",
+            "answer": "ellipse",
+            "clue": "l"
+          },
+          "figure": {
+            "src": "https://cdn.mos.cms.futurecdn.net/NXYwnQd6sxs64HS8ErJjAP-650-80.jpg",
+            "alt": "Le logiciel Illustrator",
+            "caption": "Les logiciels vectoriels tels qu'<i>Illustrator</i> ne stockent pas des matrices de pixels, mais bien des instructions de formes et couleurs telles qu'on les retrouve en SVG. C'est pour cela que vous pouvez enregistrer un fichier <i>Illustrator</i> au format SVG, puis en copier/coller le contenu dans une page web."
+          }
+        },
+        {
+          "title": "Attributs des éléments SVG",
+          "theory": "Outre leur taille et position, les éléments svg peuvent recevoir plusieurs attributs permettant de définir leur apparence : <code>stroke</code> pour la bordure, <code>fill</code> pour la couleur de remplissage, <code>opacity</code> pour la transparence, et bien d'autres !",
+          "codes": {
+            "html": "<svg><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"red\" stroke=\"blue\" stroke-width=\"5\"/></svg>"
+          },
+          "info": "Ces propriétés peuvent très bien être appliquées en CSS. Il est cependant naturel de les placer directement au sein du svg, car elles font partie intégrante de l'image, contrairement au cas d'un document HTML où le style est séparé du contenu.",
+          "links": [
+            {
+              "label": "Le remplissage et les bordures SVG",
+              "url": "https://developer.mozilla.org/fr/docs/Web/SVG/Tutoriel/Fills_and_Strokes"
+            }
+          ],
+          "codepen": "bzbGXR",
+          "question": {
+            "text": "Quel attribut permet de modifier l'apparence des terminaisons de ligne ? (pour arrondir les extrémités d'un trait, par exemple)",
+            "answer": "stroke-linecap",
+            "clue": "c"
+          },
+          "figure": {
+            "src": "https://www.w3.org/TR/fill-stroke-3/images/stroke-align-intersecting-path.svg",
+            "alt": "Différent types de remplissages et de bordures SVG",
+            "caption": "De nombreuses stratégies de remplissage et de bordures sont possibles."
+          }
+        },
+        {
+          "title": "Animer un SVG en CSS",
+          "theory": "Un grand avantage d'inclure directement le code SVG dans la page est que les balises qui le constituent se retrouve dans le <code>DOM</code> (<i>Document Object Model</i>), et sont par conséquent accessible en CSS. Ce dernier a donc le pouvoir de modifier les propriétés des éléments du SVG, ce qui ouvre la porte à de riches interactions avec l'utilisateur (puisqu'on peut utiliser transitions, animations, effets de survol...)",
+          "codes": {
+            "html": "<svg><circle cx=\"50\" cy=\"50\" r=\"50\" fill=\"red\" stroke=\"blue\" stroke-width=\"5\"/></svg>",
+            "css": "circle { transition: fill&nbsp;0.5s; } svg:hover&nbsp;circle { fill: green; }"
+          },
+          "info": "En tant qu'éléments du <i>DOM</i>, la balise <code>svg</code> ainsi que ses enfants peuvent prendre des <code>id</code> et des <code>class</code>. Corollaire : dire que le CSS sert à styliser le HTML est un abus de langage, car SVG est aussi concerné !",
+          "links": [
+            {
+              "label": "Animer un SVG avec CSS",
+              "url": "https://la-cascade.io/animer-un-svg-avec-css/"
+            }
+          ],
+          "codepen": "wNwBqp",
+          "question": {
+            "text": "Quelle est la propriété à animer en CSS si l'on veut faire bouger les traits pointillés d'une ligne ou bordure SVG ?",
+            "answer": "stroke-dashoffset",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://reactjsexample.com/content/images/2017/09/City-Illustration.gif",
+            "alt": "Des animations de survol en SVG",
+            "caption": "Difficile d'envisager une telle animation sans un SVG intégré à la page."
+          }
+        },
+        {
+          "title": "Animation de ligne SVG",
+          "theory": "Un effet courant en SVG est l'apparition progressive d'une ligne, comme si elle se dessinait. En réalité, elle ne se dessine pas et nous avons déjà tous les outils pour le faire. L'astuce est de définir une taille de pointillés si grande qu'un seul pointillé couvre toute la longueur de la ligne concernée, puis de faire \"glisser\" la position de départ des pointillés grâce à <code>stroke-dashoffset</code>. Le tour est joué !",
+          "codes": {
+            "html": "<svg viewBox=\"0 0 100 100\"><line x1=\"0\" y1=\"0\" x2=\"100\" y2=\"100\" stroke=\"black\" /></svg>",
+            "css": "@keyframes&nbsp;resetOffset { to { stroke-dashoffset: 0; } } line { stroke-dasharray: 144; stroke-dashoffset: 144; animation: resetOffset&nbsp;2s&nbsp;linear&nbsp;forwards; }"
+          },
+          "info": "La propriété <code>stroke-dasharray</code>, comme son nom l'indique (<i>array</i>), peut prendre plusieurs valeurs pour donner des pointillés de tailles variables.",
+          "links": [
+            {
+              "label": "Comment réaliser l'effet",
+              "url": "https://css-tricks.com/svg-line-animation-works/"
+            }
+          ],
+          "codepen": "pGzjee",
+          "question": {
+            "text": "Quel format d'écriture peut-on utiliser si on souhaite définir l'attribut <code>stroke</code> selon 3 niveaux de couleur et une transparence ?",
+            "answer": "rgba",
+            "clue": "b"
+          },
+          "figure": {
+            "src": "https://cdn-images-1.medium.com/max/1600/1*T480KKPWmIDxDD1KXPc-mQ.gif",
+            "alt": "Des jauges se remplissant grâce à une animation de ligne SVG",
+            "caption": "Une application pratique et courante."
+          }
+        },
+        {
+          "title": "Système d'icônes en SVG",
+          "theory": "La plupart des sites utilisent un ensemble d'icônes parfois vaste pour enrichir l'interface : interactions, navigation, réseaux sociaux, logos...  Il serait dommageable de charger un fichier image pour chacune de ces icônes : cela engendrerait beaucoup de requêtes impactant la performance, et les images ne pourraient pas être modifiées en réponse aux actions de l'utilisateur. Une des solutions les plus optimisées pour faire face à cela est de définir en tête du HTML une liste de <code>symbol</code> SVG cachés, auxquels on pourra faire référence n'importe où par la suite. Pas de requêtes supplémentaires, des icônes vectoriels (donc scalables) et pouvant réagir au contexte et aux interactions !",
+          "codes": {
+            "html": "<svg style=\"position: absolute; width: 0; height: 0; overflow: hidden;\"><defs><symbol id=\"icon-facebook\" viewBox=\"0 0 32 32\"><title>facebook</title><path d=\"M19 -6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z\"></path></symbol></defs></svg><main><p>Lien vers facebook : </p><a href=\"facebook.com\"><svg><use  xlink:href=\"#icon-facebook\"></use></svg></a></main>"
+          },
+          "info": "Une autre technique très en vogue est l'utilisation d'une police d'icônes : on génère un fichier <code>.woff</code> ne contenant non pas des lettres mais des symboles, et on utilise le CSS pour afficher le caractère correspondant à chaque symbole. Ces deux techniques se valent en termes d'avantages et d'incovénients.",
+          "links": [
+            {
+              "label": "Banque d'icônes Icomoon",
+              "url": "https://icomoon.io/app/#/select"
+            }
+          ],
+          "codepen": "daboGz",
+          "question": {
+            "text": "Vous pouvez voir cette technique en action ici-même : quel est le nom de l'icône pour la loupe à gauche de chaque question ?",
+            "answer": "search",
+            "clue": "s"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2014/03/svg-shadow.png",
+            "alt": "Utilisation du shadow-dom avec la balise use",
+            "caption": "Lorsque vous utilisez la balise <code>use</code>, le navigateur utilise le <em>shadow DOM</em> pour faire référence à l'élément SVG défini plus haut dans le document. Pratique si vous avez besoin d'inclure cette icône à plusieurs endroits."
+          }
+        }
+      ]
     }
   ],
   "videos": [
