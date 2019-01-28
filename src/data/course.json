@@ -2353,7 +2353,7 @@
         },
         {
           "title": "L'attribut preserveAspectRatio",
-          "theory": "Dans un monde responsive, la taille du <i>viewport</i> du SVG peut changer en fonction de la taille du <i>viewport</i> navigateur, notamment si on la définit en pourcentages. Que se passe t-il si la taille du <i>viewport</i> n'a plus le même ratio que la zone définie par l'attribut <code>viewBox</code>, par exemple si on se retrouve à afficher un cercle SVG dans un viewport n'étant pas carré ? Par défaut, l'image est reduite et le ratio est conservé, comme si on utilisait <code>background-position: contain</code> ou <code>object-fit: contain</code>. On peut obtenir d'autres comportements, et gérer la position du rognage si rognage il y a, grâce à l'attribut <code>preserveAspectRatio</code>.",
+          "theory": "Dans un monde responsive, la taille du <i>viewport</i> du SVG peut changer en fonction de la taille du <i>viewport</i> navigateur, notamment si on la définit en pourcentages. Que se passe t-il si la taille du <i>viewport</i> n'a plus le même ratio que la zone définie par l'attribut <code>viewBox</code>, par exemple si on se retrouve à afficher un cercle SVG dans un viewport n'étant pas carré ? Par défaut, l'image est reduite et le ratio est conservé, comme si on utilisait <code>background-size: contain</code> ou <code>object-fit: contain</code>. On peut obtenir d'autres comportements, et gérer la position du rognage si rognage il y a, grâce à l'attribut <code>preserveAspectRatio</code>.",
           "codes": {
             "html": "<svg viewBox=\"0 0 100 100\" preserveAspectRatio=\"xMinYMid meet\"><circle cx=\"50\" cy=\"50\" r=\"50\" /></svg>",
             "css": "svg { width: 300px; height: 100px; }"
@@ -2400,7 +2400,7 @@
           ],
           "codepen": "aPegxX",
           "question": {
-            "text": "Quelle forme géométrique, disponible en SVG, est caractérisée par deux rayons au lieu d'un seul pour un cercle ?",
+            "text": "Quelle forme géométrique, disponible en SVG, est caractérisée par deux rayons (un vertical et un horizontal) au lieu d'un seul pour un cercle ?",
             "answer": "ellipse",
             "clue": "l"
           },
@@ -2510,6 +2510,253 @@
             "src": "https://css-tricks.com/wp-content/uploads/2014/03/svg-shadow.png",
             "alt": "Utilisation du shadow-dom avec la balise use",
             "caption": "Lorsque vous utilisez la balise <code>use</code>, le navigateur utilise le <em>shadow DOM</em> pour faire référence à l'élément SVG défini plus haut dans le document. Pratique si vous avez besoin d'inclure cette icône à plusieurs endroits."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Pot-pourri",
+      "description": "Astuces, pièges et aspects méconnus du HTML et du CSS, langages pleins de surprises et à la puissance souvent sous-estimée.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vTfLU4bxeM0BpSuwE9a04ZlMTuAPXRqn8RVpN7toxoCC09-6ylM_saAP4_OEcgPPscFLQaKL7XC3Zuo/pub?start=false&loop=false&delayms=6000000",
+      "correctionVideoYoutubeId": "",
+      "puzzle": {
+        "word": "curieux",
+        "text": "L'être, c'est votre responsabilité de développeur. Quand vous avez l'impression de maîtriser un langage, un outil, un concept... Fouillez, car vous n'avez qu'égratiné la surface. Le plus passionant est à venir !"
+      },
+      "concepts": [
+        {
+          "title": "Sélecteurs nth-child avancés",
+          "theory": "Combinés entre eux, la puissance des pseudo sélecteurs tels que <code>nth-child</code> et ses compagnons est remarquable. Il est par exemple possible d'appliquer un style à l'enfant d'un élément <em>uniquement</em> si l'élément en question contient spécifiquement 5 enfants, et sans JavaScript ! Pour cela, on cherche un élément qui soit à la fois le premier enfant (<code>first-child</code>) mais aussi le cinquième enfant en partant de la fin (<code>nth-last-child(5)</code>). Si un élément satisfait ces deux conditions, il est logiquement dans une série de cinq enfants exactement. On peut alors le cibler, ainsi que les éléments suivant grâce au tilde (<code>~</code>). Cela permet d'appliquer des styles différents en fonction de la quantité d'éléments présents.",
+          "codes": {
+            "html": "<ul><li>One</li><li>Two</li><li>Three</li><li>Four</li><li>Five</li></ul>",
+            "css": "li:nth-last-child(5):first-child,li:nth-last-child(5):first-child ~ li { color: red; }"
+          },
+          "warning": "Le caractère tilde (<code>~</code>) permet de sélectionner tous les éléments suivants mais pas l'élément lui-même, d'où la double sélection dans l'exemple. Par ailleurs, il n'existe actuellement aucune technique CSS pour cibler les éléments précédents.",
+          "links": [
+            {
+              "label": "Useful nth-child recipes",
+              "url": "https://css-tricks.com/useful-nth-child-recipies/"
+            },
+            {
+              "label": "Compter des éléments avec nth-child",
+              "url": "https://alistapart.com/article/quantity-queries-for-css"
+            }
+          ],
+          "codepen": "zerPRY",
+          "question": {
+            "text": "Dans une liste contenant 6 éléments, combien d'entre-eux seront ciblés par le sélecteur <code>li:nth-child(2n+3)</code> ? N'hésitez pas à faire un petit schéma.",
+            "answer": "deux",
+            "clue": "x"
+          },
+          "figure": {
+            "src": "https://res.cloudinary.com/css-tricks/image/upload/c_scale,w_896,f_auto,q_auto/v1531520166/logical-styling-8_gegaqo.png",
+            "alt": "Un slider changeant d'apparence en fonction du nombre d'éléments qu'il contient",
+            "caption": "Compter les éléments en CSS pourrait permettre d'adapter un slider au nombre d'éléments qu'il contient. Idem avec une liste de liens, un menu..."
+          }
+        },
+        {
+          "title": "Pseudo-éléments ::after & ::before",
+          "theory": "Comment ajouter des éléments décoratifs sans polluer notre HTML, afin de séparer au maximum présentation et style ? Chaque élément du DOM peut posséder deux pseudo-éléments&nbsp;: un <code>::before</code>, et un <code>::after</code>. Ils seront \"injectés\" dans la boîte de l'élément, respectivement au début et à la fin. Ces éléments ne seront pas visibles dans le DOM mais leur contenu et leur style pourra être défini en CSS. Il est même possible d'injecter dans le pseudo-élément un contenu provenant d'un attribut de la l'élément ciblé.",
+          "codes": {
+            "html": "<p data-line=\"1\">Première ligne</p><p data-line=\"2\">Deuxième ligne</p>",
+            "css": "p::before { content: attr(data-line); opacity: 0.5; }"
+          },
+          "warning": "La syntaxe <code>:before</code> est également valable mais le doublement des points (<code>::before</code>) a été introduit avec CSS3 pour accentuer la différence entre les pseudo-éléments et les pseudo-classes (par exemple <code>:nth-child</code>). Dans l'exemple, on s'en sert pour numéroter des lignes sans devoir rajouter un <code>span</code>.  Le site sur lequel vous êtes actuellement en fait aussi usage : pour les petites flèches devant chaque titre, par exemple.",
+          "links": [
+            {
+              "label": "Le pseudo-élémént ::before",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/::before"
+            },
+            {
+              "label": "Explication détaillée",
+              "url": "https://la-cascade.io/les-pseudo-elements-css-before-et-after/"
+            }
+          ],
+          "codepen": "gqPNOL",
+          "figure": {
+            "src": "https://mohitvash.files.wordpress.com/2016/06/scheme.gif",
+            "alt": "Un élément visuel utilisant les pseudo-éléments",
+            "caption": "Même sans texte à l'intérieur, les pseudo-éléments sont très utilisés pour réaliser de petits effets visuels. Vous ne voudriez pas ajouter deux <code>span</code> vides à votre beau HTML pour réaliser cela, n'est-ce pas ?"
+          }
+        },
+        {
+          "title": "::first-letter & ::first-line",
+          "theory": "Moins souvent utilisés, <code>::first-letter</code> et <code>::first-line</code> sont également des pseudo-éléments, permettant respectivement de cibler la première lettre et la première ligne d'une balise, sans avoir à ajouter d'élément dans le HTML (il serait de toute façon impossible de deviner quelle est la première ligne, puisqu'elle dépend de la taille du conteneur et de l'écran). On peut alors leur appliquer certaines propriétés CSS : font, background, shadow...",
+          "codes": {
+            "html": "<p>Ma première lettre sera en rouge, et ma première ligne sera soulignée</p>",
+            "css": "p::first-letter{color: red; }p::first-line {text-decoration: underline; }"
+          },
+          "info": "Un autre pseudo-élément non abordé dans ce chapitre est <code>::selection</code>, permettant de styliser le texte actuellement sélectionné avec la souris, ce qui peut enrichir l'identité de votre site.",
+          "links": [
+            {
+              "label": "::first-letter sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/::first-letter"
+            },
+            {
+              "label": "::first-line sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/::first-line"
+            }
+          ],
+          "codepen": "aXNYYo",
+          "question": {
+            "text": "Quel est le nom donné à une lettre entammant un paragraphe et stylistiquement mise en avant ?",
+            "answer": "lettrine",
+            "clue": "r"
+          },
+          "figure": {
+            "src": "https://www.mediaforma.com/uneminuteparjour/html5/images/lettrine-1.jpg",
+            "alt": "Une lettrine dans un vieux livre",
+            "caption": "Comme souvent, le web s'inspire de la réalité, en l'occurence d'une très vieille réalité."
+          }
+        },
+        {
+          "title": "Colonnes CSS",
+          "theory": "Moins récentes et moins connues que les stars <code>flex</code> et <code>grid</code>, les colonnes CSS permettent pourtant d'achever un effet inatteignable autrement : séparer du texte en plusieurs colonnes, dont la taille et le nombre peuvent être dynamiques. Un effet inspiré des journaux et très courant lorsqu'il s'agit de présenter du texte.",
+          "codes": {
+            "html": "<p>Un très long texte qui sera divisé en 4 colonnes séparées par 20px...</p>",
+            "css": "p {column-count: 4; column-gap: 20px; }"
+          },
+          "info": "Le consensus pour la lisibilité optimale des textes sur le web suggère de limiter le nombre de caractères par ligne à 45-75, et un peu moins (40-50) si ce dernier est présenté sur plusieurs colonnes (webtypography.net). En effet, l'oeil a du mal à suivre une ligne continue pendant trop longtemps, et les retours à la ligne permettent de rythmer, et donc de faciliter la lecture.",
+          "links": [
+            {
+              "label": "Colonnes CSS sur MDN",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Basic_Concepts_of_Multicol"
+            },
+            {
+              "label": "Mise en pratique",
+              "url": "https://www.smashingmagazine.com/2019/01/css-multiple-column-layout-multicol/"
+            }
+          ],
+          "codepen": "rPLKpw",
+          "question": {
+            "text": "Quelle propriété permet d'étendre l'enfant d'un contenu présenté en plusieurs colonnes sur l'ensemble des colonnes (par exemple un titre s'étalant sur toute la largeur) ?",
+            "answer": "column-span",
+            "clue": "u"
+          },
+          "figure": {
+            "src": "https://s3-us-west-2.amazonaws.com/i.cdpn.io/43980.GoaRMd.6db8410a-06d2-4432-9d49-6e3c1ca43c23.png",
+            "alt": "Un effet de briques grâce aux colonnes CSS",
+            "caption": "Au-delà du texte, les colonnes CSS permettent aussi d'organiser différement les blocks (ici, un effet appelé <i>CSS Masonry</i> en référence aux briques constituant un mur)."
+          }
+        },
+        {
+          "title": "Sélecteurs d'attribut avancés",
+          "theory": "Les attributs de chaque élément nous donnent beaucoup d'informations sur eux, et il est possible de cibler ces attributs de manière très fine, évitant parfois d'avoir à recourir à des classes supplémentaires. Il est ainsi possible de cibler tous les <code>input</code> d'un type particulier, tous les liens dont l'attribut <code>href</code> contient un mot clé spécifique, toutes les images ne possédant pas d'attribut <code>alt</code>... Ces techniques peuvent être utilisées pour styliser de manière globale l'interface du site.",
+          "codes": {
+            "html": "<input type=\"email\" type=\"email\" >",
+            "css": "input[type=\"email\"] { border: 1px&nbsp;solid&nbsp;blue; }"
+          },
+          "info": "Il est possible de vérifier la simple présence d'un attribut, une valeur exacte, ou une valeur contenue au début, au milieu ou à la fin de l'attribut. Les combinaisons possibles sont nombreuses et permettent de déduire beaucoup de choses à partir des attributs.",
+          "links": [
+            {
+              "label": "Les nombreuses syntaxes de sélection",
+              "url": "https://www.w3schools.com/css/css_attribute_selectors.asp"
+            },
+            {
+              "label": "Article explicatif et exemples",
+              "url": "https://www.smashingmagazine.com/2018/10/attribute-selectors-splicing-html-dna-css/"
+            }
+          ],
+          "codepen": "MLKMxM",
+          "question": {
+            "text": "Quel caractère permet de chercher une valeur à n'importe quelle position dans un attribut ?",
+            "answer": "astérisque",
+            "clue": "e"
+          },
+          "figure": {
+            "src": "https://external-preview.redd.it/zc8Rn-ZsxHphwpR-8ArEkmhIBmCxbVPW-nTt5BNvTz4.jpg?width=900&height=471.204188482&auto=webp&s=02e9f6399c5f1c718caefb3bd446e30160a812ec",
+            "alt": "Une règle CSS révélant les images n'ayant pas d'attribut alt",
+            "caption": "Les sélecteurs d'attribut peuvent servir à débugger, par exemple à révéler les images ne possédant pas d'attribut <code>alt</code> ou dont l'attribut <code>alt</code> est vide."
+          }
+        },
+        {
+          "title": "La fusion de marges",
+          "theory": "Lorsque deux éléments de type <code>block</code> se suivent verticalement, la <code>margin-bottom</code> du premier et la <code>margin-top</code> du second fusionnent. Cela signifie que s'ils ont respectivement des marges de <code>30px</code> et <code>10px</code>, la marge de <code>10px</code> sera \"absorbée\" dans la marge de <code>30px</code>. L'espace total entre les deux éléments sera donc <code>30px</code> et non pas <code>40px</code>, l'addition des deux. La connaissance de ce mécanisme est primodiable pour placer correctement les éléments.",
+          "codes": {
+            "html": "<div class=\"one\">Ces deux divs seront séparées...</div><div class=\"two\">...par seulement 30 pixels</div>",
+            "css": ".one {margin-bottom: 30px; } .two {margin-top: 10px; }"
+          },
+          "info": "La fusion de marge peut même \"descendre\" dans le DOM. Cela signifie que la <code>margin-top</code> d'un élément peut fusionner avec la <code>margin-bottom</code> d'un autre qui n'est pas son frère précédent, mais un élément situé plus haut dans l'arborescence du DOM (un frère de son parent par exemple). Il faut donc utiliser les marges avec plus de précautions qu'on ne pourrait le penser.",
+          "links": [
+            {
+              "label": "Fusion de marges sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/Mod%C3%A8le_de_bo%C3%AEte_CSS/Fusion_des_marges"
+            },
+            {
+              "label": "Article explicatif",
+              "url": "https://jonathan-harrell.com/whats-the-deal-with-margin-collapse/"
+            }
+          ],
+          "codepen": "xMVKGj",
+          "question": {
+            "text": "En anglais, ce phénomène est appelé <i>margin...</i>",
+            "answer": "collapsing",
+            "clue": "c"
+          },
+          "figure": {
+            "src": "https://i.stack.imgur.com/EXykq.png",
+            "alt": "Un schéma de la fusion de marges",
+            "caption": "Autrement dit, quand deux marges verticales se suivent, seule la plus grande est prise en compte. Notez que cela ne se produit pas pour les marges horizontales, ni si les éléments sont enfants d'un conteneur <code>flex</code>."
+          }
+        },
+        {
+          "title": "Réagir au clic d'un utilisateur avec le sélecteur :checked",
+          "theory": "Les inputs ont des pouvoirs cachés (n'hésitez pas à vous rafraîchir la mémoire au sujet des inputs et des labels si nécessaire). Lorsqu'on créé un input de type <code>radio</code> ou <code>checkbox</code>, il est possible de les cibler quand ils sont sélectionnés / cochés grâce à la pseudo-classe <code>:checked</code>. Il est aussi possible de leur associer un élément <code>label</code>, qui permettra de les cocher \"à distance\". Contrairement aux inputs, les <code>label</code> peuvent ressembler et contenir ce que l'on souhaite. Si on cache l'input en CSS, on peut utiliser le label (texte, image, bouton...) pour activer l'input caché. On peut ensuite sélectionner les éléments voisins de l'input ayant la pseudo-classe <code>:checked</code>, et ainsi réagir à l'action de l'utilisateur. Comme si le label avait déclanché quelque chose, et sans JavaScript !",
+          "codes": {
+            "html": "<input type=\"checkbox\" id=\"menu\" /><label for=\"menu\">Ouvrir le menu</label><ul class=\"menu\">...</ul>",
+            "css": "input {display: none; } .menu { display: none; }input:checked ~ .menu { display: block; }"
+          },
+          "info": "Le code de l'exemple permet de gérer l'ouverture d'un menu sans JavaScript. Par défaut, il est caché. Lorsque l'utilisateur clique sur le label \"Ouvrir le menu\", l'input correspondant, caché aussi, est activé. Le CSS permet ensuite d'afficher le menu lorsqu'il se trouve à la suite d'un input possédant la pseudo classe <code>:checked</code>.",
+          "links": [
+            {
+              "label": "Cas pratiques d'utilisation",
+              "url": "https://css-tricks.com/the-checkbox-hack/"
+            },
+            {
+              "label": "Le concept poussé très, très loin",
+              "url": "https://codepen.io/ashishkhuraishy/full/rqQxyX"
+            }
+          ],
+          "codepen": "omxxQR",
+          "question": {
+            "text": "Quel est le nom du caractère permettant de sélectionner un ou plusieurs éléments à condition qu'ils suivent un autre élément précis ?",
+            "answer": "tilde",
+            "clue": "i"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2017/10/slider-5.gif",
+            "alt": "Un slider en pur CSS",
+            "caption": "Le \"<i>checkbox hack</i>\" est fonctionnellement très basique, mais il ouvre à des possibilités très vastes si l'on souhaite limiter notre emploi du JavaScript à ce qui est réellement indispensable. Attention cependant à l'accessibilité de vos pages, cette astuce fonctionne surtout avec des cas simples."
+          }
+        },
+        {
+          "title": "Compteurs CSS",
+          "theory": "Une autre rare situation dans laquelle le CSS sort de son rôle purement présentationnel est celle des compteurs. Grâce à eux, il est possible de compter des éléments dans une page en CSS, et d'introduire cette valeur n'importe où (grâce aux pseudo-éléments). Plusieurs compteurs peuvent cohabiter dans une même page. Grâce à eux, il est possible de numéroter des éléments de manière bien plus fine qu'avec une liste ordonnée.",
+          "codes": {
+            "html": "<section>Section one</section><section>Section two</section><section>Section three</section>",
+            "css": "body {counter-reset: sections; }section::before {counter-increment: sections; content: counter(sections); }"
+          },
+          "info": "C'est un comportement inhabituel en CSS, mais la logique est simple. On initialise un compteur en lui donnant le nom de notre choix (<code>counter-reset</code>). On l'incrémente à chaque fois que l'on rencontre les éléments qu'on souhaite compter (<code>counter-increment</code>), et on affiche la valeur avec la fonction <code>counter()</code>.",
+          "links": [
+            {
+              "label": "Compteurs CSS sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Lists/Compteurs_CSS"
+            },
+            {
+              "label": "Exemples simples et poussés",
+              "url": "https://codersblock.com/blog/fun-times-with-css-counters/"
+            }
+          ],
+          "codepen": "zeqRML",
+          "question": {
+            "text": "La fonction <code>counter()</code> prend un deuxième paramètre pour l'apparence du compteur. Quelle doit être sa valeur pour obtenir une lettre majuscule (A, B, C...) à la place des chiffres ?",
+            "answer": "upper-alpha",
+            "clue": "u"
+          },
+          "figure": {
+            "src": "http://constructs.stampede-design.com/wp-content/uploads/2015/01/css-counter.jpg",
+            "alt": "Une addition en pur CSS",
+            "caption": "Il est également possible de controller la quantité s'ajoutant au compteur, permettant ainsi les calculs possibles en pur CSS !"
           }
         }
       ]

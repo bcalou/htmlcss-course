@@ -90,7 +90,11 @@ function formatCss(code: string): string {
 
     if (
       (char === '{' ||
-        (char === '(' && indentLevel === 0 && source[i + 1] !== '$')) &&
+        char === '~' ||
+        (char === '(' &&
+          indentLevel === 0 &&
+          source[i + 1] !== '$' &&
+          isNaN(parseInt(source[i + 1])))) &&
       source[i - 1] !== '#'
     ) {
       formatted += '&nbsp;';
@@ -99,6 +103,7 @@ function formatCss(code: string): string {
     formatted += char;
 
     if (
+      char === '~' ||
       (char === ':' &&
         source[i - 1] !== '&' &&
         (!isNaN(parseInt(source[i + 1])) ||
@@ -134,6 +139,10 @@ function formatCss(code: string): string {
       if (source[i + 1] !== '}') {
         formatted += '<br/>';
       }
+    }
+
+    if (char === ',' && indentLevel === 0) {
+      formatted += '<br/>';
     }
   });
 
