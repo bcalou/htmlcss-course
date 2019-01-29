@@ -976,7 +976,7 @@
         },
         {
           "title": "Décaler le départ d'une transition",
-          "theory": "Par défaut, les transitions sont immédiates. Mais il est possible de leur ajouter un délai qui précédera leur déclanchement. C'est le quatrième paramètre de la propriété <code>transition.</code>",
+          "theory": "Par défaut, les transitions sont immédiates. Mais il est possible de leur ajouter un délai qui précédera leur déclenchement. C'est le quatrième paramètre de la propriété <code>transition.</code>",
           "codes": {
             "css": "div { width: 200px; transition: width&nbsp;0.5s&nbsp;ease&nbsp;1s; } div:hover { width: 300px; }"
           },
@@ -1090,7 +1090,7 @@
         },
         {
           "title": "Délai et timing des animations",
-          "theory": "Les animations ont beaucoup en commun avec les transitions, notamment le fait de pouvoir prendre une fonction de timing et un délai avant le déclanchement, respectivement en 3e et 4e paramètres.",
+          "theory": "Les animations ont beaucoup en commun avec les transitions, notamment le fait de pouvoir prendre une fonction de timing et un délai avant le déclenchement, respectivement en 3e et 4e paramètres.",
           "codes": {
             "html": "<div>Je me déplace vers la droite en 5 secondes !</div>",
             "css": "@keyframes&nbsp;move-to-right { from { transform: translateX(0); } to { transform: translateX(500px); }} div { animation: move-to-right&nbsp;5s&nbsp;cubic-bezier(.29,&nbsp1.01,&nbsp1,&nbsp-0.68)&nbsp;1s; }"
@@ -2701,7 +2701,7 @@
         },
         {
           "title": "Réagir au clic d'un utilisateur avec le sélecteur :checked",
-          "theory": "Les inputs ont des pouvoirs cachés (n'hésitez pas à vous rafraîchir la mémoire au sujet des inputs et des labels si nécessaire). Lorsqu'on créé un input de type <code>radio</code> ou <code>checkbox</code>, il est possible de les cibler quand ils sont sélectionnés / cochés grâce à la pseudo-classe <code>:checked</code>. Il est aussi possible de leur associer un élément <code>label</code>, qui permettra de les cocher \"à distance\". Contrairement aux inputs, les <code>label</code> peuvent ressembler et contenir ce que l'on souhaite. Si on cache l'input en CSS, on peut utiliser le label (texte, image, bouton...) pour activer l'input caché. On peut ensuite sélectionner les éléments voisins de l'input ayant la pseudo-classe <code>:checked</code>, et ainsi réagir à l'action de l'utilisateur. Comme si le label avait déclanché quelque chose, et sans JavaScript !",
+          "theory": "Les inputs ont des pouvoirs cachés (n'hésitez pas à vous rafraîchir la mémoire au sujet des inputs et des labels si nécessaire). Lorsqu'on créé un input de type <code>radio</code> ou <code>checkbox</code>, il est possible de les cibler quand ils sont sélectionnés / cochés grâce à la pseudo-classe <code>:checked</code>. Il est aussi possible de leur associer un élément <code>label</code>, qui permettra de les cocher \"à distance\". Contrairement aux inputs, les <code>label</code> peuvent ressembler et contenir ce que l'on souhaite. Si on cache l'input en CSS, on peut utiliser le label (texte, image, bouton...) pour activer l'input caché. On peut ensuite sélectionner les éléments voisins de l'input ayant la pseudo-classe <code>:checked</code>, et ainsi réagir à l'action de l'utilisateur. Comme si le label avait déclenché quelque chose, et sans JavaScript !",
           "codes": {
             "html": "<input type=\"checkbox\" id=\"menu\" /><label for=\"menu\">Ouvrir le menu</label><ul class=\"menu\">...</ul>",
             "css": "input {display: none; } .menu { display: none; }input:checked ~ .menu { display: block; }"
