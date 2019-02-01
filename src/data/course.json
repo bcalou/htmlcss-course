@@ -753,7 +753,7 @@
           ],
           "codepen": "WamwPm",
           "question": {
-            "text": "Il existe une contrepartie à <code>min-width</code>, pour cibler les écrans faisant moins d'une certaine hauteur, laquelle ? Non, il n'y a pas de piège, c'est bien aussi simple que ce vous pensez.",
+            "text": "Il existe une contrepartie à <code>min-width</code>, pour cibler les écrans faisant plus d'une certaine hauteur, laquelle ? Non, il n'y a pas de piège, c'est bien aussi simple que ce vous pensez.",
             "answer": "min-height",
             "clue": "e"
           },
