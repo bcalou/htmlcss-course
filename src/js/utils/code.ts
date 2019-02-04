@@ -68,8 +68,13 @@ function formatCss(code: string): string {
   let source = Array.from(code.replace(/ /g, '').replace(/&nbsp;/g, ' '));
   let formatted = '';
   let indentLevel = 0;
+  let inParenthesis = false;
 
   source.forEach((char, i) => {
+    if (char === '(') {
+      inParenthesis = true;
+    }
+
     if (char === '}' && source[i + 1] !== ')') {
       indentLevel--;
     }
@@ -94,6 +99,7 @@ function formatCss(code: string): string {
         (char === '(' &&
           indentLevel === 0 &&
           source[i + 1] !== '$' &&
+          source[i - 8] !== ':' &&
           isNaN(parseInt(source[i + 1])))) &&
       source[i - 1] !== '#'
     ) {
@@ -141,8 +147,12 @@ function formatCss(code: string): string {
       }
     }
 
-    if (char === ',' && indentLevel === 0) {
+    if (char === ',' && indentLevel === 0 && !inParenthesis) {
       formatted += '<br/>';
+    }
+
+    if (char === ')') {
+      inParenthesis = false;
     }
   });
 

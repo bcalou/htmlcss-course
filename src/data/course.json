@@ -2760,6 +2760,242 @@
           }
         }
       ]
+    },
+    {
+      "title": "Le futur ?",
+      "description": "Beaucoup des techniques d'intégration présentées ici ne sont pas encore implémentées suffisamment pour être utilisées en production, mais elles préfigurent une partie du développement front-end de demain.",
+      "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vRlwDHljcTXC3Tur8WZFr03SWTdRxLeBaMJ4XuBjkIXAc2LlRKhq_n5bLGnp-bof4YaNx8jvhZmhvlV/pub?start=false&loop=false&delayms=60000000",
+      "correctionVideoYoutubeId": "",
+      "puzzle": {
+        "word": "hourra",
+        "text": "Si vous avez suivi le cours à 100%, vous avez complété 108 codepen et répondu à 95 questions. Bravo, et un grand merci pour faire partie de celles et ceux qui font vivre ce cours."
+      },
+      "concepts": [
+        {
+          "title": "Variables CSS natives",
+          "theory": "Les pré-processeurs tels que <em>SASS</em> palient les manques du langage <em>CSS</em>. Mais ce dernier n'est pas sans évoluer et beaucoup des capacités fournies par les pré-processeurs trouvent leur chemin progressivement. Les navigateurs récents permettent ainsi de déclarer des variables CSS <em>nativement</em>, sans outil supplémentaire ni étape de transpilation.",
+          "codes": {
+            "css": ":root { --text-color: #EEBBEE; --background-color: black; } body { background-color: var(--background-color); } p { color: var(--text-color); }"
+          },
+          "info": "Les variables sont définies pour tout le document grâce au sélecteur <code>:root</code>. Si une variable est définie à l'intérieur d'un sélecteur, par exemple <code>header</code>, sa portée sera limitée aux éléments se trouvant dans un <code>header</code>.",
+          "links": [
+            {
+              "label": "Variables CSS sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/Les_variables_CSS"
+            },
+            {
+              "label": "Support navigateur",
+              "url": "https://caniuse.com/#feat=css-variables"
+            }
+          ],
+          "codepen": "XOREMX",
+          "question": {
+            "text": "Inspectez le document pour trouver les variables définies à la racine de ce site. Quelle est la typographie sans serif utilisée ?",
+            "answer": "oswald",
+            "clue": "o"
+          },
+          "figure": {
+            "src": "https://mariehime.files.wordpress.com/2013/10/chartecouleurs.png",
+            "alt": "La charte graphique d'un site",
+            "caption": "Rien de tel qu'un ensemble de variables soigneusement définies pour respecter les couleurs et les typographies d'une charte graphique."
+          }
+        },
+        {
+          "title": "Theming dynamique",
+          "theory": "Les variables natives possèdent un avantage majeur par rapport aux variables de <em>SASS</em> : alors que ces dernières sont transformées en valeurs fixes lors de la transpilation, les variables natives sont dynamiques ! Cela signifie que leur valeur peut changer au cours de la vie de la page : en fonction des media queries, de la section dans laquelle on se trouve, des actions de l'utilisateur... On peut utiliser cette capacité pour créer plusieurs thèmes à partir du même code CSS, en changeant simplement les valeurs des variables.",
+          "codes": {
+            "scss": ":root { --titleSize: 22px; @media (min-width: 780px) { --titleSize: 28px; } @media (min-width: 1080px) { --titleSize: 32px; }} h1 { font-size: var(--titleSize); }"
+          },
+          "info": "Vous pouvez utiliser l'inspecteur d'éléments pour modifier les variables natives d'un site dynamiquement, notamment les couleurs. Essayez !",
+          "links": [
+            {
+              "label": "Créer un thème customisable par l'utilisateur",
+              "url": "https://css-tricks.com/css-custom-properties-theming/"
+            }
+          ],
+          "codepen": "vbmRqV",
+          "question": {
+            "text": "L'instruction JavaScript suivante permettra de changer la couleur principale du site en bleu... À condition de trouver le nom de la méthode manquante : <code>document.documentElement.style.???('--primaryColor', 'blue');</code>.",
+            "answer": "setProperty",
+            "clue": "r"
+          },
+          "figure": {
+            "src": "https://css-tricks.com/wp-content/uploads/2017/05/trello-and-twitter.jpg",
+            "alt": "Un changement de couleur sur Twitter et Trello",
+            "caption": "Twitter et Trello, comme de nombreux sites et outils en ligne, permettent de customiser les couleurs de l'interface. Les variables CSS ouvrent de nombreuses opportunités à ce sujet."
+          }
+        },
+        {
+          "title": "Le sélecteur :matches",
+          "theory": "Un autre pouvoir hérité des pre-processeurs et bientôt exploitable nativement est la possibilité d'écrire des sélecteurs complexes sans répéter les tags et les classes. Classiquement, si on souhaitait cibler tous les niveaux de titres contenu dans des balises <code>header</code> ou <code>footer</code>, il faudrait 12 sélecteurs (6 niveaux de titres fois deux balises). Le pseudo-sélecteur <code>:matches</code> résout le problème en une seule ligne.",
+          "codes": {
+            "css": ":matches(header,&nbsp;footer):matches(h1,&nbsp;h2,&nbsp;h3,&nbsp;h4,&nbsp;h5,&nbsp;h6) { color: red; }"
+          },
+          "info": "<code>:matches</code> n'est qu'un des nouveaux sélecteurs inclus dans ce qui est abusivement appelé \"CSS 4\". Parmi les autres, on trouve la sélection basée sur les enfants, la sélection de colonnes paires ou impaires dans une grille, les sélecteurs <code>:nth-child</code> et <code>:not</code> pouvant accepter plusieurs arguments...",
+          "links": [
+            {
+              "label": ":matches sur CSS Tricks",
+              "url": "https://css-tricks.com/almanac/selectors/m/matches/"
+            },
+            {
+              "label": "Support navigateur",
+              "url": "https://caniuse.com/#feat=css-matches-pseudo"
+            },
+            {
+              "label": "Tous les sélecteurs \"CSS 4\"",
+              "url": "https://css4-selectors.com/selectors/"
+            },
+            {
+              "label": "6 capacités SASS bientôt en CSS",
+              "url": "https://webdesign.tutsplus.com/tutorials/the-new-css--cms-28888"
+            }
+          ],
+          "codepen": "yZXyrz",
+          "question": {
+            "text": "Quel futur sélecteur sera capable de vérifier la présence d'un enfant, par exemple pour styliser les <code>figure</code> à condition qu'ils contiennent un <code>figcaption</code> ?",
+            "answer": ":has",
+            "clue": "h"
+          },
+          "figure": {
+            "src": "https://i.stack.imgur.com/2x5Dx.png",
+            "alt": "Un formulaire avec des champs invalides",
+            "caption": "Le nouveau sélecteur <code>:user-invalid</code> permettra de cibler les champs de formulaire seulement <em>après</em> l'interaction de l'utilisateur, permettant d'afficher les erreurs au fur et à mesure et sans JavaScript."
+          }
+        },
+        {
+          "title": "Accéder à l'API de painting avec Houdini",
+          "theory": "Houdini est une véritable révolution pour le CSS. Jusqu'ici, pour obtenir des effets n'étant pas directement réalisables avec des propriétés CSS, il était nécessaire de les générer en JavaScript, ce qui ajoutait une lourde étape de <i>rendering</i> à la page. Il fallait également faire attention aux redimensionnement du viewport ou de l'élément pour adapter l'effet en direct (ce qui est également très lourd). Houdini permet d'écrire de nouveaux styles CSS <em>natifs</em>, qui seront interprétés par le navigateur comme n'importe quel autre : comme si vous étendiez les capacités du navigateur en lui permettant de comprendre de nouveaux mots-clés.",
+          "codes": {
+            "html": "<div>Bonjour la France</div>",
+            "css": "div { background-image: paint(french); }",
+            "js": "registerPaint('french', class {<br/>&nbsp;&nbsp;paint(ctx, size) {<br/>&nbsp;&nbsp;&nbsp;&nbsp;ctx.fillStyle = 'blue';<br/>&nbsp;&nbsp;&nbsp;&nbsp;ctx.fillRect(0, 0, size.width / 3, size.height);<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;ctx.fillStyle = 'red';<br/>&nbsp;&nbsp;&nbsp;&nbsp;ctx.fillRect(2 * (size.width / 3), 0, size.width / 3, size.height);<br/>&nbsp;&nbsp;}<br/>});"
+          },
+          "info": "Le code JavaScript de l'exemple permet de définir un <code>paintWorklet</code> appelé <code>french</code> et dessinant un drapeau français en fond de tout élément l'utilisant. Bien qu'il soit écrit en JavaScript, avec la même syntaxe que canvas, rien à voir avec la situation habituelle : une fois que le <code>worklet</code> est importé par le navigateur, la valeur est comprise nativement, peinte dès la première étape de <i>rederning</i> et mise à jour automatiquement en fonction de la taille de l'élément. On vient donc d'écrire une nouvelle propriété CSS ! Et les capacités amenées par Houdini seront bien plus larges...",
+          "links": [
+            {
+              "label": "Is Houdini Ready Yet?",
+              "url": "https://ishoudinireadyyet.com/"
+            },
+            {
+              "label": "Article explicatif",
+              "url": "https://blog.logrocket.com/new-horizons-in-css-houdini-and-the-paint-api-8b307cf387bb"
+            },
+            {
+              "label": "Exemples fonctionnels",
+              "url": "https://css-houdini.rocks/"
+            },
+            {
+              "label": "Tout ce qu'Houdini peut faire",
+              "url": "http://houdini.glitch.me/"
+            }
+          ],
+          "codepen": "mvmZRX",
+          "question": {
+            "text": "L'API <em>paint</em> d'Houdini n'est qu'une partie de cette évolution. Une autre partie nous permettra de définir des comportements de mise en page personnalisés : on pourra ainsi écrire une variation de <code>flexbox</code>, <code>grid</code>, ou quelque chose de complètement différent et compris nativement ! Quel est le nom de cette API en cours de développement ?",
+            "answer": "layout",
+            "clue": "u"
+          },
+          "figure": {
+            "src": "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/dd682bbe-e3ef-4522-a0cf-83abccbc2a5d/05-spec-coverage-opt.png",
+            "alt": "Houdini dans le processus de rendement d'une page",
+            "caption": "Le processus par lequel les pixels s'affichent sur l'écran est une longue succession d'étapes jusqu'ici inaccessibles. Manipuler les éléments en JavaScript provoque de nombreux recalculs coûteux en performance. Houdini nous permet pour la première fois d'accéder au moteur de rendu du navigateur pour l'adapter à nos besoins."
+          }
+        },
+        {
+          "title": "Custom element",
+          "theory": "Les principaux frameworks front-end reposent sur l'idée de définir des composants ré-utilisables : un composant pour afficher l'heure, un pour le panier d'achats, un pour le profil... Chaque composant héberge son propre template HTML, ses propres styles et possède son propre comportement grâce au JavaScript associé. Il devient possible de faire de même nativement grâce aux <em>Web Components</em>, et plus particulièrement aux <em>Custom Elements</em>. Cette technologie permet de définir de nouveaux tags HTML pouvant être utilisés dans le document et possédant leur comportement propre.",
+          "codes": {
+            "html": "<screen-size>Ce texte sera remplacé par le contenu du custom élément. Ce dernier affiche automatiquement la largeur de l'écran.</screen-size>",
+            "js": "// Voir les liens ;)"
+          },
+          "info": "En plus de permettre de définir de nouveaux éléments, il est également possible <em>d'étendre</em> des tags existants. On pourrait ainsi étendre <code>HTMLUListElement</code>, soit l'élément <code>ul</code>, pour enrichir le comportement par défaut d'une liste (et en faire par exemple une liste interactive). La syntaxe est différente et n'est pas présentée dans ce chapitre.",
+          "links": [
+            {
+              "label": "Essayez &lt;screen-size&gt; !",
+              "url": "https://codepen.io/bcalou/pen/LqjRWe?editors=1010"
+            },
+            {
+              "label": "Custom elements sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/Web_Components/Using_custom_elements"
+            },
+            {
+              "label": "Web Components sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/Web_Components"
+            },
+            {
+              "label": "Support navigateur",
+              "url": "https://caniuse.com/#search=custom%20elements"
+            }
+          ],
+          "codepen": "ZwypxJ",
+          "question": {
+            "text": "Comment est appelé le <code>DOM</code> des custom elements ? (réponse sans espace)",
+            "answer": "shadowdom",
+            "clue": "a"
+          },
+          "figure": {
+            "src": "https://cdn-images-1.medium.com/max/2600/1*bbxDiplpyPrwg-g7GXC-FA.png",
+            "alt": "Les technologies front-end",
+            "caption": "Voyez-vous l'icône orange avec les outils dans la partie \"Core\", à côté de HTML, CSS et JS ? Ce sont les web components, que vous conaissez en partie désormais."
+          }
+        },
+        {
+          "title": "Dynamiser un custom element",
+          "theory": "Un élément customisé peut afficher plus qu'un simple texte : on peut lui associer un template contenant un ou plusieurs éléments HTML. Tout comme les éléments HTML de base, les custom elements sont capables de réagir à des attributs et d'adapter leur contenu en conséquence. Il leur est même possible de détecter le changement de la valeur de l'attribut (qui pourrait être modifié en JavaScript) afin de se mettre à jour automatiquement. Enfin, la technique des <code>slots</code> (emplacements, en français), permet au développeur utilsant un custom element d'injecter du contenu HTML dans ce dernier, afin de le customiser encore plus.",
+          "codes": {
+            "html": "<screen-size dimension=\"height\">Ce texte devient le titre de l'élément grâce au slot ! L'élément accepte également un attribut dimension permettant d'afficher au choix la largeur ou la hauteur.</screen-size>",
+            "js": "// Voir les liens ;)"
+          },
+          "info": "Le concept d'attributs dynamiques est essentiel chez <i>React</i> ou <i>Angular</i>, bien qu'ils soient nommés différement, respectivement <code>props</code> et <code>inputs</code>. Il en va de même avec l'inclusion (parfois appelée <i>transclusion</i>) d'élements au sein des composants. Les Web Components affaibliront-ils le rayonnement des frameworks front-end ? C'est peu probable à court terme, mais personne ne connaît la suite.",
+          "links": [
+            {
+              "label": "Essayez &lt;screen-size&gt; !",
+              "url": "https://codepen.io/bcalou/pen/BMZQGw?editors=1010"
+            },
+            {
+              "label": "Slot nommés",
+              "url": "https://newinweb.com/2018/05/26/using-slots-in-custom-elements/"
+            }
+          ],
+          "codepen": "bzRwOe",
+          "question": {
+            "text": "Quelle méthode permet au custom component de connaître les attributs à surveiller ?",
+            "answer": "observedAttributes",
+            "clue": "r"
+          },
+          "figure": {
+            "src": "https://blogsimages.adobe.com/creativecloud/files/2015/10/behance.jpg",
+            "alt": "Des projets sur le site Behance",
+            "caption": "Que sont les \"cartes\" d'un tel design, sinon des éléments identiques dont seuls les paramètres de contenu varient ?"
+          }
+        },
+        {
+          "title": "Styles dans le shadow DOM",
+          "theory": "Chaque custom element \"vit\" dans son <i>shadow DOM</i>, une sous-section du <code>DOM</code> principal. Entre les deux, la frontière est très nette : le CSS de la page globale ne s'applique pas à l'intérieur du shadow DOM, et le CSS de ce dernier ne peut \"fuiter\" à l'extérieur. Cela permet à chaque custom element d'embarquer son propre style, sans se soucier des collisions possibles avec l'environnement. Les stratégies strictes de nommages telles que <code>BEM</code> perdent donc de l'intérêt dans ce contexte \"fermé\", où l'on peut se reposer sur des classes ou des sélecteurs de tag plus librement. Le CSS d'un custom element est généralement directement écrit dans son template, grâce à une classique balise <code>style</code>.",
+          "codes": {
+            "html": "<screen-size>Cet élément peut être ciblé en CSS, mais pour tout ce qui se passe à l'intérieur, c'est dans le JS !</screen-size>",
+            "css": "screen-size { position: fixed; }",
+            "js": "// Voir les liens ;)"
+          },
+          "info": "Certains développeur apprécient ce concept car les styles sont \"scopés\" et les composants indépendants les uns des autres. D'un autre côté, on perd tout l'intérêt de la cascade et la capacité de CSS à cibler globalement de nombreux éléments. Certaines techniques permettent heureusement d'importer des styles globaux au sein du shadow DOM, et de les combiner avec les styles locaux.",
+          "links": [
+            {
+              "label": "Essayez &lt;screen-size&gt; !",
+              "url": "https://codepen.io/bcalou/pen/QYMKJN"
+            },
+            {
+              "label": "Article explicatif",
+              "url": "https://alligator.io/web-components/styling-custom-elements/"
+            }
+          ],
+          "codepen": "QYgGNM",
+          "figure": {
+            "src": "https://bitsofco.de/content/images/2018/12/Artboard.png",
+            "alt": "Le shadow DOM dans l'inspecteur",
+            "caption": "Le shadow DOM peut s'observer dans l'inspecteur. Dans ce cas, il est intéressant pour Twitter d'inclure son bouton de cette façon : son style demeurera indépendant du contexte."
+          }
+        }
+      ]
     }
   ],
   "videos": [
