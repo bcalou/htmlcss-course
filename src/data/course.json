@@ -3002,23 +3002,28 @@
   "videos": [
     {
       "title": "Git, Github & Netlify",
-      "youtubeId": "07Kb-_TzVdU"
+      "youtubeId": "07Kb-_TzVdU",
+      "show": "false"
     },
     {
       "title": "Parallaxe avec Relax",
-      "youtubeId": "y1pidXqv0Ic"
+      "youtubeId": "y1pidXqv0Ic",
+      "show": "false"
     },
     {
       "title": "Détection de scroll avec Waypoints",
-      "youtubeId": "9Mq9ktRcrZs"
+      "youtubeId": "9Mq9ktRcrZs",
+      "show": "false"
     },
     {
       "title": "Menu burger fullscreen & responsive",
-      "youtubeId": "4y_GGOY035s"
+      "youtubeId": "4y_GGOY035s",
+      "show": "false"
     },
     {
       "title": "npm, Parcel & Sass",
-      "youtubeId": "SH7R5QgKwfE"
+      "youtubeId": "SH7R5QgKwfE",
+      "show": "false"
     }
   ],
   "twitterAccounts": [

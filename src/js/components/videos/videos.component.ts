@@ -17,8 +17,14 @@ export default class videosComponent extends Component {
   /** Render videos section */
   protected getTemplate(): string {
     return `
-      <h4 class="videos__title">Vidéos utiles</h4>
-      <ul class="videos__items"></ul>
+      ${
+        this.videos.find((video) => video.show === 'true')
+          ? `
+        <h4 class="videos__title">Vidéos utiles</h4>
+        <ul class="videos__items"></ul>
+      `
+          : ''
+      }
     `;
   }
 
@@ -26,12 +32,14 @@ export default class videosComponent extends Component {
   private generateVideos(): void {
     const container: HTMLUListElement = this.el.getElementsByTagName('ul')[0];
 
-    this.videos.forEach(video => {
-      new VideoComponent(
-        container,
-        { youtubeId: video.youtubeId },
-        { injectionMethod: 'append' }
-      );
-    });
+    this.videos
+      .filter((video) => video.show === 'true')
+      .forEach((video) => {
+        new VideoComponent(
+          container,
+          { youtubeId: video.youtubeId },
+          { injectionMethod: 'append' },
+        );
+      });
   }
 }
