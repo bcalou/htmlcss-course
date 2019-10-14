@@ -4,6 +4,7 @@
     {
       "title": "Introduction aux balises",
       "description": "Découverte du HTML, le langage de base des pages web, et des balises principales qui le constituent.",
+      "available_from": "1571097600",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vT-yctmKbXxKrLaLxbQwOdvmIFTGM_iXgmopeakGyAuC5MWbXa3dd5DaP6ATM6RDBRrL5myUkhyZpEH/pub?start=true&loop=false&delayms=60000000",
       "puzzle": {
         "word": "semantic",

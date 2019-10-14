@@ -18,3 +18,12 @@ export function getSvg(id: string, className: string = ''): string {
     </svg>
   `;
 }
+
+/** Return true if the correction of the given chapter should be shown */
+export function correctionShouldBeShown(chapter: Chapter): boolean {
+  return (
+    chapter.correctionVideoYoutubeId &&
+    Math.floor(Date.now() / 1000) >
+      parseInt(chapter.available_from) + 40 * 60 * 60
+  );
+}

@@ -4,6 +4,7 @@ import CorrectionComponent from '../../components/correction/correction.componen
 import HeaderComponent from '../../components/header/header.component';
 import PuzzleComponent from '../../components/puzzle/puzzle.component';
 import Chapter from '../../models/chapter.interface';
+import { correctionShouldBeShown } from '../../utils/misc';
 import Page from '../page';
 
 export default class ChapterPage extends Page {
@@ -16,7 +17,7 @@ export default class ChapterPage extends Page {
       <concepts></concepts>
       <puzzle></puzzle>
       ${
-        this.chapter.correctionVideoYoutubeId ? '<correction></correction>' : ''
+        correctionShouldBeShown(this.chapter) ? '<correction></correction>' : ''
       }
     `;
   }

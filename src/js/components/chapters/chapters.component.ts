@@ -1,6 +1,6 @@
 import Chapter from '../../models/chapter.interface';
 import ConceptData from '../../store/concept-data.interface';
-import { getSvg } from '../../utils/misc';
+import { correctionShouldBeShown, getSvg } from '../../utils/misc';
 import Component from '../component';
 
 export default class ChaptersComponent extends Component {
@@ -10,7 +10,10 @@ export default class ChaptersComponent extends Component {
 
   /** Get a chapter element for each chapter */
   protected getTemplate(): string {
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+
     return this.chapters
+      .filter((chapter) => currentTimestamp > parseInt(chapter.available_from))
       .map((chapter, i) => {
         const index: number = i + 1;
         const conceptsNumber: number = chapter.concepts.length;
@@ -33,7 +36,7 @@ export default class ChaptersComponent extends Component {
                 validé${doneConcepts > 1 ? 's' : ''}
               </p>
               ${
-                chapter.correctionVideoYoutubeId
+                correctionShouldBeShown(chapter)
                   ? '<a class="chapter__correction" href=' +
                     chapterUrl +
                     '#correction>Correction disponible</a>'
@@ -62,7 +65,7 @@ export default class ChaptersComponent extends Component {
 
   /** Count the number of concepts marked as done in the given chapter */
   protected getNumberOfDoneConcepts(chapter: Chapter): number {
-    return chapter.concepts.filter(concept => {
+    return chapter.concepts.filter((concept) => {
       const conceptData: ConceptData = this.store.data.concepts[concept.title];
 
       return conceptData && conceptData.done;
