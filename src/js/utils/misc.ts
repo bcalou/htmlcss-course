@@ -24,6 +24,6 @@ export function correctionShouldBeShown(chapter: Chapter): boolean {
   return (
     chapter.correctionVideoYoutubeId &&
     Math.floor(Date.now() / 1000) >
-      parseInt(chapter.available_from) + 40 * 60 * 60
+      parseInt(chapter.available_from) + 24 * 60 * 60
   );
 }
