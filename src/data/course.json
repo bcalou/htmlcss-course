@@ -233,6 +233,7 @@
     {
       "title": "Sélecteurs CSS et règles simples",
       "description": "Comment cibler des éléments du HTML et leur appliquer des règles stylistiques simples.",
+      "available_from": "1571702400",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vRgG8_pKVmbQ4lwXqDZEEFoRd_VzKazQB5-ldieXUnmvl1g3k8n817osNqjACUPdPF0W-BstefwmMEd/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
         "word": "cascade",
@@ -452,7 +453,7 @@
             "clue": "e"
           },
           "figure": {
-            "src": "http://www.font-face.com/images/compare.png",
+            "src": "https://miro.medium.com/max/1216/1*uUnBvTjsJLNZctGUHrgnwg.jpeg",
             "alt": "Les différentes graisses d'une typographie",
             "caption": "Une seule typographie peut contenir des dizaines de graisses et styles. Essayer de limiter à 3 ou 4 le nombre de typographies / graisses que vous utilisez par site, pour en optimiser les performances."
           }
