@@ -10,7 +10,9 @@ export default class ChaptersComponent extends Component {
 
   /** Get a chapter element for each chapter */
   protected getTemplate(): string {
-    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const date = new Date();
+    const currentTimestamp =
+      Math.floor(Date.now() / 1000) + date.getTimezoneOffset() * 60;
 
     return this.chapters
       .filter((chapter) => currentTimestamp > parseInt(chapter.available_from))

@@ -21,9 +21,13 @@ export function getSvg(id: string, className: string = ''): string {
 
 /** Return true if the correction of the given chapter should be shown */
 export function correctionShouldBeShown(chapter: Chapter): boolean {
+  const date = new Date();
+
   return (
     chapter.correctionVideoYoutubeId &&
     Math.floor(Date.now() / 1000) >
-      parseInt(chapter.available_from) + 24 * 60 * 60
+      parseInt(chapter.available_from) +
+        16 * 60 * 60 +
+        date.getTimezoneOffset() * 60
   );
 }
