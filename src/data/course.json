@@ -484,6 +484,7 @@
     {
       "title": "Mise en page, flexbox & grid",
       "description": "Manipuler des blocs avec flexbox, grid et d'autres techniques pour parvenir à une mise en page complexe.",
+      "available_from": "1572307200",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vSdS_UrGr6ofEmQY-DhJRLMJr7G_qXx0XRn7-Ame2nCfz36CmIB4okg_qkvul0g8-rr7YiA8vE2oUtj/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
         "word": "flexible",
