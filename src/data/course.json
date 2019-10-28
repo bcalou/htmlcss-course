@@ -638,7 +638,7 @@
             "clue": "b"
           },
           "figure": {
-            "src": "https://designmodo.com/wp-content/uploads/2016/04/flexbox-css-social.jpg",
+            "src": "https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/8ed3a7b7-e8e7-45d7-8450-9c3cffec81d6/flex-preview-opt.png",
             "alt": "Une gallerie de photos",
             "caption": "Les galleries peuvent être réalisées grâce à <code>flexbox</code>, en faisant varier la propriété <code>flex-grow</code> pour donner plus d'espace à certains éléments."
           }
