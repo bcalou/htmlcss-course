@@ -732,6 +732,7 @@
     },
     {
       "title": "Responsive & Mobile First",
+      "available_from": "1572912000",
       "description": "Manipulation des media queries et autres bonnes pratiques pour réaliser des intégrations à toute épreuve face à l'imprévisible variété des terminaux client.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vRlK3Z39-Tk2IMYmGtoM4MyF3Ivp-NJpno2sVT42BpqJvDQZQ2fTKs-teRJu6qEO7yX4bNcenChHPa_/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
