@@ -679,7 +679,7 @@
         },
         {
           "title": "Grid : mesures flexibles",
-          "theory": "Dans la pratique, et contrairement à l'exemple précédent, les grilles sont rarement composées uniquement de valeurs fixes, car les environnement sont de taille variable. Quand on définit une grille, on peut utiliser les <code>px</code>, mais aussi le mot-clé <code>auto</code>, qui permettra à la grille de s'adapter au contenu. On peut aussi utiliser les fragments avec <code>fr</code> : comme avec <code>flexbox</code>, les fragments permettent de distribuer l'espace restant : si les 3 colonnes ont une largeur d'<code>1fr</code>, elle prendront chacune un tiers de la taille disponible. Notez enfin le mot-clé <code>repeat</code>, qui permet de générer plusieurs colonnes ou lignes sans avoir à se répéter.",
+          "theory": "Dans la pratique, et contrairement à l'exemple précédent, les grilles sont rarement composées uniquement de valeurs fixes, car les environnements sont de tailles variables. Quand on définit une grille, on peut utiliser les <code>px</code>, mais aussi le mot-clé <code>auto</code>, qui permettra à la grille de s'adapter au contenu. On peut aussi utiliser les fragments avec <code>fr</code> : comme avec <code>flexbox</code>, les fragments permettent de distribuer l'espace restant : si les 3 colonnes ont une largeur d'<code>1fr</code>, elle prendront chacune un tiers de la taille disponible. Notez enfin le mot-clé <code>repeat</code>, qui permet de générer plusieurs colonnes ou lignes sans avoir à se répéter.",
           "codes": {
             "css": "body { display: grid; grid-template-columns: 1fr&nbsp;1000px&nbsp;1fr; grid-template-rows: 200px&nbsp;repeat(3,&nbsp;500px); }"
           },
