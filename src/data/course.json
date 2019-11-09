@@ -915,6 +915,7 @@
     },
     {
       "title": "Transitions & Animations CSS",
+      "available_from": "1573516800",
       "description": "Utiliser les fonctionnalités du CSS pour effectuer des transitions fluides et des animations plus complexes.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQVdYR6AlPe-T8nu0FUShzORZIDPl6yGp_9hVxtY_nVy7AMkdHjou4E4Sfu7IeSxQ9Ew6VtkqhEQCYE/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
@@ -1169,6 +1170,7 @@
     },
     {
       "title": "Formulaires HTML",
+      "available_from": "1574121600",
       "description": "Concevoir des formulaires HTML tirant parti des capacités natives du navigateur et en améliorer l'interactivité en CSS et JavaScript.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vS9AUFGLpU54akzrKMNjhURGrzSlBOmvuVI9kRe4l-cEWZSZketNZC3_B9wB_ZWlYL-Esx4CmVpqjYg/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
@@ -1382,6 +1384,7 @@
     },
     {
       "title": "Pré-processeur SASS",
+      "available_from": "1575331200",
       "description": "Utiliser le pré-processeur SASS et son langage SCSS pour écrire un CSS plus cohérent, maintenable et efficace.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vTJV3zDUl9FNi_5kOk0S3ajpiTyifTJ2Gs1nSf58NH1FO5EGisuTXptWpwt05Nsv3tkfYeTZVY7xVbS/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
@@ -1610,6 +1613,7 @@
     },
     {
       "title": "Convention BEM",
+      "available_from": "1575936000",
       "description": "Utiliser la convention de nommage BEM pour écrire un CSS plus prédictible, maintenable et efficace.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vR8pTgz-g8QkdQuJa5elvgbolUAbLLxPBWcdDkNcBvjyWf7W0YV5ctUY-RAOB67yq5JY19qRdUcidnG/pub?start=false&loop=false&delayms=6000000",
       "puzzle": {
@@ -1774,6 +1778,7 @@
     },
     {
       "title": "Effets CSS avancés",
+      "available_from": "1576540800",
       "description": "Créer des effets visuels avancés mêlant textes, images et animations grâce aux propriétés CSS.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vR4Bi1_6E6rN9-LnLi9WZCh3RTXZKGHn272tCUelyi-2RZFgKjAu_LSXBF2xHoowhJ735zfdNINlYPV/pub?start=true&loop=false&delayms=6000000",
       "correctionVideoYoutubeId": "LskT4TrAyJg",
@@ -2028,6 +2033,7 @@
     },
     {
       "title": "S'adapter au contexte",
+      "available_from": "1578960000",
       "description": "Bonnes pratiques et outils pour s'adapter aux capacités des écrans, des navigateurs et des utilisateurs.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQ0mXT6ESa5oXsRi5nxs2poDkX9xDMImupSdMhNPOTpvFdZysXGjs2K9Fih6DkY3eZ-IAknE6yu7sL9/pub?start=true&loop=false&delayms=60000",
       "correctionVideoYoutubeId": "GJCh4LFAWdo",
@@ -2292,6 +2298,7 @@
     },
     {
       "title": "Le format d'image SVG",
+      "available_from": "1579564800",
       "description": "Intégrer, composer et animer des images utilisant SVG, un format d'image léger et responsive.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vQBKGcwQ1oSPzchoPY1A-g4d6on8SnmKwlgVoxOA4Sb1oNIZwng7XitNHytTUaYLVnm9aTThPNNrfMp/pub?start=true&loop=false&delayms=60000000",
       "correctionVideoYoutubeId": "e3mAFuMzrfQ",
@@ -2520,6 +2527,7 @@
     },
     {
       "title": "Pot-pourri",
+      "available_from": "1582502400",
       "description": "Astuces, pièges et aspects méconnus du HTML et du CSS, langages pleins de surprises et à la puissance souvent sous-estimée.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vTfLU4bxeM0BpSuwE9a04ZlMTuAPXRqn8RVpN7toxoCC09-6ylM_saAP4_OEcgPPscFLQaKL7XC3Zuo/pub?start=false&loop=false&delayms=6000000",
       "correctionVideoYoutubeId": "8TWztxSji38",
@@ -2767,6 +2775,7 @@
     },
     {
       "title": "Le futur ?",
+      "available_from": "1583107200",
       "description": "Beaucoup des techniques d'intégration présentées ici ne sont pas encore implémentées suffisamment pour être utilisées en production, mais elles préfigurent une partie du développement front-end de demain.",
       "slidesUrl": "https://docs.google.com/presentation/d/e/2PACX-1vRlwDHljcTXC3Tur8WZFr03SWTdRxLeBaMJ4XuBjkIXAc2LlRKhq_n5bLGnp-bof4YaNx8jvhZmhvlV/pub?start=false&loop=false&delayms=60000000",
       "correctionVideoYoutubeId": "",
