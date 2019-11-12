@@ -1042,7 +1042,7 @@
           },
           "figure": {
             "src": "https://content-static.upwork.com/blog/uploads/sites/3/2018/03/14081052/animation_scrollreveal.gif",
-            "alt": "Des éléments apparaissant lorsqu'ils entre dans le viewport",
+            "alt": "Des éléments apparaissant lorsqu'ils entrent dans le viewport",
             "caption": "On peut mener ça loin, mais la logique de base reste toujours la même. Ici, lorsque l'entreé d'un élément dans le viewport est détéctée par le JavaScript, une classe est ajoutée qui permet au CSS d'effectuer une transition d'apparition."
           }
         },
