@@ -1041,9 +1041,9 @@
             "clue": "e"
           },
           "figure": {
-            "src": "http://developer.telerik.com/wp-content/uploads/2016/09/scrollreveal_basic_opt.gif",
-            "alt": "Un élément apparaissant lorsqu'il entre dans le viewport",
-            "caption": "On peut mener ça loin, mais la logique de base reste toujours la même. Ici, lorsque l'entreé de l'élément dans le viewport est détéctée par le JavaScript, une classe est ajoutée qui permet au CSS d'effectuer une transition d'apparition."
+            "src": "https://content-static.upwork.com/blog/uploads/sites/3/2018/03/14081052/animation_scrollreveal.gif",
+            "alt": "Des éléments apparaissant lorsqu'ils entre dans le viewport",
+            "caption": "On peut mener ça loin, mais la logique de base reste toujours la même. Ici, lorsque l'entreé d'un élément dans le viewport est détéctée par le JavaScript, une classe est ajoutée qui permet au CSS d'effectuer une transition d'apparition."
           }
         },
         {
@@ -1062,7 +1062,7 @@
           ],
           "codepen": "eQNJOK",
           "figure": {
-            "src": "http://nikpro.com.au/wp-content/uploads/2018/07/css-transform.png",
+            "src": "https://sdz-upload.s3.amazonaws.com/prod/upload/transformation-3d-demo.gif",
             "alt": "Un exemple de transformation CSS 3D",
             "caption": "On peut aussi gérer de la 3D avec les transformations. Quelle que soit la transformation appliquée, ce n'est qu'une modification visuelle : du point de vue du flux, l'élément n'a changé ni de taille ni de position."
           }
