@@ -1206,7 +1206,7 @@
         },
         {
           "title": "Les types de champs",
-          "theory": "Par défaut, les champs sont de type <code>text</code>. Bien que cela suffise théoriquement, vous devez impérativement renseigner un type plus précis dès que possible : <code>email</code>, <code>number</code>, <code>date</code>... Cela permet au navigateur de savoir quel type d'information est attendue, et d'aider l'utilisateur à la saisie. Par exemple, le type <code>date</code> mettra un calendrier à disposition de l'utilisateur, le type <code>number</code> sortira le clavier des chiffres sur mobile, etc. Des types précis fluidient énormément l'expérience.",
+          "theory": "Par défaut, les champs sont de type <code>text</code>. Bien que cela suffise théoriquement, vous devez impérativement renseigner un type plus précis dès que possible : <code>email</code>, <code>number</code>, <code>date</code>... Cela permet au navigateur de savoir quel type d'information est attendue, et d'aider l'utilisateur à la saisie. Par exemple, le type <code>date</code> mettra un calendrier à disposition de l'utilisateur, le type <code>number</code> sortira le clavier des chiffres sur mobile, etc. Des types précis fluidifient énormément l'expérience.",
           "codes": {
             "html": "<input id=\"age\" name=\"age\" type=\"number\" />"
           },
@@ -1235,7 +1235,7 @@
           "codes": {
             "html": "<input id=\"pseudo\" name=\"pseudo\" required minlength=\"3\" maxlength=\"32\" />"
           },
-          "warning": "Attention à réfléchir à la logique des contraintes que vous imposez, quitte à les préciser avec un petit texte explicatif associé à l'input. Les histoire de personnes dont le nom de famille fait 2 lettres seulement, ne pouvant pas s'inscrire à un service à cause d'un <code>maxlength=\"3\"</code> ne manquent pas. Pensez que ces règles sont plus là pour guider que pour contraindre.",
+          "warning": "Attention à réfléchir à la logique des contraintes que vous imposez, quitte à les préciser avec un petit texte explicatif associé à l'input. Les histoires de personnes dont le nom de famille fait 2 lettres seulement, ne pouvant pas s'inscrire à un service à cause d'un <code>minlength=\"3\"</code> ne manquent pas. Pensez que ces règles sont plus là pour guider que pour contraindre.",
           "links": [
             {
               "label": "Validation front des formulaires",
