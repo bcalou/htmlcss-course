@@ -9,7 +9,7 @@ export default class FooterComponent extends Component {
   protected getTemplate(): string {
     return `
       <p>
-        2018 -
+        2020 -
         <a href="https://twitter.com/DctStrangelove" title="Compte Twitter" target="_blank">
           Bastien Calou ${getSvg('twitter', 'footer__twitterIcon')}
         </a>
