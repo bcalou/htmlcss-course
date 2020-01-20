@@ -2342,8 +2342,8 @@
           "info": "Il est difficile de savoir par quel bout aborder les dimensions en SVG. Quand vous intégrez un SVG dans une page, commencez par définir sa largeur et hauteur en CSS, éventuellement avec une bordure temporaire pour bien voir la zone définie (le <i>viewport</i>). Ensuite, appliquez ou modifiez l'attribut <code>viewBox</code> pour adapter le contenu du SVG au <i>viewport</i>. Dans le code de l'exemple, on souhaite afficher le SVG à une taille de <code>300px</code>, d'où le code CSS. Le svg définit un cercle de <code>50px</code> de rayon, donc <code>100px</code> de diamètre. Pour l'afficher en entier dans la zone définie par le CSS, on utilise donc <code>viewBox=\"0 0 100 100\"</code>. Le résultat est un cercle de <code>300px</code> de diamètre, mais rien ne nous interdit d'utiliser une dimension relative en CSS, telle que <code>50vw</code>.",
           "links": [
             {
-              "label": "Comprendre le viewport et viewBox",
-              "url": "https://webdesign.tutsplus.com/fr/tutorials/svg-viewport-and-viewbox-for-beginners--cms-30844"
+              "label": "Une visualisation de ViewBox",
+              "url": "https://wattenberger.com/guide/scaling-svg"
             },
             {
               "label": "How to scale SVG",
@@ -2357,8 +2357,8 @@
             "clue": "l"
           },
           "figure": {
-            "src": "http://buildawesomewebsites.com/assets/uploads/viewbox_explained.svg",
-            "alt": "L'attribut viewBox de la baslise svg.",
+            "src": "https://i.stack.imgur.com/7wZpO.png",
+            "alt": "L'attribut viewBox de la balise svg.",
             "caption": "La balise <code>svg</code> définit des formes géométriques (ici, le cercle jaune) dans un repère infini. L'attribut <code>viewBox</code> permet de définir la zone effectivement présentée dans l'espace disponible."
           }
         },
