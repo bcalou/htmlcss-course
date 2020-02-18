@@ -2768,7 +2768,7 @@
           "figure": {
             "src": "http://constructs.stampede-design.com/wp-content/uploads/2015/01/css-counter.jpg",
             "alt": "Une addition en pur CSS",
-            "caption": "Il est également possible de controller la quantité s'ajoutant au compteur, permettant ainsi les calculs possibles en pur CSS !"
+            "caption": "Il est également possible de controller la quantité s'ajoutant au compteur, permettant ainsi les calculs en pur CSS !"
           }
         }
       ]
