@@ -2568,7 +2568,7 @@
         },
         {
           "title": "Pseudo-éléments ::after & ::before",
-          "theory": "Comment ajouter des éléments décoratifs sans polluer notre HTML, afin de séparer au maximum présentation et style ? Chaque élément du DOM peut posséder deux pseudo-éléments&nbsp;: un <code>::before</code>, et un <code>::after</code>. Ils seront \"injectés\" dans la boîte de l'élément, respectivement au début et à la fin. Ces éléments ne seront pas visibles dans le DOM mais leur contenu et leur style pourra être défini en CSS. Il est même possible d'injecter dans le pseudo-élément un contenu provenant d'un attribut de la l'élément ciblé.",
+          "theory": "Comment ajouter des éléments décoratifs sans polluer notre HTML, afin de séparer au maximum présentation et style ? Chaque élément du DOM peut posséder deux pseudo-éléments&nbsp;: un <code>::before</code>, et un <code>::after</code>. Ils seront \"injectés\" dans la boîte de l'élément, respectivement au début et à la fin. Ces éléments ne seront pas visibles dans le DOM mais leur contenu et leur style pourra être défini en CSS. Il est même possible d'injecter dans le pseudo-élément un contenu provenant d'un attribut de l'élément ciblé.",
           "codes": {
             "html": "<p data-line=\"1\">Première ligne</p><p data-line=\"2\">Deuxième ligne</p>",
             "css": "p::before { content: attr(data-line); opacity: 0.5; }"
