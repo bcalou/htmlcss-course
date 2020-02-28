@@ -2839,16 +2839,16 @@
           }
         },
         {
-          "title": "Le sélecteur :matches",
-          "theory": "Un autre pouvoir hérité des pre-processeurs et bientôt exploitable nativement est la possibilité d'écrire des sélecteurs complexes sans répéter les tags et les classes. Classiquement, si on souhaitait cibler tous les niveaux de titres contenu dans des balises <code>header</code> ou <code>footer</code>, il faudrait 12 sélecteurs (6 niveaux de titres fois deux balises). Le pseudo-sélecteur <code>:matches</code> résout le problème en une seule ligne.",
+          "title": "Le sélecteur :is",
+          "theory": "Un autre pouvoir hérité des pre-processeurs et bientôt exploitable nativement est la possibilité d'écrire des sélecteurs complexes sans répéter les tags et les classes. Classiquement, si on souhaitait cibler tous les niveaux de titres contenu dans des balises <code>header</code> ou <code>footer</code>, il faudrait 12 sélecteurs (6 niveaux de titres fois deux balises). Le pseudo-sélecteur <code>:is</code> résout le problème en une seule ligne.",
           "codes": {
-            "css": ":matches(header,&nbsp;footer):matches(h1,&nbsp;h2,&nbsp;h3,&nbsp;h4,&nbsp;h5,&nbsp;h6) { color: red; }"
+            "css": ":is(header,&nbsp;footer):is(h1,&nbsp;h2,&nbsp;h3,&nbsp;h4,&nbsp;h5,&nbsp;h6) { color: red; }"
           },
-          "info": "<code>:matches</code> n'est qu'un des nouveaux sélecteurs inclus dans ce qui est abusivement appelé \"CSS 4\". Parmi les autres, on trouve la sélection basée sur les enfants, la sélection de colonnes paires ou impaires dans une grille, les sélecteurs <code>:nth-child</code> et <code>:not</code> pouvant accepter plusieurs arguments...",
+          "info": "<code>:is</code> n'est qu'un des nouveaux sélecteurs inclus dans ce qui est abusivement appelé \"CSS 4\". Parmi les autres, on trouve la sélection basée sur les enfants, la sélection de colonnes paires ou impaires dans une grille, les sélecteurs <code>:nth-child</code> et <code>:not</code> pouvant accepter plusieurs arguments...",
           "links": [
             {
-              "label": ":matches sur CSS Tricks",
-              "url": "https://css-tricks.com/almanac/selectors/m/matches/"
+              "label": ":is sur MDN",
+              "url": "https://developer.mozilla.org/fr/docs/Web/CSS/:is"
             },
             {
               "label": "Support navigateur",
