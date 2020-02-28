@@ -99,7 +99,7 @@ function formatCss(code: string): string {
         (char === '(' &&
           indentLevel === 0 &&
           source[i + 1] !== '$' &&
-          source[i - 8] !== ':' &&
+          source[i - 3] !== ':' &&
           isNaN(parseInt(source[i + 1])))) &&
       source[i - 1] !== '#'
     ) {
