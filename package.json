@@ -11,7 +11,7 @@
   "author": "bcalou",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.13.1",
     "parcel": "^1.9.7",
     "typescript": "^3.0.3"
   },
