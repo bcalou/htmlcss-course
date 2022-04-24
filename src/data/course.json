@@ -2071,7 +2071,7 @@
             "clue": "a"
           },
           "figure": {
-            "src": "http://teknosrc.com/wp-content/uploads/2013/12/Pixel-Density-Comparison-of-Displays-with-Different-Resolution.gif",
+            "src": "http://huybien.com/wp-content/uploads/2017/03/Pixel-Density-Comparison-of-Displays-with-Different-Resolution-300x161.gif",
             "alt": "Zoom sur deux écrans de densité différente",
             "caption": "Plus il y a de pixels dans le même pouce (<i>inch</i> en anglais), plus la densité de pixels / points est elevée. En CSS, la notion de <em>pixel ratio</em> permet de définir deux éléments de même taille CSS qui auront une taille physique similaire sur tous les écrans malgré la différence de densité."
           }
@@ -2191,7 +2191,7 @@
             "clue": "t"
           },
           "figure": {
-            "src": "https://la-cascade.io/content/images/2017/02/css-shapes-supports-fallback.small-compressor.jpeg",
+            "src": "https://web.archive.org/web/20191020204354im_/https://la-cascade.io/content/images/2017/02/blend-modes-supports-small-compressor.jpeg",
             "alt": "Un exemple de règle @supports",
             "caption": "La règle <code>@supports</code> vous permet d'éviter de rendre votre contenu innaccessible. Ici, l'image de fond n'est changée que si la propriété <code>background-blend-mode</code> est comprise. Sinon, on utilise la première, avec laquelle on sait que le texte sera lisible."
           }
@@ -2206,7 +2206,7 @@
           "links": [
             {
               "label": "CSS.supports() sur MDN",
-              "url": "https://developer.mozilla.org/fr/docs/Web/API/CSS/supports"
+              "url": "https://developer.mozilla.org/en-US/docs/Web/API/CSS/supports"
             },
             {
               "label": "Support navigateur",
@@ -2977,8 +2977,8 @@
             "clue": "r"
           },
           "figure": {
-            "src": "https://blogsimages.adobe.com/creativecloud/files/2015/10/behance.jpg",
-            "alt": "Des projets sur le site Behance",
+            "src": "https://fireship.io/lessons/css-cards-animated/img/cards-original.png",
+            "alt": "Une liste d'aperçus d'articles",
             "caption": "Que sont les \"cartes\" d'un tel design, sinon des éléments identiques dont seuls les paramètres de contenu varient ?"
           }
         },
