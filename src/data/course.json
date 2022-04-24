@@ -52,7 +52,7 @@
             "clue": "n"
           },
           "figure": {
-            "src": "https://s3-ap-southeast-1.amazonaws.com/openeschool-uploads/Open_2/Open5013f58a-77e3-45ad-b4b0-09aa1d34a9dc.png",
+            "src": "https://www.codingfactory.net/wp-content/uploads/html-heading-paragraph-01.png",
             "alt": "6 balises de titres allant du h1 au h6",
             "caption": "Vous l'avez remarqué : les navigateurs appliquent automatiquement un style (taille) différent selon l'importance du titre."
           }
@@ -77,7 +77,7 @@
             "clue": "i"
           },
           "figure": {
-            "src": "https://uploads.siteduzero.com/files/343001_344000/343677.png",
+            "src": "https://patrickhlauke.github.io/aria/presentation/pictures/blog-structure-after-html5.png",
             "alt": "La structure HTML5 d'un site",
             "caption": "Exemple de représentation d'un site et des balises HTML5 qui le composent. Un schéma à réaliser chaque fois que abordez un projet ou analysez un site existant."
           }
@@ -200,7 +200,7 @@
             "clue": "s"
           },
           "figure": {
-            "src": "https://wprocket-eb2.kxcdn.com/wp-content/uploads/1/3-pie-graph-page-size.png",
+            "src": "https://v3b4d4f5.rocketcdn.me/wp-content/uploads/1/3-pie-graph-page-size.png",
             "alt": "Répartition du poids des ressources sur le web",
             "caption": "Les images représentent une portion considérable du poids du web (derrière les vidéos, loin devant). Attention à utiliser des images optimisées."
           }
@@ -343,7 +343,7 @@
             "clue": "s"
           },
           "figure": {
-            "src": "http://www.cssinhtml.com/wp-content/uploads/2016/08/Descendant-selector_example_div-div-p.png",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/DOM-model.svg/langfr-1920px-DOM-model.svg.png",
             "alt": "Le ciblage des éléments dans le DOM",
             "caption": "Le navigateur se représente votre document sous forme d'un arbre appelé DOM et trouve ainsi à quel(s) élément(s) appliquer chaque règle."
           }
@@ -369,7 +369,7 @@
             "clue": "a"
           },
           "figure": {
-            "src": "http://submit.xlauz.net/upload/css-specificity.png",
+            "src": "https://miro.medium.com/max/7520/1*YYtYYBKyPobEmUJ3firhiw.png",
             "alt": "Un calcul de spécificité CSS",
             "caption": "La spécificité pose des problèmes même aux développeurs expérimentés. Un sélecteur aussi complexe que celui-ci n'est pas agréable à manipuler !"
           }
@@ -423,7 +423,7 @@
           ],
           "codepen": "zmERoz",
           "question": {
-            "text": "L'arabe et l'Hébreu, entre autres, se distinguent par une particularité assez forte. Quelle propriété CSS nous sera utile pour gérer l'affichage de ces langues ?",
+            "text": "L'arabe et l'hébreu, entre autres, se distinguent par une particularité assez forte. Quelle propriété CSS nous sera utile pour gérer l'affichage de ces langues ?",
             "answer": "direction",
             "clue": "d"
           },
@@ -1199,7 +1199,7 @@
             "clue": "o"
           },
           "figure": {
-            "src": "https://developer.mozilla.org/files/4291/client-server.png",
+            "src": "https://madooei.github.io/cs421_sp20_homepage/assets/client-server-1.png",
             "alt": "Schéma d'un échange client/serveur",
             "caption": "Une fois le formulaire rempli, il pourra être envoyé au serveur qui répondra de manière adéquate. Finalement, on peut voir cela comme une requête similaire aux autres, avec quelques infos en plus (les champs du formulaire). Mais nous ne nous intéréssons ici qu'à la saisie des données côté client."
           }
@@ -1214,7 +1214,7 @@
           "links": [
             {
               "label": "Liste des types d'input",
-              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#Attributs"
+              "url": "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input#les_diff%C3%A9rents_types_de_champs_input"
             }
           ],
           "codepen": "KryKmE",
@@ -1460,14 +1460,14 @@
           ],
           "codepen": "xQzwja",
           "question": {
-            "text": "Le site sur lequel vous lisez ces mots utilise aussi des variables, mais en CSS natif (il ne fonctionnera donc pas correctement sur IE11, par exemple). Mais le principe est le même et vous pouvez le voir en action avec l'inspecteur. Quel est le nom de la variable grâce à laquelle le header du site et le titre de chaque partie partagent la même couleur rouge cramoisi ?",
+            "text": "Le site sur lequel vous lisez ces mots utilise aussi des variables, mais en CSS natif. Mais le principe est le même et vous pouvez le voir en action avec l'inspecteur. Quel est le nom de la variable grâce à laquelle le header du site et le titre de chaque partie partagent la même couleur rouge cramoisi ?",
             "answer": "primaryColor",
             "clue": "r"
           },
           "figure": {
             "src": "https://responsivedesign.is/wp-content/uploads/2017/06/CSS-Variables.png",
             "alt": "Variables CSS natives",
-            "caption": "Ce n'est pas encore utilisable à grande échelle, notamment à cause d'IE11, mais les variables CSS natives (sans SASS) sont en train de devenir un standard. La syntaxe est différente mais la logique similaire."
+            "caption": "es variables CSS natives (sans SASS) sont devenues un standard. La syntaxe est différente mais la logique similaire."
           }
         },
         {
@@ -1510,7 +1510,7 @@
             "clue": "t"
           },
           "figure": {
-            "src": "https://www.sodifrance.fr/blog/wp-content/uploads/2016/05/blog-mixin-info_bulle.png",
+            "src": "https://cdn-images-1.medium.com/max/1600/1*JIlBS4rc4-UelKpEExKkTQ.png",
             "alt": "Plusieurs boîtes avec des styles différents",
             "caption": "Les mixins peuvent être un moyen très pratique de générer des variations sur un même modèle."
           }
@@ -1662,7 +1662,7 @@
             "clue": "s"
           },
           "figure": {
-            "src": "https://media.merixstudio.com/uploads/modifier2.png",
+            "src": "https://i0.wp.com/cssscript.com/wp-content/uploads/2018/04/Mustard-UI-Buttons.png?resize=653%2C419&ssl=1",
             "alt": "Boutons utilisant les modifier BEM",
             "caption": "Un bouton est souvent lui-même un bloc BEM (après tout, c'est un composant ré-utilisable régulièrement). L'application de <em>modifiers</em> est alors tout à fait appropriée."
           }
@@ -1823,7 +1823,7 @@
             "html": "<img class=\"grayscale\" src=\"cat.jpg\" /><img class=\"sepia\" src=\"cat.jpg\" /><img class=\"blur\" src=\"cat.jpg\" />",
             "css": ".grayscale { filter: grayscale(100%); } .sepia { filter: sepia(100%); } .blur { filter: blur(5px); }"
           },
-          "warning": "Beaucoup des effets CSS décrits dans ce cours ne sont pas compatibles avec certains navigateurs, notamment IE11. Cela ne doit pas nous empêcher de les utiliser, mais assurez-vous que votre contenu est toujours lisible et cohérent malgré leur absence.",
+          "warning": "Beaucoup des effets CSS décrits dans ce cours ne sont pas compatibles avec certains navigateurs, notamment les plus anciens. Cela ne doit pas nous empêcher de les utiliser, mais assurez-vous que votre contenu est toujours lisible et cohérent malgré leur absence.",
           "links": [
             {
               "label": "Doc MDN sur les filtres",
@@ -3020,7 +3020,7 @@
     {
       "title": "Parallaxe avec Relax",
       "youtubeId": "y1pidXqv0Ic",
-      "show": "false"
+      "show": "true"
     },
     {
       "title": "Détection de scroll avec Waypoints",
