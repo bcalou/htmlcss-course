@@ -1,6 +1,8 @@
-# HTML/CSS Course
+# HTML/CSS
 
-This is the website hosting resources and exercises for my HTML/CSS course.
+Code source de mon support de cours [HTML/CSS](https://htmlcss.netlify.app)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b550e768-5856-48e4-9fff-c6886d911070/deploy-status)](https://app.netlify.com/sites/htmlcss/deploys)
 
 ## Dev
 
